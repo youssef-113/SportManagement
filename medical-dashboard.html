@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Medical Dashboard - Al Ahly SC Training Management</title>
+        <link rel="stylesheet" href="styles/main.css">
+        <link rel="stylesheet" href="styles/medical.css">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet">
+    </head>
+
+    <body>
+        <div class="app-container">
+            <!-- Medical Sidebar -->
+            <aside class="sidebar">
+                <div class="sidebar-header">
+                    <img src="./Images/FwBoNGZ7XfGg.png" alt="Al Ahly SC" class="sidebar-logo">
+                    <div class="sidebar-title">
+                        <h3>Al Ahly SC</h3>
+                        <p>Medical Center</p>
+                    </div>
+                </div>
+
+                <nav class="sidebar-nav">
+                    <div class="nav-section">
+                        <h4>MEDICAL OVERVIEW</h4>
+                        <ul>
+                            <li><a href="medical-dashboard.html" class="nav-link active"><i
+                                        class="fas fa-heartbeat"></i> Dashboard</a></li>
+                            <li><a href="schedule.html" class="nav-link"><i class="fas fa-calendar-alt"></i> My
+                                    Schedule</a></li>
+                            <li><a href="medical-announcements.html" class="nav-link"><i class="fas fa-bullhorn"></i>
+                                    Announcements</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="nav-section">
+                        <h4>PLAYER MANAGEMENT</h4>
+                        <ul>
+                            <li><a href="medical-players.html" class="nav-link"><i class="fas fa-user-friends"></i>
+                                    Player Search</a></li>
+                            <li><a href="medical-checkups.html" class="nav-link"><i class="fas fa-clipboard-list"></i>
+                                    Checkup Logs</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="nav-section">
+                        <h4>COMMUNICATION</h4>
+                        <ul>
+                            <li><a href="medical-chat.html" class="nav-link"><i class="fas fa-comments"></i> Player
+                                    Chat</a></li>
+                        </ul>
+                    </div>
+                </nav>
+
+                <div class="sidebar-footer">
+                    <div class="user-profile">
+                        <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=40&h=40&fit=crop&crop=face"
+                            alt="User" class="user-avatar">
+                        <div class="user-info">
+                            <span class="user-name">Dr. Sarah Ahmed</span>
+                            <span class="user-role">Medical Staff</span>
+                        </div>
+                        <div class="user-menu">
+                            <i class="fas fa-chevron-down"></i>
+                            <div class="dropdown-menu">
+                                <a href="profile.html"><i class="fas fa-user"></i> Profile</a>
+                                <a href="settings.html"><i class="fas fa-cog"></i> Settings</a>
+                                <a href="index.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="main-content">
+                <header class="main-header">
+                    <div class="header-left">
+                        <button class="sidebar-toggle">
+                            <i class="fas fa-bars"></i>
+                        </button>
+                        <h1>Medical Dashboard</h1>
+                        <p>Welcome back, Dr. Sarah. Here's your medical overview for today.</p>
+                    </div>
+
+                    <div class="header-right">
+                        <button class="btn-outline emergency-btn">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            Emergency
+                        </button>
+                        <button class="btn-primary new-checkup-btn" onclick="openNewCheckupModal()">
+                            <i class="fas fa-plus"></i>
+                            New Checkup
+                        </button>
+                        <div class="notifications">
+                            <i class="fas fa-bell"></i>
+                            <span class="notification-badge">5</span>
+                        </div>
+                    </div>
+                </header>
+
+                <div class="medical-dashboard-content">
+                    <!-- Medical Stats -->
+                    <div class="medical-stats-grid">
+                        <div class="medical-stat-card">
+                            <div class="stat-icon active-players">
+                                <i class="fas fa-user-check"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>742</h3>
+                                <p>Active Players</p>
+                                <span class="stat-change positive">
+                                    <i class="fas fa-arrow-up"></i>
+                                    +12 this week
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="medical-stat-card">
+                            <div class="stat-icon injured-players">
+                                <i class="fas fa-user-injured"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>23</h3>
+                                <p>Injured Players</p>
+                                <span class="stat-change negative">
+                                    <i class="fas fa-arrow-down"></i>
+                                    -5 this week
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="medical-stat-card">
+                            <div class="stat-icon checkups-today">
+                                <i class="fas fa-stethoscope"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>8</h3>
+                                <p>Checkups Today</p>
+                                <span class="stat-change neutral">
+                                    <i class="fas fa-minus"></i>
+                                    Same as yesterday
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="medical-stat-card">
+                            <div class="stat-icon recovery-rate">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>94%</h3>
+                                <p>Recovery Rate</p>
+                                <span class="stat-change positive">
+                                    <i class="fas fa-arrow-up"></i>
+                                    +2% this month
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Main Dashboard Grid -->
+                    <div class="medical-dashboard-grid">
+                        <!-- Today's Schedule -->
+                        <div class="medical-card schedule-card">
+                            <div class="card-header">
+                                <h3>Today's Schedule</h3>
+                                <p>Your appointments and checkups for today</p>
+                                <a href="medical-schedule.html" class="view-all">View All <i
+                                        class="fas fa-arrow-right"></i></a>
+                            </div>
+
+                            <div class="schedule-list">
+                                <div class="schedule-item">
+                                    <div class="schedule-time">
+                                        <span class="time">09:00</span>
+                                        <span class="duration">30 min</span>
+                                    </div>
+                                    <div class="schedule-info">
+                                        <h4>Pre-Training Medical Check</h4>
+                                        <p>Football First Team</p>
+                                        <div class="schedule-meta">
+                                            <span class="location"><i class="fas fa-map-marker-alt"></i> Medical Room
+                                                A</span>
+                                            <span class="type routine">Routine</span>
+                                        </div>
+                                    </div>
+                                    <div class="schedule-status upcoming">
+                                        <i class="fas fa-clock"></i>
+                                        Upcoming
+                                    </div>
+                                </div>
+
+                                <div class="schedule-item">
+                                    <div class="schedule-time">
+                                        <span class="time">11:30</span>
+                                        <span class="duration">45 min</span>
+                                    </div>
+                                    <div class="schedule-info">
+                                        <h4>Injury Assessment - Youssef Bassiony</h4>
+                                        <p>Follow-up on ankle injury</p>
+                                        <div class="schedule-meta">
+                                            <span class="location"><i class="fas fa-map-marker-alt"></i> Medical Room
+                                                B</span>
+                                            <span class="type injury">Injury</span>
+                                        </div>
+                                    </div>
+                                    <div class="schedule-status in-progress">
+                                        <i class="fas fa-play"></i>
+                                        In Progress
+                                    </div>
+                                </div>
+
+                                <div class="schedule-item">
+                                    <div class="schedule-time">
+                                        <span class="time">14:00</span>
+                                        <span class="duration">60 min</span>
+                                    </div>
+                                    <div class="schedule-info">
+                                        <h4>Recovery Session - Basketball Team</h4>
+                                        <p>Post-training recovery and assessment</p>
+                                        <div class="schedule-meta">
+                                            <span class="location"><i class="fas fa-map-marker-alt"></i> Recovery
+                                                Center</span>
+                                            <span class="type recovery">Recovery</span>
+                                        </div>
+                                    </div>
+                                    <div class="schedule-status upcoming">
+                                        <i class="fas fa-clock"></i>
+                                        Upcoming
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Recent Injuries -->
+                        <div class="medical-card injuries-card">
+                            <div class="card-header">
+                                <h3>Recent Injuries</h3>
+                                <p>Latest injury reports and updates</p>
+                                <a href="medical-injuries.html" class="view-all">View All <i
+                                        class="fas fa-arrow-right"></i></a>
+                            </div>
+
+                            <div class="injuries-list">
+                                <div class="injury-item">
+                                    <img src="https://images.unsplash.com/photo-1566753323558-f4e0952af115?w=40&h=40&fit=crop&crop=face"
+                                        alt="Youssef Bassiony" class="player-avatar">
+                                    <div class="injury-info">
+                                        <h4>Youssef Bassiony</h4>
+                                        <p class="injury-type">Ankle Sprain - Grade 2</p>
+                                        <div class="injury-meta">
+                                            <span class="injury-date">Jan 15, 2024</span>
+                                            <span class="recovery-time">2-3 weeks</span>
+                                        </div>
+                                    </div>
+                                    <div class="injury-status moderate">
+                                        <i class="fas fa-exclamation-triangle"></i>
+                                        Moderate
+                                    </div>
+                                </div>
+
+                                <div class="injury-item">
+                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop&crop=face"
+                                        alt="Ahmed Zizo" class="player-avatar">
+                                    <div class="injury-info">
+                                        <h4>Ahmed Zizo</h4>
+                                        <p class="injury-type">Muscle Strain - Hamstring</p>
+                                        <div class="injury-meta">
+                                            <span class="injury-date">Jan 12, 2024</span>
+                                            <span class="recovery-time">1-2 weeks</span>
+                                        </div>
+                                    </div>
+                                    <div class="injury-status minor">
+                                        <i class="fas fa-info-circle"></i>
+                                        Minor
+                                    </div>
+                                </div>
+
+                                <div class="injury-item">
+                                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face"
+                                        alt="Karim Fouad" class="player-avatar">
+                                    <div class="injury-info">
+                                        <h4>Karim Fouad</h4>
+                                        <p class="injury-type">Knee Contusion</p>
+                                        <div class="injury-meta">
+                                            <span class="injury-date">Jan 10, 2024</span>
+                                            <span class="recovery-time">3-5 days</span>
+                                        </div>
+                                    </div>
+                                    <div class="injury-status recovering">
+                                        <i class="fas fa-heart"></i>
+                                        Recovering
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Secondary Grid -->
+                    <div class="medical-dashboard-grid secondary">
+                        <!-- Quick Actions -->
+                        <div class="medical-card quick-actions-card">
+                            <div class="card-header">
+                                <h3>Quick Actions</h3>
+                                <p>Frequently used medical actions</p>
+                            </div>
+
+                            <div class="medical-quick-actions">
+                                <a href="medical-players.html" class="medical-quick-action">
+                                    <i class="fas fa-search"></i>
+                                    <span>Search Player</span>
+                                </a>
+                                <a href="#" class="medical-quick-action" onclick="openNewCheckupModal()">
+                                    <i class="fas fa-stethoscope"></i>
+                                    <span>New Checkup</span>
+                                </a>
+                                <a href="medical-injuries.html" class="medical-quick-action">
+                                    <i class="fas fa-band-aid"></i>
+                                    <span>Report Injury</span>
+                                </a>
+                                <a href="medical-chat.html" class="medical-quick-action">
+                                    <i class="fas fa-comments"></i>
+                                    <span>Message Player</span>
+                                </a>
+                                <a href="#" class="medical-quick-action" onclick="openEmergencyModal()">
+                                    <i class="fas fa-ambulance"></i>
+                                    <span>Emergency</span>
+                                </a>
+                                <a href="medical-reports.html" class="medical-quick-action">
+                                    <i class="fas fa-file-medical"></i>
+                                    <span>Generate Report</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Recent Activity -->
+                        <div class="medical-card activity-card">
+                            <div class="card-header">
+                                <h3>Recent Activity</h3>
+                                <p>Latest medical updates and actions</p>
+                            </div>
+
+                            <div class="medical-activity-list">
+                                <div class="activity-item">
+                                    <div class="activity-icon checkup">
+                                        <i class="fas fa-stethoscope"></i>
+                                    </div>
+                                    <div class="activity-content">
+                                        <p><strong>Checkup completed</strong> for Hassan Ahmed</p>
+                                        <span class="activity-time">2 hours ago</span>
+                                    </div>
+                                </div>
+
+                                <div class="activity-item">
+                                    <div class="activity-icon injury">
+                                        <i class="fas fa-band-aid"></i>
+                                    </div>
+                                    <div class="activity-content">
+                                        <p><strong>Injury reported</strong> - Omar Tarek knee injury</p>
+                                        <span class="activity-time">4 hours ago</span>
+                                    </div>
+                                </div>
+
+                                <div class="activity-item">
+                                    <div class="activity-icon recovery">
+                                        <i class="fas fa-heart"></i>
+                                    </div>
+                                    <div class="activity-content">
+                                        <p><strong>Recovery update</strong> - Mahmoud Ali cleared for training</p>
+                                        <span class="activity-time">1 day ago</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <!-- New Checkup Modal -->
+        <div class="modal" id="new-checkup-modal">
+            <div class="modal-content large">
+                <div class="modal-header">
+                    <h3>New Medical Checkup</h3>
+                    <span class="close" onclick="closeNewCheckupModal()">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <form id="new-checkup-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="checkup-player">Player</label>
+                                <select id="checkup-player" name="player" required>
+                                    <option value="">Select Player</option>
+                                    <option value="1">Youssef Bassiony</option>
+                                    <option value="2">Ahmed Zizo</option>
+                                    <option value="3">Karim Fouad</option>
+                                    <option value="4">Hassan Ahmed</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="checkup-type">Checkup Type</label>
+                                <select id="checkup-type" name="type" required>
+                                    <option value="">Select Type</option>
+                                    <option value="routine">Routine Checkup</option>
+                                    <option value="injury">Injury Assessment</option>
+                                    <option value="recovery">Recovery Check</option>
+                                    <option value="fitness">Fitness Test</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="checkup-date">Date</label>
+                                <input type="date" id="checkup-date" name="date" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="checkup-time">Time</label>
+                                <input type="time" id="checkup-time" name="time" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="checkup-duration">Duration (minutes)</label>
+                                <input type="number" id="checkup-duration" name="duration" min="15" max="120" value="30"
+                                    required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="checkup-location">Location</label>
+                            <select id="checkup-location" name="location" required>
+                                <option value="">Select Location</option>
+                                <option value="medical-room-a">Medical Room A</option>
+                                <option value="medical-room-b">Medical Room B</option>
+                                <option value="recovery-center">Recovery Center</option>
+                                <option value="training-ground">Training Ground</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="checkup-notes">Notes</label>
+                            <textarea id="checkup-notes" name="notes" rows="3"
+                                placeholder="Additional notes or concerns..."></textarea>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="btn-outline" onclick="closeNewCheckupModal()">Cancel</button>
+                            <button type="submit" class="btn-primary">Schedule Checkup</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Emergency Modal -->
+        <div class="modal" id="emergency-modal">
+            <div class="modal-content">
+                <div class="modal-header emergency">
+                    <h3><i class="fas fa-exclamation-triangle"></i> Emergency Protocol</h3>
+                    <span class="close" onclick="closeEmergencyModal()">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <div class="emergency-actions">
+                        <button class="emergency-btn ambulance" onclick="callAmbulance()">
+                            <i class="fas fa-ambulance"></i>
+                            <span>Call Ambulance</span>
+                        </button>
+                        <button class="emergency-btn first-aid" onclick="firstAidProtocol()">
+                            <i class="fas fa-first-aid"></i>
+                            <span>First Aid Protocol</span>
+                        </button>
+                        <button class="emergency-btn notify" onclick="notifyStaff()">
+                            <i class="fas fa-bell"></i>
+                            <span>Notify Medical Staff</span>
+                        </button>
+                        <button class="emergency-btn incident" onclick="reportIncident()">
+                            <i class="fas fa-clipboard-list"></i>
+                            <span>Report Incident</span>
+                        </button>
+                    </div>
+
+                    <div class="emergency-contacts">
+                        <h4>Emergency Contacts</h4>
+                        <div class="contact-list">
+                            <div class="contact-item">
+                                <i class="fas fa-phone"></i>
+                                <span>Emergency Services: 123</span>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-hospital"></i>
+                                <span>Al Ahly Hospital: +20 2 1234 5678</span>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-user-md"></i>
+                                <span>Head Medical Officer: +20 10 1234 5678</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="scripts/main.js"></script>
+        <script src="scripts/medical.js"></script>
+    </body>
+
+</html>

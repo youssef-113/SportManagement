@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule - Al Ahly SC Training Management</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/schedule.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar (same as dashboard) -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="https://upload.wikimedia.org/wikipedia/en/4/41/Al_Ahly_SC_logo.png" alt="Al Ahly SC" class="sidebar-logo">
+                <div class="sidebar-title">
+                    <h3>Al Ahly SC</h3>
+                    <p>Training Management</p>
+                </div>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <h4>OVERVIEW</h4>
+                    <ul>
+                        <li><a href="dashboard.html" class="nav-link"><i class="fas fa-home"></i> Dashboard</a></li>
+                        <li><a href="analytics.html" class="nav-link"><i class="fas fa-chart-bar"></i> Analytics</a></li>
+                    </ul>
+                </div>
+                
+                <div class="nav-section">
+                    <h4>SPORTS MANAGEMENT</h4>
+                    <ul>
+                        <li><a href="teams.html" class="nav-link"><i class="fas fa-users"></i> Teams</a></li>
+                        <li><a href="schedule.html" class="nav-link active"><i class="fas fa-calendar-alt"></i> Schedule</a></li>
+                        <li><a href="drills.html" class="nav-link"><i class="fas fa-dumbbell"></i> Drill Library</a></li>
+                        <li><a href="players.html" class="nav-link"><i class="fas fa-user-friends"></i> View Players</a></li>
+                        <li><a href="attendance.html" class="nav-link"><i class="fas fa-clipboard-check"></i> Attendance</a></li>
+                    </ul>
+                </div>
+                
+                <div class="nav-section">
+                    <h4>COMMUNICATION</h4>
+                    <ul>
+                        <li><a href="announcements.html" class="nav-link"><i class="fas fa-bullhorn"></i> Announcements</a></li>
+                        <li><a href="chat.html" class="nav-link"><i class="fas fa-comments"></i> Chat</a></li>
+                        <li><a href="feedback.html" class="nav-link"><i class="fas fa-star"></i> Feedback</a></li>
+                    </ul>
+                </div>
+                
+                <div class="nav-section">
+                    <h4>MEDICAL CENTER</h4>
+                    <ul>
+                        <li><a href="medical.html" class="nav-link"><i class="fas fa-heartbeat"></i> Medical Overview</a></li>
+                        <li><a href="injuries.html" class="nav-link"><i class="fas fa-band-aid"></i> Injury Management</a></li>
+                    </ul>
+                </div>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <div class="user-profile">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop&crop=face" alt="User" class="user-avatar">
+                    <div class="user-info">
+                        <span class="user-name">Ahmed Hassan</span>
+                        <span class="user-role">Football Coach</span>
+                    </div>
+                    <div class="user-menu">
+                        <i class="fas fa-chevron-down"></i>
+                        <div class="dropdown-menu">
+                            <a href="profile.html"><i class="fas fa-user"></i> Profile</a>
+                            <a href="settings.html"><i class="fas fa-cog"></i> Settings</a>
+                            <a href="index.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="main-header">
+                <div class="header-left">
+                    <button class="sidebar-toggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <h1>Training Schedule</h1>
+                    <p>Manage and view all training sessions for your teams</p>
+                </div>
+                
+                <div class="header-right">
+                    <div class="view-toggle">
+                        <button class="view-btn active" data-view="calendar">
+                            <i class="fas fa-calendar"></i>
+                            Calendar
+                        </button>
+                        <button class="view-btn" data-view="list">
+                            <i class="fas fa-list"></i>
+                            List
+                        </button>
+                    </div>
+                    <button class="btn-primary" onclick="openNewSessionModal()">
+                        <i class="fas fa-plus"></i>
+                        New Session
+                    </button>
+                </div>
+            </header>
+            
+            <div class="schedule-content">
+                <!-- Filters -->
+                <div class="schedule-filters">
+                    <div class="filter-group">
+                        <label>Sport:</label>
+                        <select id="sport-filter">
+                            <option value="">All Sports</option>
+                            <option value="football">Football</option>
+                            <option value="basketball">Basketball</option>
+                            <option value="handball">Handball</option>
+                            <option value="volleyball">Volleyball</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label>Team:</label>
+                        <select id="team-filter">
+                            <option value="">All Teams</option>
+                            <option value="first-team">First Team</option>
+                            <option value="youth">Youth Team</option>
+                            <option value="u21">U-21 Team</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label>Status:</label>
+                        <select id="status-filter">
+                            <option value="">All Status</option>
+                            <option value="scheduled">Scheduled</option>
+                            <option value="in-progress">In Progress</option>
+                            <option value="completed">Completed</option>
+                            <option value="cancelled">Cancelled</option>
+                        </select>
+                    </div>
+                    
+                    <button class="btn-outline" onclick="clearFilters()">
+                        <i class="fas fa-times"></i>
+                        Clear Filters
+                    </button>
+                </div>
+                
+                <!-- Calendar View -->
+                <div class="schedule-view calendar-view active">
+                    <div class="calendar-header">
+                        <button class="nav-btn" onclick="previousWeek()">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <h3 id="current-week">January 15 - 21, 2024</h3>
+                        <button class="nav-btn" onclick="nextWeek()">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                        <button class="btn-outline today-btn" onclick="goToToday()">Today</button>
+                    </div>
+                    
+                    <div class="calendar-grid">
+                        <div class="calendar-header-row">
+                            <div class="time-column">Time</div>
+                            <div class="day-column">Mon<span class="date">15</span></div>
+                            <div class="day-column">Tue<span class="date">16</span></div>
+                            <div class="day-column">Wed<span class="date">17</span></div>
+                            <div class="day-column">Thu<span class="date">18</span></div>
+                            <div class="day-column">Fri<span class="date">19</span></div>
+                            <div class="day-column">Sat<span class="date">20</span></div>
+                            <div class="day-column">Sun<span class="date">21</span></div>
+                        </div>
+                        
+                        <div class="calendar-body">
+                            <!-- Time slots -->
+                            <div class="time-slot">
+                                <div class="time-label">08:00</div>
+                                <div class="day-slot"></div>
+                                <div class="day-slot"></div>
+                                <div class="day-slot">
+                                    <div class="session-block football">
+                                        <div class="session-title">Football Training</div>
+                                        <div class="session-team">First Team</div>
+                                        <div class="session-time">08:00 - 10:00</div>
+                                    </div>
+                                </div>
+                                <div class="day-slot"></div>
+                                <div class="day-slot"></div>
+                                <div class="day-slot"></div>
+                                <div class="day-slot"></div>
+                            </div>
+                            
+                            <div class="time-slot">
+                                <div class="time-label">10:00</div>
+                                <div class="day-slot"></div>
+                                <div class="day-slot">
+                                    <div class="session-block basketball">
+                                        <div class="session-title">Basketball Practice</div>
+                                        <div class="session-team">Youth Team</div>
+                                        <div class="session-time">10:00 - 12:00</div>
+                                    </div>
+                                </div>
+                                <div class="day-slot"></div>
+                                <div class="day-slot"></div>
+                                <div class="day-slot">
+                                    <div class="session-block handball">
+                                        <div class="session-title">Handball Training</div>
+                                        <div class="session-team">Senior Team</div>
+                                        <div class="session-time">10:00 - 11:30</div>
+                                    </div>
+                                </div>
+                                <div class="day-slot"></div>
+                                <div class="day-slot"></div>
+                            </div>
+                            
+                            <div class="time-slot">
+                                <div class="time-label">14:00</div>
+                                <div class="day-slot"></div>
+                                <div class="day-slot"></div>
+                                <div class="day-slot"></div>
+                                <div class="day-slot">
+                                    <div class="session-block football">
+                                        <div class="session-title">Tactical Session</div>
+                                        <div class="session-team">First Team</div>
+                                        <div class="session-time">14:00 - 16:00</div>
+                                    </div>
+                                </div>
+                                <div class="day-slot"></div>
+                                <div class="day-slot"></div>
+                                <div class="day-slot"></div>
+                            </div>
+                            
+                            <div class="time-slot">
+                                <div class="time-label">16:00</div>
+                                <div class="day-slot">
+                                    <div class="session-block volleyball">
+                                        <div class="session-title">Volleyball Practice</div>
+                                        <div class="session-team">Women's Team</div>
+                                        <div class="session-time">16:00 - 18:00</div>
+                                    </div>
+                                </div>
+                                <div class="day-slot"></div>
+                                <div class="day-slot"></div>
+                                <div class="day-slot"></div>
+                                <div class="day-slot">
+                                    <div class="session-block basketball">
+                                        <div class="session-title">Basketball Scrimmage</div>
+                                        <div class="session-team">U-21 Team</div>
+                                        <div class="session-time">16:00 - 17:30</div>
+                                    </div>
+                                </div>
+                                <div class="day-slot"></div>
+                                <div class="day-slot"></div>
+                            </div>
+                            
+                            <div class="time-slot">
+                                <div class="time-label">18:00</div>
+                                <div class="day-slot"></div>
+                                <div class="day-slot"></div>
+                                <div class="day-slot">
+                                    <div class="session-block football">
+                                        <div class="session-title">Youth Training</div>
+                                        <div class="session-team">Youth Team</div>
+                                        <div class="session-time">18:00 - 19:30</div>
+                                    </div>
+                                </div>
+                                <div class="day-slot"></div>
+                                <div class="day-slot"></div>
+                                <div class="day-slot">
+                                    <div class="session-block handball">
+                                        <div class="session-title">Handball Match Prep</div>
+                                        <div class="session-team">Senior Team</div>
+                                        <div class="session-time">18:00 - 20:00</div>
+                                    </div>
+                                </div>
+                                <div class="day-slot"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- List View -->
+                <div class="schedule-view list-view">
+                    <div class="sessions-list">
+                        <div class="session-card">
+                            <div class="session-header">
+                                <div class="session-sport football">
+                                    <i class="fas fa-futbol"></i>
+                                    <span>Football</span>
+                                </div>
+                                <div class="session-status scheduled">Scheduled</div>
+                                <div class="session-actions">
+                                    <button class="action-btn" onclick="editSession(1)">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="action-btn" onclick="deleteSession(1)">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="session-content">
+                                <h3>Football First Team Training</h3>
+                                <div class="session-details">
+                                    <div class="detail-item">
+                                        <i class="fas fa-calendar"></i>
+                                        <span>Wednesday, January 17, 2024</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <i class="fas fa-clock"></i>
+                                        <span>08:00 - 10:00</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        <span>Main Training Ground</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <i class="fas fa-user"></i>
+                                        <span>Ahmed Hassan</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <i class="fas fa-users"></i>
+                                        <span>25 Players</span>
+                                    </div>
+                                </div>
+                                <p class="session-description">Tactical training focusing on defensive formations and set pieces preparation for upcoming match.</p>
+                                <div class="session-drills">
+                                    <span class="drill-tag">Passing Drills</span>
+                                    <span class="drill-tag">Defensive Formation</span>
+                                    <span class="drill-tag">Set Pieces</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="session-card">
+                            <div class="session-header">
+                                <div class="session-sport basketball">
+                                    <i class="fas fa-basketball-ball"></i>
+                                    <span>Basketball</span>
+                                </div>
+                                <div class="session-status in-progress">In Progress</div>
+                                <div class="session-actions">
+                                    <button class="action-btn" onclick="editSession(2)">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="action-btn" onclick="deleteSession(2)">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="session-content">
+                                <h3>Basketball Youth Practice</h3>
+                                <div class="session-details">
+                                    <div class="detail-item">
+                                        <i class="fas fa-calendar"></i>
+                                        <span>Tuesday, January 16, 2024</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <i class="fas fa-clock"></i>
+                                        <span>10:00 - 12:00</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        <span>Basketball Court A</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <i class="fas fa-user"></i>
+                                        <span>Mohamed Ali</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <i class="fas fa-users"></i>
+                                        <span>18 Players</span>
+                                    </div>
+                                </div>
+                                <p class="session-description">Fundamental skills training with focus on shooting techniques and ball handling.</p>
+                                <div class="session-drills">
+                                    <span class="drill-tag">Shooting Practice</span>
+                                    <span class="drill-tag">Ball Handling</span>
+                                    <span class="drill-tag">Conditioning</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="session-card">
+                            <div class="session-header">
+                                <div class="session-sport handball">
+                                    <i class="fas fa-hand-paper"></i>
+                                    <span>Handball</span>
+                                </div>
+                                <div class="session-status completed">Completed</div>
+                                <div class="session-actions">
+                                    <button class="action-btn" onclick="viewSession(3)">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button class="action-btn" onclick="editSession(3)">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="session-content">
+                                <h3>Handball Senior Team Training</h3>
+                                <div class="session-details">
+                                    <div class="detail-item">
+                                        <i class="fas fa-calendar"></i>
+                                        <span>Monday, January 15, 2024</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <i class="fas fa-clock"></i>
+                                        <span>16:00 - 18:00</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        <span>Handball Court</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <i class="fas fa-user"></i>
+                                        <span>Karim Fouad</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <i class="fas fa-users"></i>
+                                        <span>22 Players</span>
+                                    </div>
+                                </div>
+                                <p class="session-description">Match preparation session with tactical analysis and team coordination exercises.</p>
+                                <div class="session-drills">
+                                    <span class="drill-tag">Tactical Analysis</span>
+                                    <span class="drill-tag">Team Coordination</span>
+                                    <span class="drill-tag">Match Simulation</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <!-- New Session Modal -->
+    <div class="modal" id="new-session-modal">
+        <div class="modal-content large">
+            <div class="modal-header">
+                <h3>Create New Training Session</h3>
+                <span class="close" onclick="closeNewSessionModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="new-session-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="session-title">Session Title</label>
+                            <input type="text" id="session-title" name="title" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="session-sport">Sport</label>
+                            <select id="session-sport" name="sport" required>
+                                <option value="">Select Sport</option>
+                                <option value="football">Football</option>
+                                <option value="basketball">Basketball</option>
+                                <option value="handball">Handball</option>
+                                <option value="volleyball">Volleyball</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="session-team">Team</label>
+                            <select id="session-team" name="team" required>
+                                <option value="">Select Team</option>
+                                <option value="first-team">First Team</option>
+                                <option value="youth">Youth Team</option>
+                                <option value="u21">U-21 Team</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="session-location">Location</label>
+                            <input type="text" id="session-location" name="location" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="session-date">Date</label>
+                            <input type="date" id="session-date" name="date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="session-start-time">Start Time</label>
+                            <input type="time" id="session-start-time" name="start-time" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="session-end-time">End Time</label>
+                            <input type="time" id="session-end-time" name="end-time" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="session-description">Description</label>
+                        <textarea id="session-description" name="description" rows="3"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Drills</label>
+                        <div class="drill-selection">
+                            <div class="drill-item">
+                                <input type="checkbox" id="drill-1" name="drills" value="passing">
+                                <label for="drill-1">Passing Drills</label>
+                            </div>
+                            <div class="drill-item">
+                                <input type="checkbox" id="drill-2" name="drills" value="shooting">
+                                <label for="drill-2">Shooting Practice</label>
+                            </div>
+                            <div class="drill-item">
+                                <input type="checkbox" id="drill-3" name="drills" value="conditioning">
+                                <label for="drill-3">Conditioning</label>
+                            </div>
+                            <div class="drill-item">
+                                <input type="checkbox" id="drill-4" name="drills" value="tactical">
+                                <label for="drill-4">Tactical Training</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn-outline" onclick="closeNewSessionModal()">Cancel</button>
+                        <button type="submit" class="btn-primary">Create Session</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <script src="scripts/main.js"></script>
+    <script src="scripts/schedule.js"></script>
+</body>
+</html>

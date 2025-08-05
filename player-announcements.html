@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Announcements - Al Ahly SC Player Portal</title>
+        <link rel="stylesheet" href="styles/main.css">
+        <link rel="stylesheet" href="styles/player.css">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet">
+    </head>
+
+    <body>
+        <div class="app-container">
+            <!-- Player Sidebar -->
+            <aside class="sidebar">
+                <div class="sidebar-header">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/4/41/Al_Ahly_SC_logo.png" alt="Al Ahly SC"
+                        class="sidebar-logo">
+                    <div class="sidebar-title">
+                        <h3>Al Ahly SC</h3>
+                        <p>Player Portal</p>
+                    </div>
+                </div>
+
+                <nav class="sidebar-nav">
+                    <div class="nav-section">
+                        <h4>OVERVIEW</h4>
+                        <ul>
+                            <li><a href="player-dashboard.html" class="nav-link"><i class="fas fa-home"></i>
+                                    Dashboard</a></li>
+                            <li><a href="player-performance.html" class="nav-link"><i class="fas fa-chart-line"></i>
+                                    Performance</a></li>
+                            <li><a href="player-schedule.html" class="nav-link"><i class="fas fa-calendar-alt"></i>
+                                    Schedule</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="nav-section">
+                        <h4>TRAINING</h4>
+                        <ul>
+                            <li><a href="player-attendance.html" class="nav-link"><i class="fas fa-clipboard-check"></i>
+                                    Attendance</a></li>
+                            <li><a href="player-drills.html" class="nav-link"><i class="fas fa-dumbbell"></i> Training
+                                    Drills</a></li>
+                            <li><a href="player-goals.html" class="nav-link"><i class="fas fa-target"></i> Goals &
+                                    Progress</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="nav-section">
+                        <h4>COMMUNICATION</h4>
+                        <ul>
+                            <li><a href="player-announcements.html" class="nav-link active"><i
+                                        class="fas fa-bullhorn"></i> Announcements</a></li>
+                            <li><a href="player-chat.html" class="nav-link"><i class="fas fa-comments"></i> Chat with
+                                    Doctor</a></li>
+                            <li><a href="player-feedback.html" class="nav-link"><i class="fas fa-star"></i> Feedback</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="nav-section">
+                        <h4>HEALTH</h4>
+                        <ul>
+                            <li><a href="player-medical.html" class="nav-link"><i class="fas fa-heartbeat"></i> Medical
+                                    Records</a></li>
+                            <li><a href="player-nutrition.html" class="nav-link"><i class="fas fa-apple-alt"></i>
+                                    Nutrition Plan</a></li>
+                        </ul>
+                    </div>
+                </nav>
+
+                <div class="sidebar-footer">
+                    <div class="user-profile">
+                        <img src="https://images.unsplash.com/photo-1566753323558-f4e0952af115?w=40&h=40&fit=crop&crop=face"
+                            alt="Youssef Bassiony" class="user-avatar">
+                        <div class="user-info">
+                            <span class="user-name">Youssef Bassiony</span>
+                            <span class="user-role">Forward • #11</span>
+                        </div>
+                        <div class="user-menu">
+                            <i class="fas fa-chevron-down"></i>
+                            <div class="dropdown-menu">
+                                <a href="player-profile.html"><i class="fas fa-user"></i> Profile</a>
+                                <a href="player-settings.html"><i class="fas fa-cog"></i> Settings</a>
+                                <a href="index.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="main-content">
+                <header class="main-header">
+                    <div class="header-left">
+                        <button class="sidebar-toggle">
+                            <i class="fas fa-bars"></i>
+                        </button>
+                        <h1>Announcements</h1>
+                        <p>Stay updated with the latest news and information from the club</p>
+                    </div>
+
+                    <div class="header-right">
+                        <div class="announcement-filters">
+                            <select id="announcement-filter">
+                                <option value="all">All Announcements</option>
+                                <option value="important">Important</option>
+                                <option value="training">Training</option>
+                                <option value="match">Match</option>
+                                <option value="medical">Medical</option>
+                                <option value="general">General</option>
+                            </select>
+                        </div>
+                        <button class="btn-outline" onclick="markAllAsRead()">
+                            <i class="fas fa-check-double"></i>
+                            Mark All Read
+                        </button>
+                    </div>
+                </header>
+
+                <div class="announcements-content">
+                    <!-- Unread Announcements -->
+                    <div class="announcements-section">
+                        <div class="section-header">
+                            <h3>Unread Announcements</h3>
+                            <span class="unread-count">3 unread</span>
+                        </div>
+
+                        <div class="announcements-list">
+                            <div class="announcement-item unread important">
+                                <div class="announcement-priority">
+                                    <i class="fas fa-exclamation-circle"></i>
+                                </div>
+                                <div class="announcement-content">
+                                    <div class="announcement-header">
+                                        <h4>Match Day Preparation - Zamalek Derby</h4>
+                                        <div class="announcement-meta">
+                                            <span class="announcement-category important">Important</span>
+                                            <span class="announcement-time">2 hours ago</span>
+                                            <span class="announcement-author">Coach Ahmed Hassan</span>
+                                        </div>
+                                    </div>
+                                    <p class="announcement-text">Special training session tomorrow at 3:00 PM for the
+                                        upcoming match against Zamalek. All players must attend. We will focus on set
+                                        pieces and tactical preparation. Please arrive 30 minutes early for individual
+                                        briefings.</p>
+                                    <div class="announcement-actions">
+                                        <button class="action-btn" onclick="markAsRead(1)">
+                                            <i class="fas fa-check"></i>
+                                            Mark as Read
+                                        </button>
+                                        <button class="action-btn" onclick="viewDetails(1)">
+                                            <i class="fas fa-eye"></i>
+                                            View Details
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="announcement-item unread">
+                                <div class="announcement-priority">
+                                    <i class="fas fa-info-circle"></i>
+                                </div>
+                                <div class="announcement-content">
+                                    <div class="announcement-header">
+                                        <h4>New Training Equipment Available</h4>
+                                        <div class="announcement-meta">
+                                            <span class="announcement-category training">Training</span>
+                                            <span class="announcement-time">1 day ago</span>
+                                            <span class="announcement-author">Equipment Manager</span>
+                                        </div>
+                                    </div>
+                                    <p class="announcement-text">New fitness equipment has been installed in the gym
+                                        including advanced cardio machines and strength training equipment. Please
+                                        familiarize yourself with the new machines and ask the fitness staff for proper
+                                        usage instructions.</p>
+                                    <div class="announcement-actions">
+                                        <button class="action-btn" onclick="markAsRead(2)">
+                                            <i class="fas fa-check"></i>
+                                            Mark as Read
+                                        </button>
+                                        <button class="action-btn" onclick="viewDetails(2)">
+                                            <i class="fas fa-eye"></i>
+                                            View Details
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="announcement-item unread">
+                                <div class="announcement-priority">
+                                    <i class="fas fa-user-md"></i>
+                                </div>
+                                <div class="announcement-content">
+                                    <div class="announcement-header">
+                                        <h4>Medical Checkup Schedule Update</h4>
+                                        <div class="announcement-meta">
+                                            <span class="announcement-category medical">Medical</span>
+                                            <span class="announcement-time">2 days ago</span>
+                                            <span class="announcement-author">Dr. Sarah Ahmed</span>
+                                        </div>
+                                    </div>
+                                    <p class="announcement-text">Monthly medical checkups have been rescheduled. Please
+                                        check your individual schedules and confirm your appointment times with the
+                                        medical staff. Any concerns should be reported immediately.</p>
+                                    <div class="announcement-actions">
+                                        <button class="action-btn" onclick="markAsRead(3)">
+                                            <i class="fas fa-check"></i>
+                                            Mark as Read
+                                        </button>
+                                        <button class="action-btn" onclick="viewDetails(3)">
+                                            <i class="fas fa-eye"></i>
+                                            View Details
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Announcements -->
+                    <div class="announcements-section">
+                        <div class="section-header">
+                            <h3>Recent Announcements</h3>
+                            <span class="section-count">Last 7 days</span>
+                        </div>
+
+                        <div class="announcements-list">
+                            <div class="announcement-item read">
+                                <div class="announcement-priority">
+                                    <i class="fas fa-calendar"></i>
+                                </div>
+                                <div class="announcement-content">
+                                    <div class="announcement-header">
+                                        <h4>Training Schedule Update - Next Week</h4>
+                                        <div class="announcement-meta">
+                                            <span class="announcement-category training">Training</span>
+                                            <span class="announcement-time">3 days ago</span>
+                                            <span class="announcement-author">Coach Ahmed Hassan</span>
+                                        </div>
+                                    </div>
+                                    <p class="announcement-text">Training schedule for next week has been updated due to
+                                        the upcoming match. Please check your individual calendars for any changes.
+                                        Additional recovery sessions have been added.</p>
+                                    <div class="announcement-actions">
+                                        <button class="action-btn" onclick="viewDetails(4)">
+                                            <i class="fas fa-eye"></i>
+                                            View Details
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="announcement-item read">
+                                <div class="announcement-priority">
+                                    <i class="fas fa-trophy"></i>
+                                </div>
+                                <div class="announcement-content">
+                                    <div class="announcement-header">
+                                        <h4>Victory Celebration - Team Dinner</h4>
+                                        <div class="announcement-meta">
+                                            <span class="announcement-category general">General</span>
+                                            <span class="announcement-time">4 days ago</span>
+                                            <span class="announcement-author">Club Management</span>
+                                        </div>
+                                    </div>
+                                    <p class="announcement-text">Congratulations on the recent victory! The club is
+                                        organizing a team dinner to celebrate. Details about venue and timing will be
+                                        shared soon. All players and staff are invited.</p>
+                                    <div class="announcement-actions">
+                                        <button class="action-btn" onclick="viewDetails(5)">
+                                            <i class="fas fa-eye"></i>
+                                            View Details
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="announcement-item read">
+                                <div class="announcement-priority">
+                                    <i class="fas fa-shield-alt"></i>
+                                </div>
+                                <div class="announcement-content">
+                                    <div class="announcement-header">
+                                        <h4>Safety Protocol Reminder</h4>
+                                        <div class="announcement-meta">
+                                            <span class="announcement-category general">General</span>
+                                            <span class="announcement-time">5 days ago</span>
+                                            <span class="announcement-author">Safety Officer</span>
+                                        </div>
+                                    </div>
+                                    <p class="announcement-text">Reminder about safety protocols in the training
+                                        facilities. Please ensure you follow all safety guidelines, wear appropriate
+                                        gear, and report any hazards immediately to the staff.</p>
+                                    <div class="announcement-actions">
+                                        <button class="action-btn" onclick="viewDetails(6)">
+                                            <i class="fas fa-eye"></i>
+                                            View Details
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="announcement-item read">
+                                <div class="announcement-priority">
+                                    <i class="fas fa-bus"></i>
+                                </div>
+                                <div class="announcement-content">
+                                    <div class="announcement-header">
+                                        <h4>Away Match Travel Arrangements</h4>
+                                        <div class="announcement-meta">
+                                            <span class="announcement-category match">Match</span>
+                                            <span class="announcement-time">6 days ago</span>
+                                            <span class="announcement-author">Team Manager</span>
+                                        </div>
+                                    </div>
+                                    <p class="announcement-text">Travel arrangements for the upcoming away match have
+                                        been finalized. Team bus will depart at 2:00 PM from the training ground. Please
+                                        be punctual and bring all necessary items.</p>
+                                    <div class="announcement-actions">
+                                        <button class="action-btn" onclick="viewDetails(7)">
+                                            <i class="fas fa-eye"></i>
+                                            View Details
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Older Announcements -->
+                    <div class="announcements-section">
+                        <div class="section-header">
+                            <h3>Older Announcements</h3>
+                            <span class="section-count">Previous weeks</span>
+                        </div>
+
+                        <div class="announcements-list">
+                            <div class="announcement-item read">
+                                <div class="announcement-priority">
+                                    <i class="fas fa-apple-alt"></i>
+                                </div>
+                                <div class="announcement-content">
+                                    <div class="announcement-header">
+                                        <h4>Nutrition Plan Updates</h4>
+                                        <div class="announcement-meta">
+                                            <span class="announcement-category medical">Medical</span>
+                                            <span class="announcement-time">2 weeks ago</span>
+                                            <span class="announcement-author">Nutritionist</span>
+                                        </div>
+                                    </div>
+                                    <p class="announcement-text">Updated nutrition plans are now available in your
+                                        player portal. Please review your personalized meal plans and supplement
+                                        recommendations. Contact the nutrition team for any questions.</p>
+                                    <div class="announcement-actions">
+                                        <button class="action-btn" onclick="viewDetails(8)">
+                                            <i class="fas fa-eye"></i>
+                                            View Details
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="announcement-item read">
+                                <div class="announcement-priority">
+                                    <i class="fas fa-camera"></i>
+                                </div>
+                                <div class="announcement-content">
+                                    <div class="announcement-header">
+                                        <h4>Media Day Schedule</h4>
+                                        <div class="announcement-meta">
+                                            <span class="announcement-category general">General</span>
+                                            <span class="announcement-time">3 weeks ago</span>
+                                            <span class="announcement-author">Media Relations</span>
+                                        </div>
+                                    </div>
+                                    <p class="announcement-text">Media day has been scheduled for next month. Individual
+                                        interview slots and photo sessions will be assigned. Please coordinate with the
+                                        media team for your availability.</p>
+                                    <div class="announcement-actions">
+                                        <button class="action-btn" onclick="viewDetails(9)">
+                                            <i class="fas fa-eye"></i>
+                                            View Details
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <!-- Announcement Details Modal -->
+        <div class="modal" id="announcement-details-modal">
+            <div class="modal-content large">
+                <div class="modal-header">
+                    <h3 id="announcement-details-title">Announcement Details</h3>
+                    <span class="close" onclick="closeAnnouncementDetailsModal()">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <div class="announcement-details-content">
+                        <div class="details-header">
+                            <div class="details-meta">
+                                <span class="details-category" id="details-category">Important</span>
+                                <span class="details-time" id="details-time">2 hours ago</span>
+                                <span class="details-author" id="details-author">Coach Ahmed Hassan</span>
+                            </div>
+                        </div>
+
+                        <div class="details-content">
+                            <p id="details-text">Special training session tomorrow at 3:00 PM for the upcoming match
+                                against Zamalek. All players must attend. We will focus on set pieces and tactical
+                                preparation. Please arrive 30 minutes early for individual briefings.</p>
+                        </div>
+
+                        <div class="details-attachments" id="details-attachments" style="display: none;">
+                            <h4>Attachments</h4>
+                            <div class="attachment-list">
+                                <!-- Attachments will be populated here -->
+                            </div>
+                        </div>
+
+                        <div class="details-actions">
+                            <button class="btn-outline" onclick="closeAnnouncementDetailsModal()">Close</button>
+                            <button class="btn-primary" onclick="markAnnouncementAsRead()">Mark as Read</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="scripts/main.js"></script>
+        <script src="scripts/player.js"></script>
+    </body>
+
+</html>

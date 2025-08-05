@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>My Schedule - Al Ahly SC Player Portal</title>
+        <link rel="stylesheet" href="styles/main.css">
+        <link rel="stylesheet" href="styles/player.css">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet">
+    </head>
+
+    <body>
+        <div class="app-container">
+            <!-- Player Sidebar -->
+            <aside class="sidebar">
+                <div class="sidebar-header">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/4/41/Al_Ahly_SC_logo.png" alt="Al Ahly SC"
+                        class="sidebar-logo">
+                    <div class="sidebar-title">
+                        <h3>Al Ahly SC</h3>
+                        <p>Player Portal</p>
+                    </div>
+                </div>
+
+                <nav class="sidebar-nav">
+                    <div class="nav-section">
+                        <h4>OVERVIEW</h4>
+                        <ul>
+                            <li><a href="player-dashboard.html" class="nav-link"><i class="fas fa-home"></i>
+                                    Dashboard</a></li>
+                            <li><a href="player-performance.html" class="nav-link"><i class="fas fa-chart-line"></i>
+                                    Performance</a></li>
+                            <li><a href="player-schedule.html" class="nav-link active"><i
+                                        class="fas fa-calendar-alt"></i> Schedule</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="nav-section">
+                        <h4>TRAINING</h4>
+                        <ul>
+                            <li><a href="player-attendance.html" class="nav-link"><i class="fas fa-clipboard-check"></i>
+                                    Attendance</a></li>
+                            <li><a href="player-drills.html" class="nav-link"><i class="fas fa-dumbbell"></i> Training
+                                    Drills</a></li>
+                            <li><a href="player-goals.html" class="nav-link"><i class="fas fa-target"></i> Goals &
+                                    Progress</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="nav-section">
+                        <h4>COMMUNICATION</h4>
+                        <ul>
+                            <li><a href="player-announcements.html" class="nav-link"><i class="fas fa-bullhorn"></i>
+                                    Announcements</a></li>
+                            <li><a href="player-chat.html" class="nav-link"><i class="fas fa-comments"></i> Chat with
+                                    Doctor</a></li>
+                            <li><a href="player-feedback.html" class="nav-link"><i class="fas fa-star"></i> Feedback</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="nav-section">
+                        <h4>HEALTH</h4>
+                        <ul>
+                            <li><a href="player-medical.html" class="nav-link"><i class="fas fa-heartbeat"></i> Medical
+                                    Records</a></li>
+                            <li><a href="player-nutrition.html" class="nav-link"><i class="fas fa-apple-alt"></i>
+                                    Nutrition Plan</a></li>
+                        </ul>
+                    </div>
+                </nav>
+
+                <div class="sidebar-footer">
+                    <div class="user-profile">
+                        <img src="https://images.unsplash.com/photo-1566753323558-f4e0952af115?w=40&h=40&fit=crop&crop=face"
+                            alt="Youssef Bassiony" class="user-avatar">
+                        <div class="user-info">
+                            <span class="user-name">Youssef Bassiony</span>
+                            <span class="user-role">Forward • #11</span>
+                        </div>
+                        <div class="user-menu">
+                            <i class="fas fa-chevron-down"></i>
+                            <div class="dropdown-menu">
+                                <a href="player-profile.html"><i class="fas fa-user"></i> Profile</a>
+                                <a href="player-settings.html"><i class="fas fa-cog"></i> Settings</a>
+                                <a href="index.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="main-content">
+                <header class="main-header">
+                    <div class="header-left">
+                        <button class="sidebar-toggle">
+                            <i class="fas fa-bars"></i>
+                        </button>
+                        <h1>My Schedule</h1>
+                        <p>Your training sessions, matches, and appointments</p>
+                    </div>
+
+                    <div class="header-right">
+                        <div class="view-toggle">
+                            <button class="view-btn active" data-view="week" onclick="switchView('week')">
+                                <i class="fas fa-calendar-week"></i>
+                                Week
+                            </button>
+                            <button class="view-btn" data-view="month" onclick="switchView('month')">
+                                <i class="fas fa-calendar"></i>
+                                Month
+                            </button>
+                        </div>
+                        <button class="btn-outline" onclick="exportSchedule()">
+                            <i class="fas fa-download"></i>
+                            Export
+                        </button>
+                    </div>
+                </header>
+
+                <div class="schedule-content">
+                    <!-- Schedule Navigation -->
+                    <div class="schedule-navigation">
+                        <button class="nav-btn" onclick="previousPeriod()">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <div class="current-period">
+                            <h2>January 15 - 21, 2024</h2>
+                            <p>Week 3 of January</p>
+                        </div>
+                        <button class="nav-btn" onclick="nextPeriod()">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                        <button class="today-btn" onclick="goToToday()">Today</button>
+                    </div>
+
+                    <!-- Week View -->
+                    <div class="schedule-view week-view active" id="week-view">
+                        <div class="week-header">
+                            <div class="time-column"></div>
+                            <div class="day-column">
+                                <div class="day-header">
+                                    <span class="day-name">Sunday</span>
+                                    <span class="day-date">15</span>
+                                </div>
+                            </div>
+                            <div class="day-column">
+                                <div class="day-header">
+                                    <span class="day-name">Monday</span>
+                                    <span class="day-date">16</span>
+                                </div>
+                            </div>
+                            <div class="day-column">
+                                <div class="day-header today">
+                                    <span class="day-name">Tuesday</span>
+                                    <span class="day-date">17</span>
+                                </div>
+                            </div>
+                            <div class="day-column">
+                                <div class="day-header">
+                                    <span class="day-name">Wednesday</span>
+                                    <span class="day-date">18</span>
+                                </div>
+                            </div>
+                            <div class="day-column">
+                                <div class="day-header">
+                                    <span class="day-name">Thursday</span>
+                                    <span class="day-date">19</span>
+                                </div>
+                            </div>
+                            <div class="day-column">
+                                <div class="day-header">
+                                    <span class="day-name">Friday</span>
+                                    <span class="day-date">20</span>
+                                </div>
+                            </div>
+                            <div class="day-column">
+                                <div class="day-header">
+                                    <span class="day-name">Saturday</span>
+                                    <span class="day-date">21</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="week-body">
+                            <div class="time-slots">
+                                <div class="time-slot">6:00 AM</div>
+                                <div class="time-slot">7:00 AM</div>
+                                <div class="time-slot">8:00 AM</div>
+                                <div class="time-slot">9:00 AM</div>
+                                <div class="time-slot">10:00 AM</div>
+                                <div class="time-slot">11:00 AM</div>
+                                <div class="time-slot">12:00 PM</div>
+                                <div class="time-slot">1:00 PM</div>
+                                <div class="time-slot">2:00 PM</div>
+                                <div class="time-slot">3:00 PM</div>
+                                <div class="time-slot">4:00 PM</div>
+                                <div class="time-slot">5:00 PM</div>
+                                <div class="time-slot">6:00 PM</div>
+                                <div class="time-slot">7:00 PM</div>
+                                <div class="time-slot">8:00 PM</div>
+                                <div class="time-slot">9:00 PM</div>
+                            </div>
+
+                            <div class="week-grid">
+                                <!-- Sunday -->
+                                <div class="day-column">
+                                    <div class="day-events">
+                                        <div class="event rest-day" style="top: 0; height: 100%;">
+                                            <div class="event-content">
+                                                <i class="fas fa-bed"></i>
+                                                <span>Rest Day</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Monday -->
+                                <div class="day-column">
+                                    <div class="day-events">
+                                        <div class="event team-training" style="top: 600px; height: 120px;"
+                                            onclick="viewEventDetails('team-training-1')">
+                                            <div class="event-content">
+                                                <div class="event-time">4:00 PM - 6:00 PM</div>
+                                                <div class="event-title">Team Training</div>
+                                                <div class="event-location">Main Field</div>
+                                                <div class="event-coach">Ahmed Hassan</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Tuesday (Today) -->
+                                <div class="day-column today">
+                                    <div class="day-events">
+                                        <div class="event gym-session" style="top: 480px; height: 80px;"
+                                            onclick="viewEventDetails('gym-1')">
+                                            <div class="event-content">
+                                                <div class="event-time">2:00 PM - 3:20 PM</div>
+                                                <div class="event-title">Gym Session</div>
+                                                <div class="event-location">Fitness Center</div>
+                                                <div class="event-coach">Fitness Coach</div>
+                                            </div>
+                                        </div>
+                                        <div class="event team-training current" style="top: 600px; height: 120px;"
+                                            onclick="viewEventDetails('team-training-2')">
+                                            <div class="event-content">
+                                                <div class="event-time">4:00 PM - 6:00 PM</div>
+                                                <div class="event-title">Team Training</div>
+                                                <div class="event-location">Main Field</div>
+                                                <div class="event-coach">Ahmed Hassan</div>
+                                                <div class="event-status">In Progress</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Wednesday -->
+                                <div class="day-column">
+                                    <div class="day-events">
+                                        <div class="event medical" style="top: 360px; height: 60px;"
+                                            onclick="viewEventDetails('medical-1')">
+                                            <div class="event-content">
+                                                <div class="event-time">12:00 PM - 1:00 PM</div>
+                                                <div class="event-title">Medical Checkup</div>
+                                                <div class="event-location">Medical Center</div>
+                                                <div class="event-coach">Dr. Sarah Ahmed</div>
+                                            </div>
+                                        </div>
+                                        <div class="event tactical" style="top: 540px; height: 80px;"
+                                            onclick="viewEventDetails('tactical-1')">
+                                            <div class="event-content">
+                                                <div class="event-time">3:00 PM - 4:20 PM</div>
+                                                <div class="event-title">Tactical Session</div>
+                                                <div class="event-location">Training Ground</div>
+                                                <div class="event-coach">Ahmed Hassan</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Thursday -->
+                                <div class="day-column">
+                                    <div class="day-events">
+                                        <div class="event team-training" style="top: 600px; height: 120px;"
+                                            onclick="viewEventDetails('team-training-3')">
+                                            <div class="event-content">
+                                                <div class="event-time">4:00 PM - 6:00 PM</div>
+                                                <div class="event-title">Team Training</div>
+                                                <div class="event-location">Main Field</div>
+                                                <div class="event-coach">Ahmed Hassan</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Friday -->
+                                <div class="day-column">
+                                    <div class="day-events">
+                                        <div class="event match important" style="top: 840px; height: 120px;"
+                                            onclick="viewEventDetails('match-1')">
+                                            <div class="event-content">
+                                                <div class="event-time">7:00 PM - 9:00 PM</div>
+                                                <div class="event-title">Match vs Zamalek</div>
+                                                <div class="event-location">Cairo Stadium</div>
+                                                <div class="event-coach">Ahmed Hassan</div>
+                                                <div class="event-importance">Important Match</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Saturday -->
+                                <div class="day-column">
+                                    <div class="day-events">
+                                        <div class="event recovery" style="top: 360px; height: 60px;"
+                                            onclick="viewEventDetails('recovery-1')">
+                                            <div class="event-content">
+                                                <div class="event-time">12:00 PM - 1:00 PM</div>
+                                                <div class="event-title">Recovery Session</div>
+                                                <div class="event-location">Recovery Room</div>
+                                                <div class="event-coach">Physio Team</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Month View -->
+                    <div class="schedule-view month-view" id="month-view">
+                        <div class="month-calendar">
+                            <div class="month-header">
+                                <div class="day-header">Sun</div>
+                                <div class="day-header">Mon</div>
+                                <div class="day-header">Tue</div>
+                                <div class="day-header">Wed</div>
+                                <div class="day-header">Thu</div>
+                                <div class="day-header">Fri</div>
+                                <div class="day-header">Sat</div>
+                            </div>
+
+                            <div class="month-body">
+                                <!-- Week 1 -->
+                                <div class="month-day other-month">
+                                    <span class="day-number">31</span>
+                                </div>
+                                <div class="month-day">
+                                    <span class="day-number">1</span>
+                                    <div class="day-events">
+                                        <div class="mini-event team-training">Training</div>
+                                    </div>
+                                </div>
+                                <div class="month-day">
+                                    <span class="day-number">2</span>
+                                    <div class="day-events">
+                                        <div class="mini-event gym-session">Gym</div>
+                                    </div>
+                                </div>
+                                <div class="month-day">
+                                    <span class="day-number">3</span>
+                                    <div class="day-events">
+                                        <div class="mini-event team-training">Training</div>
+                                    </div>
+                                </div>
+                                <div class="month-day">
+                                    <span class="day-number">4</span>
+                                </div>
+                                <div class="month-day">
+                                    <span class="day-number">5</span>
+                                    <div class="day-events">
+                                        <div class="mini-event match">Match</div>
+                                    </div>
+                                </div>
+                                <div class="month-day">
+                                    <span class="day-number">6</span>
+                                </div>
+
+                                <!-- Week 2 -->
+                                <div class="month-day">
+                                    <span class="day-number">7</span>
+                                </div>
+                                <div class="month-day">
+                                    <span class="day-number">8</span>
+                                    <div class="day-events">
+                                        <div class="mini-event team-training">Training</div>
+                                    </div>
+                                </div>
+                                <div class="month-day">
+                                    <span class="day-number">9</span>
+                                    <div class="day-events">
+                                        <div class="mini-event tactical">Tactical</div>
+                                    </div>
+                                </div>
+                                <div class="month-day">
+                                    <span class="day-number">10</span>
+                                    <div class="day-events">
+                                        <div class="mini-event team-training">Training</div>
+                                    </div>
+                                </div>
+                                <div class="month-day">
+                                    <span class="day-number">11</span>
+                                </div>
+                                <div class="month-day">
+                                    <span class="day-number">12</span>
+                                    <div class="day-events">
+                                        <div class="mini-event match">Match</div>
+                                    </div>
+                                </div>
+                                <div class="month-day">
+                                    <span class="day-number">13</span>
+                                </div>
+
+                                <!-- Week 3 -->
+                                <div class="month-day">
+                                    <span class="day-number">14</span>
+                                </div>
+                                <div class="month-day">
+                                    <span class="day-number">15</span>
+                                    <div class="day-events">
+                                        <div class="mini-event team-training">Training</div>
+                                    </div>
+                                </div>
+                                <div class="month-day">
+                                    <span class="day-number">16</span>
+                                    <div class="day-events">
+                                        <div class="mini-event gym-session">Gym</div>
+                                    </div>
+                                </div>
+                                <div class="month-day today">
+                                    <span class="day-number">17</span>
+                                    <div class="day-events">
+                                        <div class="mini-event team-training current">Training</div>
+                                    </div>
+                                </div>
+                                <div class="month-day">
+                                    <span class="day-number">18</span>
+                                    <div class="day-events">
+                                        <div class="mini-event medical">Medical</div>
+                                        <div class="mini-event tactical">Tactical</div>
+                                    </div>
+                                </div>
+                                <div class="month-day">
+                                    <span class="day-number">19</span>
+                                    <div class="day-events">
+                                        <div class="mini-event team-training">Training</div>
+                                    </div>
+                                </div>
+                                <div class="month-day">
+                                    <span class="day-number">20</span>
+                                    <div class="day-events">
+                                        <div class="mini-event match important">Match</div>
+                                    </div>
+                                </div>
+
+                                <!-- Week 4 -->
+                                <div class="month-day">
+                                    <span class="day-number">21</span>
+                                    <div class="day-events">
+                                        <div class="mini-event recovery">Recovery</div>
+                                    </div>
+                                </div>
+                                <div class="month-day">
+                                    <span class="day-number">22</span>
+                                    <div class="day-events">
+                                        <div class="mini-event team-training">Training</div>
+                                    </div>
+                                </div>
+                                <div class="month-day">
+                                    <span class="day-number">23</span>
+                                    <div class="day-events">
+                                        <div class="mini-event recovery">Recovery</div>
+                                    </div>
+                                </div>
+                                <div class="month-day">
+                                    <span class="day-number">24</span>
+                                    <div class="day-events">
+                                        <div class="mini-event team-training">Training</div>
+                                    </div>
+                                </div>
+                                <div class="month-day">
+                                    <span class="day-number">25</span>
+                                </div>
+                                <div class="month-day">
+                                    <span class="day-number">26</span>
+                                    <div class="day-events">
+                                        <div class="mini-event match">Match</div>
+                                    </div>
+                                </div>
+                                <div class="month-day">
+                                    <span class="day-number">27</span>
+                                </div>
+
+                                <!-- Week 5 -->
+                                <div class="month-day">
+                                    <span class="day-number">28</span>
+                                </div>
+                                <div class="month-day">
+                                    <span class="day-number">29</span>
+                                    <div class="day-events">
+                                        <div class="mini-event team-training">Training</div>
+                                    </div>
+                                </div>
+                                <div class="month-day">
+                                    <span class="day-number">30</span>
+                                    <div class="day-events">
+                                        <div class="mini-event tactical">Tactical</div>
+                                    </div>
+                                </div>
+                                <div class="month-day">
+                                    <span class="day-number">31</span>
+                                    <div class="day-events">
+                                        <div class="mini-event team-training">Training</div>
+                                    </div>
+                                </div>
+                                <div class="month-day other-month">
+                                    <span class="day-number">1</span>
+                                </div>
+                                <div class="month-day other-month">
+                                    <span class="day-number">2</span>
+                                </div>
+                                <div class="month-day other-month">
+                                    <span class="day-number">3</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Schedule Legend -->
+                    <div class="schedule-legend">
+                        <div class="legend-item">
+                            <div class="legend-color team-training"></div>
+                            <span>Team Training</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color gym-session"></div>
+                            <span>Gym Session</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color match"></div>
+                            <span>Match</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color tactical"></div>
+                            <span>Tactical</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color medical"></div>
+                            <span>Medical</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color recovery"></div>
+                            <span>Recovery</span>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <!-- Event Details Modal -->
+        <div class="modal" id="event-details-modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 id="event-title">Event Details</h3>
+                    <span class="close" onclick="closeEventDetailsModal()">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <div class="event-details-content">
+                        <div class="event-info-grid">
+                            <div class="info-item">
+                                <label>Date & Time:</label>
+                                <span id="event-datetime">Tuesday, January 17, 2024 - 4:00 PM to 6:00 PM</span>
+                            </div>
+                            <div class="info-item">
+                                <label>Duration:</label>
+                                <span id="event-duration">2 hours</span>
+                            </div>
+                            <div class="info-item">
+                                <label>Location:</label>
+                                <span id="event-location">Main Field</span>
+                            </div>
+                            <div class="info-item">
+                                <label>Coach/Staff:</label>
+                                <span id="event-coach">Ahmed Hassan</span>
+                            </div>
+                            <div class="info-item">
+                                <label>Type:</label>
+                                <span id="event-type">Team Training</span>
+                            </div>
+                            <div class="info-item">
+                                <label>Status:</label>
+                                <span id="event-status" class="status-badge current">In Progress</span>
+                            </div>
+                        </div>
+
+                        <div class="event-description">
+                            <label>Description:</label>
+                            <p id="event-description-text">Tactical training session focusing on ball work, passing
+                                accuracy, and team coordination. Special emphasis on attacking patterns and defensive
+                                positioning.</p>
+                        </div>
+
+                        <div class="event-preparation">
+                            <label>Preparation Notes:</label>
+                            <ul id="event-preparation-list">
+                                <li>Bring training boots and shin guards</li>
+                                <li>Arrive 15 minutes early for warm-up</li>
+                                <li>Hydrate well before the session</li>
+                                <li>Review tactical notes from last session</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="scripts/main.js"></script>
+        <script src="scripts/player.js"></script>
+    </body>
+
+</html>

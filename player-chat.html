@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Chat with Doctor - Al Ahly SC Player Portal</title>
+        <link rel="stylesheet" href="styles/main.css">
+        <link rel="stylesheet" href="styles/player.css">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet">
+    </head>
+
+    <body>
+        <div class="app-container">
+            <!-- Player Sidebar -->
+            <aside class="sidebar">
+                <div class="sidebar-header">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/4/41/Al_Ahly_SC_logo.png" alt="Al Ahly SC"
+                        class="sidebar-logo">
+                    <div class="sidebar-title">
+                        <h3>Al Ahly SC</h3>
+                        <p>Player Portal</p>
+                    </div>
+                </div>
+
+                <nav class="sidebar-nav">
+                    <div class="nav-section">
+                        <h4>OVERVIEW</h4>
+                        <ul>
+                            <li><a href="player-dashboard.html" class="nav-link"><i class="fas fa-home"></i>
+                                    Dashboard</a></li>
+                            <li><a href="player-performance.html" class="nav-link"><i class="fas fa-chart-line"></i>
+                                    Performance</a></li>
+                            <li><a href="player-schedule.html" class="nav-link"><i class="fas fa-calendar-alt"></i>
+                                    Schedule</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="nav-section">
+                        <h4>TRAINING</h4>
+                        <ul>
+                            <li><a href="player-attendance.html" class="nav-link"><i class="fas fa-clipboard-check"></i>
+                                    Attendance</a></li>
+                            <li><a href="player-drills.html" class="nav-link"><i class="fas fa-dumbbell"></i> Training
+                                    Drills</a></li>
+                            <li><a href="player-goals.html" class="nav-link"><i class="fas fa-target"></i> Goals &
+                                    Progress</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="nav-section">
+                        <h4>COMMUNICATION</h4>
+                        <ul>
+                            <li><a href="player-announcements.html" class="nav-link"><i class="fas fa-bullhorn"></i>
+                                    Announcements</a></li>
+                            <li><a href="player-chat.html" class="nav-link active"><i class="fas fa-comments"></i> Chat
+                                    with Doctor</a></li>
+                            <li><a href="player-feedback.html" class="nav-link"><i class="fas fa-star"></i> Feedback</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="nav-section">
+                        <h4>HEALTH</h4>
+                        <ul>
+                            <li><a href="player-medical.html" class="nav-link"><i class="fas fa-heartbeat"></i> Medical
+                                    Records</a></li>
+                            <li><a href="player-nutrition.html" class="nav-link"><i class="fas fa-apple-alt"></i>
+                                    Nutrition Plan</a></li>
+                        </ul>
+                    </div>
+                </nav>
+
+                <div class="sidebar-footer">
+                    <div class="user-profile">
+                        <img src="https://images.unsplash.com/photo-1566753323558-f4e0952af115?w=40&h=40&fit=crop&crop=face"
+                            alt="Youssef Bassiony" class="user-avatar">
+                        <div class="user-info">
+                            <span class="user-name">Youssef Bassiony</span>
+                            <span class="user-role">Forward • #11</span>
+                        </div>
+                        <div class="user-menu">
+                            <i class="fas fa-chevron-down"></i>
+                            <div class="dropdown-menu">
+                                <a href="player-profile.html"><i class="fas fa-user"></i> Profile</a>
+                                <a href="player-settings.html"><i class="fas fa-cog"></i> Settings</a>
+                                <a href="index.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="main-content">
+                <div class="chat-container">
+                    <!-- Chat Header -->
+                    <div class="chat-header">
+                        <div class="doctor-info">
+                            <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=50&h=50&fit=crop&crop=face"
+                                alt="Dr. Sarah Ahmed" class="doctor-avatar">
+                            <div class="doctor-details">
+                                <h3>Dr. Sarah Ahmed</h3>
+                                <p>Medical Staff • Al Ahly SC</p>
+                                <div class="online-status online">
+                                    <i class="fas fa-circle"></i>
+                                    Online
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="chat-actions">
+                            <button class="chat-action-btn" onclick="requestAppointment()" title="Request Appointment">
+                                <i class="fas fa-calendar-plus"></i>
+                            </button>
+                            <button class="chat-action-btn" onclick="viewMedicalHistory()" title="Medical History">
+                                <i class="fas fa-file-medical"></i>
+                            </button>
+                            <button class="chat-action-btn" onclick="emergencyContact()" title="Emergency Contact">
+                                <i class="fas fa-exclamation-triangle"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Chat Messages -->
+                    <div class="chat-messages" id="chat-messages">
+                        <div class="message-date">Today, January 17, 2024</div>
+
+                        <div class="message received">
+                            <div class="message-avatar">
+                                <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=30&h=30&fit=crop&crop=face"
+                                    alt="Dr. Sarah">
+                            </div>
+                            <div class="message-content">
+                                <div class="message-header">
+                                    <span class="sender-name">Dr. Sarah Ahmed</span>
+                                    <span class="message-time">09:15 AM</span>
+                                </div>
+                                <p>Good morning Mohamed! How is your ankle recovery progressing? Any pain or discomfort
+                                    today?</p>
+                            </div>
+                        </div>
+
+                        <div class="message sent">
+                            <div class="message-content">
+                                <div class="message-header">
+                                    <span class="message-time">09:18 AM</span>
+                                </div>
+                                <p>Good morning Dr. Sarah! The ankle is feeling much better today. The pain has reduced
+                                    significantly and I can walk normally now. The exercises you gave me are really
+                                    helping!</p>
+                            </div>
+                        </div>
+
+                        <div class="message received">
+                            <div class="message-avatar">
+                                <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=30&h=30&fit=crop&crop=face"
+                                    alt="Dr. Sarah">
+                            </div>
+                            <div class="message-content">
+                                <div class="message-header">
+                                    <span class="sender-name">Dr. Sarah Ahmed</span>
+                                    <span class="message-time">09:20 AM</span>
+                                </div>
+                                <p>That's excellent news! I'm glad to hear the recovery is going well. How would you
+                                    rate your pain level on a scale of 1-10 today?</p>
+                            </div>
+                        </div>
+
+                        <div class="message sent">
+                            <div class="message-content">
+                                <div class="message-header">
+                                    <span class="message-time">09:22 AM</span>
+                                </div>
+                                <p>I'd say it's about a 2 now, compared to 7-8 last week. Much more manageable! When do
+                                    you think I can start light training again?</p>
+                            </div>
+                        </div>
+
+                        <div class="message received">
+                            <div class="message-avatar">
+                                <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=30&h=30&fit=crop&crop=face"
+                                    alt="Dr. Sarah">
+                            </div>
+                            <div class="message-content">
+                                <div class="message-header">
+                                    <span class="sender-name">Dr. Sarah Ahmed</span>
+                                    <span class="message-time">09:25 AM</span>
+                                </div>
+                                <p>That's a great improvement! Let's schedule a checkup for tomorrow to assess your
+                                    range of motion and stability. If everything looks good, we can discuss a gradual
+                                    return to training plan.</p>
+                            </div>
+                        </div>
+
+                        <div class="message sent">
+                            <div class="message-content">
+                                <div class="message-header">
+                                    <span class="message-time">09:27 AM</span>
+                                </div>
+                                <p>Perfect! I'm really eager to get back on the field. Should I continue with the
+                                    current exercises, or do you have any new ones for me?</p>
+                            </div>
+                        </div>
+
+                        <div class="message received">
+                            <div class="message-avatar">
+                                <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=30&h=30&fit=crop&crop=face"
+                                    alt="Dr. Sarah">
+                            </div>
+                            <div class="message-content">
+                                <div class="message-header">
+                                    <span class="sender-name">Dr. Sarah Ahmed</span>
+                                    <span class="message-time">09:30 AM</span>
+                                </div>
+                                <p>Yes, continue with the current exercises. I'm sending you an updated recovery plan
+                                    with some new strengthening exercises to prepare you for training.</p>
+                                <div class="message-attachment">
+                                    <div class="attachment-icon">
+                                        <i class="fas fa-file-pdf"></i>
+                                    </div>
+                                    <div class="attachment-info">
+                                        <span class="attachment-name">Ankle Recovery Plan - Week 3.pdf</span>
+                                        <span class="attachment-size">2.3 MB</span>
+                                    </div>
+                                    <button class="download-btn" onclick="downloadFile('recovery-plan')">
+                                        <i class="fas fa-download"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="message sent">
+                            <div class="message-content">
+                                <div class="message-header">
+                                    <span class="message-time">10:45 AM</span>
+                                </div>
+                                <p>Thank you so much for the recovery plan! I've downloaded it and will start the new
+                                    exercises today. Really appreciate all your help, Doctor!</p>
+                            </div>
+                        </div>
+
+                        <div class="message received">
+                            <div class="message-avatar">
+                                <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=30&h=30&fit=crop&crop=face"
+                                    alt="Dr. Sarah">
+                            </div>
+                            <div class="message-content">
+                                <div class="message-header">
+                                    <span class="sender-name">Dr. Sarah Ahmed</span>
+                                    <span class="message-time">10:47 AM</span>
+                                </div>
+                                <p>You're very welcome, Mohamed! Remember to listen to your body and don't push too
+                                    hard. If you experience any increased pain or swelling, stop the exercises and
+                                    contact me immediately.</p>
+                            </div>
+                        </div>
+
+                        <div class="typing-indicator" id="typing-indicator" style="display: none;">
+                            <div class="message received">
+                                <div class="message-avatar">
+                                    <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=30&h=30&fit=crop&crop=face"
+                                        alt="Dr. Sarah">
+                                </div>
+                                <div class="message-content">
+                                    <div class="typing-dots">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Chat Input -->
+                    <div class="chat-input-container">
+                        <div class="chat-input-actions">
+                            <button class="input-action-btn" onclick="attachFile()" title="Attach File">
+                                <i class="fas fa-paperclip"></i>
+                            </button>
+                            <button class="input-action-btn" onclick="sendQuickMessage()" title="Quick Messages">
+                                <i class="fas fa-bolt"></i>
+                            </button>
+                            <button class="input-action-btn" onclick="sendEmoji()" title="Emoji">
+                                <i class="fas fa-smile"></i>
+                            </button>
+                        </div>
+
+                        <div class="chat-input">
+                            <input type="text" placeholder="Type your message..." id="message-input"
+                                onkeypress="handleKeyPress(event)">
+                            <button class="send-btn" onclick="sendMessage()">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <!-- Quick Messages Modal -->
+        <div class="modal" id="quick-messages-modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Quick Messages</h3>
+                    <span class="close" onclick="closeQuickMessagesModal()">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <div class="quick-messages-grid">
+                        <button class="quick-message-btn" onclick="insertQuickMessage('How are you today, Doctor?')">
+                            How are you today, Doctor?
+                        </button>
+                        <button class="quick-message-btn"
+                            onclick="insertQuickMessage('I\'m feeling much better today!')">
+                            I'm feeling much better today!
+                        </button>
+                        <button class="quick-message-btn" onclick="insertQuickMessage('Can we schedule a checkup?')">
+                            Can we schedule a checkup?
+                        </button>
+                        <button class="quick-message-btn" onclick="insertQuickMessage('I have some pain in my ankle.')">
+                            I have some pain in my ankle.
+                        </button>
+                        <button class="quick-message-btn" onclick="insertQuickMessage('Thank you for your help!')">
+                            Thank you for your help!
+                        </button>
+                        <button class="quick-message-btn"
+                            onclick="insertQuickMessage('When can I return to training?')">
+                            When can I return to training?
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Appointment Request Modal -->
+        <div class="modal" id="appointment-modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Request Appointment</h3>
+                    <span class="close" onclick="closeAppointmentModal()">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <form id="appointment-form">
+                        <div class="form-group">
+                            <label for="appointment-type">Appointment Type</label>
+                            <select id="appointment-type" name="type" required>
+                                <option value="">Select Type</option>
+                                <option value="checkup">Regular Checkup</option>
+                                <option value="injury">Injury Assessment</option>
+                                <option value="follow-up">Follow-up</option>
+                                <option value="emergency">Emergency</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="preferred-date">Preferred Date</label>
+                            <input type="date" id="preferred-date" name="date" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="preferred-time">Preferred Time</label>
+                            <select id="preferred-time" name="time" required>
+                                <option value="">Select Time</option>
+                                <option value="09:00">9:00 AM</option>
+                                <option value="10:00">10:00 AM</option>
+                                <option value="11:00">11:00 AM</option>
+                                <option value="14:00">2:00 PM</option>
+                                <option value="15:00">3:00 PM</option>
+                                <option value="16:00">4:00 PM</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="appointment-reason">Reason for Appointment</label>
+                            <textarea id="appointment-reason" name="reason" rows="3"
+                                placeholder="Please describe your concern or reason for the appointment..."></textarea>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="btn-outline" onclick="closeAppointmentModal()">Cancel</button>
+                            <button type="submit" class="btn-primary">Request Appointment</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <script src="scripts/main.js"></script>
+        <script src="scripts/player.js"></script>
+    </body>
+
+</html>

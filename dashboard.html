@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Dashboard - Al Ahly SC Training Management</title>
+        <link rel="stylesheet" href="styles/main.css">
+        <link rel="stylesheet" href="styles/dashboard.css">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet">
+    </head>
+
+    <body>
+        <div class="app-container">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="sidebar-header">
+                    <img src="./Images/Al Ahly Creative Logo Option 3 (1).png" alt="Al Ahly SC" class="sidebar-logo">
+                    <div class="sidebar-title">
+                        <h3>Al Ahly SC</h3>
+                        <p>Training Management</p>
+                    </div>
+                </div>
+
+                <nav class="sidebar-nav">
+                    <div class="nav-section">
+                        <h4>OVERVIEW</h4>
+                        <ul>
+                            <li><a href="dashboard.html" class="nav-link active"><i class="fas fa-home"></i>
+                                    Dashboard</a></li>
+                            <li><a href="analytics.html" class="nav-link"><i class="fas fa-chart-bar"></i> Analytics</a>
+                            <li><a href="user_profile8.html" class="nav-link"><i class="fas fa-chart-bar"></i>
+                                    Profile</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="nav-section">
+                        <h4>SPORTS MANAGEMENT</h4>
+                        <ul>
+                            <li><a href="teams.html" class="nav-link"><i class="fas fa-users"></i> Teams</a></li>
+                            <li><a href="schedule.html" class="nav-link"><i class="fas fa-calendar-alt"></i>
+                                    Schedule</a></li>
+                            <li><a href="drills.html" class="nav-link"><i class="fas fa-dumbbell"></i> Drill Library</a>
+                            </li>
+                            <li><a href="players.html" class="nav-link"><i class="fas fa-user-friends"></i> View
+                                    Players</a></li>
+                            <li><a href="attendance.html" class="nav-link"><i class="fas fa-clipboard-check"></i>
+                                    Attendance</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="nav-section">
+                        <h4>COMMUNICATION</h4>
+                        <ul>
+                            <li><a href="announcements.html" class="nav-link"><i class="fas fa-bullhorn"></i>
+                                    Announcements</a></li>
+                            <li><a href="chat.html" class="nav-link"><i class="fas fa-comments"></i> Chat</a></li>
+                            <li><a href="feedback.html" class="nav-link"><i class="fas fa-star"></i> Feedback</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="nav-section">
+                        <h4>MEDICAL CENTER</h4>
+                        <ul>
+                            <li><a href="medical.html" class="nav-link"><i class="fas fa-heartbeat"></i> Medical
+                                    Overview</a></li>
+                            <li><a href="injuries.html" class="nav-link"><i class="fas fa-band-aid"></i> Injury
+                                    Management</a></li>
+                        </ul>
+                    </div>
+                </nav>
+
+                <div class="sidebar-footer">
+                    <div class="user-profile">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop&crop=face"
+                            alt="User" class="user-avatar">
+                        <div class="user-info">
+                            <span class="user-name">Ahmed Hassan</span>
+                            <span class="user-role">Football Coach</span>
+                        </div>
+                        <div class="user-menu">
+                            <i class="fas fa-chevron-down"></i>
+                            <div class="dropdown-menu">
+                                <a href="profile.html"><i class="fas fa-user"></i> Profile</a>
+                                <a href="settings.html"><i class="fas fa-cog"></i> Settings</a>
+                                <a href="index.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="main-content">
+                <header class="main-header">
+                    <div class="header-left">
+                        <button class="sidebar-toggle">
+                            <i class="fas fa-bars"></i>
+                        </button>
+                        <h1>Al Ahly SC Dashboard</h1>
+                        <p>Welcome back, Ahmed. Here's what's happening across all sports today.</p>
+                    </div>
+
+                    <div class="header-right">
+                        <button class="btn-outline schedule-btn">
+                            <i class="fas fa-calendar"></i>
+                            Schedule
+                        </button>
+                        <button class="btn-primary new-session-btn">
+                            <i class="fas fa-plus"></i>
+                            New Session
+                        </button>
+                        <div class="theme-toggle">
+                            <i class="fas fa-moon"></i>
+                        </div>
+                        <div class="notifications">
+                            <i class="fas fa-bell"></i>
+                            <span class="notification-badge">3</span>
+                        </div>
+                    </div>
+                </header>
+
+                <div class="dashboard-content">
+                    <!-- Stats Cards -->
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon athletes">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>765</h3>
+                                <p>Total Athletes</p>
+                                <span class="stat-change negative">
+                                    <i class="fas fa-arrow-down"></i>
+                                    -4 this week
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-icon teams">
+                                <i class="fas fa-trophy"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>157</h3>
+                                <p>Active Teams</p>
+                                <span class="stat-change negative">
+                                    <i class="fas fa-arrow-down"></i>
+                                    -3 this week
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-icon sessions">
+                                <i class="fas fa-dumbbell"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>89</h3>
+                                <p>Training Sessions</p>
+                                <span class="stat-change positive">
+                                    <i class="fas fa-arrow-up"></i>
+                                    +15 this week
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-icon medical">
+                                <i class="fas fa-heartbeat"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>23</h3>
+                                <p>Medical Cases</p>
+                                <span class="stat-change negative">
+                                    <i class="fas fa-arrow-down"></i>
+                                    -5 this week
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Main Dashboard Grid -->
+                    <div class="dashboard-grid">
+                        <!-- Today's Training Sessions -->
+                        <div class="dashboard-card sessions-card">
+                            <div class="card-header">
+                                <h3>Today's Training Sessions</h3>
+                                <p>Upcoming and ongoing training sessions across all sports</p>
+                                <a href="schedule.html" class="view-all">View All <i class="fas fa-arrow-right"></i></a>
+                            </div>
+
+                            <div class="sessions-list">
+                                <div class="session-item">
+                                    <div class="session-icon football">
+                                        <i class="fas fa-futbol"></i>
+                                    </div>
+                                    <div class="session-info">
+                                        <h4>Football First Team Training</h4>
+                                        <div class="session-meta">
+                                            <span class="sport">Football</span>
+                                            <span class="team">First Team</span>
+                                            <span class="coach">Ahmed Hassan</span>
+                                        </div>
+                                    </div>
+                                    <div class="session-details">
+                                        <div class="session-time">
+                                            <i class="fas fa-clock"></i>
+                                            Today, 4:00 PM
+                                        </div>
+                                        <div class="session-status scheduled">
+                                            <i class="fas fa-users"></i>
+                                            25 Scheduled
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="session-item">
+                                    <div class="session-icon basketball">
+                                        <i class="fas fa-basketball-ball"></i>
+                                    </div>
+                                    <div class="session-info">
+                                        <h4>Basketball Youth Training</h4>
+                                        <div class="session-meta">
+                                            <span class="sport">Basketball</span>
+                                            <span class="team">U-21 Team</span>
+                                            <span class="coach">Mohamed Ali</span>
+                                        </div>
+                                    </div>
+                                    <div class="session-details">
+                                        <div class="session-time">
+                                            <i class="fas fa-clock"></i>
+                                            Today, 6:00 PM
+                                        </div>
+                                        <div class="session-status in-progress">
+                                            <i class="fas fa-play"></i>
+                                            18 In Progress
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="session-item">
+                                    <div class="session-icon handball">
+                                        <i class="fas fa-hand-paper"></i>
+                                    </div>
+                                    <div class="session-info">
+                                        <h4>Handball Tactical Session</h4>
+                                        <div class="session-meta">
+                                            <span class="sport">Handball</span>
+                                            <span class="team">Senior Team</span>
+                                            <span class="coach">Karim Fouad</span>
+                                        </div>
+                                    </div>
+                                    <div class="session-details">
+                                        <div class="session-time">
+                                            <i class="fas fa-clock"></i>
+                                            Tomorrow, 10:00 AM
+                                        </div>
+                                        <div class="session-status scheduled">
+                                            <i class="fas fa-users"></i>
+                                            22 Scheduled
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Top Performers -->
+                        <div class="dashboard-card performers-card">
+                            <div class="card-header">
+                                <h3>Top Performers</h3>
+                                <p>Highest rated athletes this month</p>
+                            </div>
+
+                            <div class="performers-list">
+                                <div class="performer-item">
+                                    <div class="performer-rank">#1</div>
+                                    <img src="https://images.unsplash.com/photo-1566753323558-f4e0952af115?w=40&h=40&fit=crop&crop=face"
+                                        alt="Youssef Bassiony" class="performer-avatar">
+                                    <div class="performer-info">
+                                        <h4>Youssef Bassiony</h4>
+                                        <div class="performer-meta">
+                                            <span class="sport">Football</span>
+                                            <span class="position">Forward</span>
+                                        </div>
+                                    </div>
+                                    <div class="performer-rating">
+                                        <span class="rating">9.2</span>
+                                        <span class="rating-label">Rating</span>
+                                    </div>
+                                </div>
+
+                                <div class="performer-item">
+                                    <div class="performer-rank">#2</div>
+                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop&crop=face"
+                                        alt="Ahmed Zizo" class="performer-avatar">
+                                    <div class="performer-info">
+                                        <h4>Ahmed Zizo</h4>
+                                        <div class="performer-meta">
+                                            <span class="sport">Football</span>
+                                            <span class="position">Midfielder</span>
+                                        </div>
+                                    </div>
+                                    <div class="performer-rating">
+                                        <span class="rating">8.8</span>
+                                        <span class="rating-label">Rating</span>
+                                    </div>
+                                </div>
+
+                                <div class="performer-item">
+                                    <div class="performer-rank">#3</div>
+                                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face"
+                                        alt="Karim Fouad" class="performer-avatar">
+                                    <div class="performer-info">
+                                        <h4>Karim Fouad</h4>
+                                        <div class="performer-meta">
+                                            <span class="sport">Basketball</span>
+                                            <span class="position">Point Guard</span>
+                                        </div>
+                                    </div>
+                                    <div class="performer-rating">
+                                        <span class="rating">8.6</span>
+                                        <span class="rating-label">Rating</span>
+                                    </div>
+                                </div>
+
+                                <div class="performer-item">
+                                    <div class="performer-rank">#4</div>
+                                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=40&h=40&fit=crop&crop=face"
+                                        alt="Hassan Ahmed" class="performer-avatar">
+                                    <div class="performer-info">
+                                        <h4>Hassan Ahmed</h4>
+                                        <div class="performer-meta">
+                                            <span class="sport">Handball</span>
+                                            <span class="position">Goalkeeper</span>
+                                        </div>
+                                    </div>
+                                    <div class="performer-rating">
+                                        <span class="rating">8.4</span>
+                                        <span class="rating-label">Rating</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Activity & Quick Actions -->
+                    <div class="dashboard-grid secondary">
+                        <div class="dashboard-card activity-card">
+                            <div class="card-header">
+                                <h3>Recent Activity</h3>
+                                <p>Latest updates and notifications</p>
+                            </div>
+
+                            <div class="activity-list">
+                                <div class="activity-item">
+                                    <div class="activity-icon new">
+                                        <i class="fas fa-plus"></i>
+                                    </div>
+                                    <div class="activity-content">
+                                        <p><strong>New player</strong> Mohamed Tarek joined Football First Team</p>
+                                        <span class="activity-time">2 hours ago</span>
+                                    </div>
+                                </div>
+
+                                <div class="activity-item">
+                                    <div class="activity-icon update">
+                                        <i class="fas fa-edit"></i>
+                                    </div>
+                                    <div class="activity-content">
+                                        <p><strong>Training session</strong> Basketball Youth Training updated</p>
+                                        <span class="activity-time">4 hours ago</span>
+                                    </div>
+                                </div>
+
+                                <div class="activity-item">
+                                    <div class="activity-icon announcement">
+                                        <i class="fas fa-bullhorn"></i>
+                                    </div>
+                                    <div class="activity-content">
+                                        <p><strong>Announcement:</strong> New training facility opening next week</p>
+                                        <span class="activity-time">1 day ago</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="dashboard-card quick-actions-card">
+                            <div class="card-header">
+                                <h3>Quick Actions</h3>
+                                <p>Frequently used actions</p>
+                            </div>
+
+                            <div class="quick-actions">
+                                <a href="schedule.html" class="quick-action">
+                                    <i class="fas fa-calendar-plus"></i>
+                                    <span>Schedule Session</span>
+                                </a>
+                                <a href="players.html" class="quick-action">
+                                    <i class="fas fa-user-plus"></i>
+                                    <span>Add Player</span>
+                                </a>
+                                <a href="drills.html" class="quick-action">
+                                    <i class="fas fa-dumbbell"></i>
+                                    <span>Create Drill</span>
+                                </a>
+                                <a href="announcements.html" class="quick-action">
+                                    <i class="fas fa-bullhorn"></i>
+                                    <span>Make Announcement</span>
+                                </a>
+                                <a href="attendance.html" class="quick-action">
+                                    <i class="fas fa-clipboard-check"></i>
+                                    <span>Take Attendance</span>
+                                </a>
+                                <a href="feedback.html" class="quick-action">
+                                    <i class="fas fa-star"></i>
+                                    <span>Give Feedback</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <script src="scripts/main.js"></script>
+        <script src="scripts/dashboard.js"></script>
+    </body>
+
+</html>

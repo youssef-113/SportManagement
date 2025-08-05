@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>My Analytics - Al Ahly SC Coach Portal</title>
+        <link rel="stylesheet" href="styles/main.css">
+        <link rel="stylesheet" href="styles/dashboard.css">
+        <link rel="stylesheet" href="styles/coach.css">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet">
+    </head>
+
+    <body>
+        <div class="app-container">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="sidebar-header">
+                    <img src="./Images/Al Ahly Creative Logo Option 3 (1).png" alt="Al Ahly SC" class="sidebar-logo">
+                    <div class="sidebar-title">
+                        <h3>Al Ahly SC</h3>
+                        <p>Coach Portal</p>
+                    </div>
+                </div>
+
+                <nav class="sidebar-nav">
+                    <div class="nav-section">
+                        <h4>OVERVIEW</h4>
+                        <ul>
+                            <li><a href="coach-dashboard.html" class="nav-link"><i class="fas fa-home"></i>
+                                    Dashboard</a></li>
+                            <li><a href="coach-analytics.html" class="nav-link active"><i class="fas fa-chart-bar"></i>
+                                    My Analytics</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="nav-section">
+                        <h4>TEAM MANAGEMENT</h4>
+                        <ul>
+                            <li><a href="coach-team.html" class="nav-link"><i class="fas fa-users"></i> My Team</a></li>
+                            <li><a href="schedule.html" class="nav-link"><i class="fas fa-calendar-alt"></i>
+                                    Schedule</a></li>
+                            <li><a href="drills.html" class="nav-link"><i class="fas fa-dumbbell"></i> Drill Library</a>
+                            </li>
+                            <li><a href="players.html" class="nav-link"><i class="fas fa-user-friends"></i> My
+                                    Players</a></li>
+                            <li><a href="coach-attendance.html" class="nav-link"><i class="fas fa-clipboard-check"></i>
+                                    Attendance</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="nav-section">
+                        <h4>TRAINING</h4>
+                        <ul>
+                            <li><a href="coach-sessions.html" class="nav-link"><i class="fas fa-play-circle"></i>
+                                    Training Sessions</a></li>
+                            <li><a href="coach-performance.html" class="nav-link"><i class="fas fa-chart-line"></i>
+                                    Performance</a></li>
+                            <li><a href="coach-reports.html" class="nav-link"><i class="fas fa-file-alt"></i>
+                                    Reports</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="nav-section">
+                        <h4>COMMUNICATION</h4>
+                        <ul>
+                            <li><a href="coach-announcements.html" class="nav-link"><i class="fas fa-bullhorn"></i>
+                                    Announcements</a></li>
+                            <li><a href="coach-chat.html" class="nav-link"><i class="fas fa-comments"></i> Team Chat</a>
+                            </li>
+                            <li><a href="coach-feedback.html" class="nav-link"><i class="fas fa-star"></i> Player
+                                    Feedback</a></li>
+                        </ul>
+                    </div>
+                </nav>
+
+                <div class="sidebar-footer">
+                    <div class="user-profile">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop&crop=face"
+                            alt="User" class="user-avatar">
+                        <div class="user-info">
+                            <span class="user-name">Ahmed Hassan</span>
+                            <span class="user-role">Football Coach</span>
+                        </div>
+                        <div class="user-menu">
+                            <i class="fas fa-chevron-down"></i>
+                            <div class="dropdown-menu">
+                                <a href="coach-profile.html"><i class="fas fa-user"></i> Profile</a>
+                                <a href="coach-settings.html"><i class="fas fa-cog"></i> Settings</a>
+                                <a href="index.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="main-content">
+                <header class="main-header">
+                    <div class="header-left">
+                        <button class="sidebar-toggle">
+                            <i class="fas fa-bars"></i>
+                        </button>
+                        <h1>My Analytics</h1>
+                        <p>Comprehensive insights into your coaching performance and team progress</p>
+                    </div>
+
+                    <div class="header-right">
+                        <div class="time-filter">
+                            <select id="analytics-period">
+                                <option value="week">This Week</option>
+                                <option value="month" selected>This Month</option>
+                                <option value="quarter">This Quarter</option>
+                                <option value="year">This Year</option>
+                            </select>
+                        </div>
+                        <button class="btn-outline" onclick="exportAnalytics()">
+                            <i class="fas fa-download"></i>
+                            Export Report
+                        </button>
+                    </div>
+                </header>
+
+                <div class="analytics-content">
+                    <!-- Performance Overview -->
+                    <div class="analytics-overview">
+                        <div class="overview-card coaching">
+                            <div class="card-icon">
+                                <i class="fas fa-chalkboard-teacher"></i>
+                            </div>
+                            <div class="card-content">
+                                <h3>Coaching Score</h3>
+                                <div class="score-display">
+                                    <span class="score">8.7</span>
+                                    <span class="score-max">/10</span>
+                                </div>
+                                <div class="score-trend positive">
+                                    <i class="fas fa-arrow-up"></i>
+                                    +0.3 this month
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="overview-card sessions">
+                            <div class="card-icon">
+                                <i class="fas fa-dumbbell"></i>
+                            </div>
+                            <div class="card-content">
+                                <h3>Sessions Conducted</h3>
+                                <div class="score-display">
+                                    <span class="score">48</span>
+                                    <span class="score-label">sessions</span>
+                                </div>
+                                <div class="score-trend positive">
+                                    <i class="fas fa-arrow-up"></i>
+                                    +12% vs last month
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="overview-card improvement">
+                            <div class="card-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div class="card-content">
+                                <h3>Team Improvement</h3>
+                                <div class="score-display">
+                                    <span class="score">+15%</span>
+                                    <span class="score-label">overall</span>
+                                </div>
+                                <div class="score-trend positive">
+                                    <i class="fas fa-arrow-up"></i>
+                                    Excellent progress
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="overview-card satisfaction">
+                            <div class="card-icon">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <div class="card-content">
+                                <h3>Player Satisfaction</h3>
+                                <div class="score-display">
+                                    <span class="score">94%</span>
+                                    <span class="score-label">positive</span>
+                                </div>
+                                <div class="score-trend positive">
+                                    <i class="fas fa-arrow-up"></i>
+                                    +2% this month
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Charts Section -->
+                    <div class="analytics-charts">
+                        <!-- Team Performance Chart -->
+                        <div class="chart-card large">
+                            <div class="chart-header">
+                                <h3>Team Performance Trends</h3>
+                                <div class="chart-controls">
+                                    <button class="chart-btn active" data-metric="overall">Overall</button>
+                                    <button class="chart-btn" data-metric="physical">Physical</button>
+                                    <button class="chart-btn" data-metric="tactical">Tactical</button>
+                                    <button class="chart-btn" data-metric="technical">Technical</button>
+                                </div>
+                            </div>
+                            <div class="chart-container">
+                                <div class="performance-chart">
+                                    <div class="chart-grid">
+                                        <div class="grid-line" style="bottom: 80%;">9.0</div>
+                                        <div class="grid-line" style="bottom: 60%;">8.0</div>
+                                        <div class="grid-line" style="bottom: 40%;">7.0</div>
+                                        <div class="grid-line" style="bottom: 20%;">6.0</div>
+                                        <div class="grid-line" style="bottom: 0%;">5.0</div>
+                                    </div>
+                                    <div class="chart-line">
+                                        <div class="chart-point" style="left: 10%; bottom: 45%;" data-value="7.2"></div>
+                                        <div class="chart-point" style="left: 25%; bottom: 55%;" data-value="7.8"></div>
+                                        <div class="chart-point" style="left: 40%; bottom: 65%;" data-value="8.3"></div>
+                                        <div class="chart-point" style="left: 55%; bottom: 70%;" data-value="8.5"></div>
+                                        <div class="chart-point" style="left: 70%; bottom: 75%;" data-value="8.7"></div>
+                                        <div class="chart-point active" style="left: 85%; bottom: 80%;"
+                                            data-value="9.0"></div>
+                                    </div>
+                                    <div class="chart-labels">
+                                        <span>Week 1</span>
+                                        <span>Week 2</span>
+                                        <span>Week 3</span>
+                                        <span>Week 4</span>
+                                        <span>Week 5</span>
+                                        <span>Week 6</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Session Types Distribution -->
+                        <div class="chart-card">
+                            <div class="chart-header">
+                                <h3>Session Types</h3>
+                                <p>Distribution of training sessions</p>
+                            </div>
+                            <div class="chart-container">
+                                <div class="donut-chart">
+                                    <div class="donut-segment" data-percentage="40" style="--color: #dc2626;">
+                                        <span class="segment-label">Technical</span>
+                                        <span class="segment-value">40%</span>
+                                    </div>
+                                    <div class="donut-segment" data-percentage="30" style="--color: #059669;">
+                                        <span class="segment-label">Tactical</span>
+                                        <span class="segment-value">30%</span>
+                                    </div>
+                                    <div class="donut-segment" data-percentage="20" style="--color: #d97706;">
+                                        <span class="segment-label">Physical</span>
+                                        <span class="segment-value">20%</span>
+                                    </div>
+                                    <div class="donut-segment" data-percentage="10" style="--color: #7c3aed;">
+                                        <span class="segment-label">Recovery</span>
+                                        <span class="segment-value">10%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Detailed Analytics -->
+                    <div class="analytics-details">
+                        <!-- Player Development -->
+                        <div class="detail-card">
+                            <div class="detail-header">
+                                <h3>Player Development</h3>
+                                <p>Individual player progress under your coaching</p>
+                            </div>
+                            <div class="development-list">
+                                <div class="development-item">
+                                    <img src="https://images.unsplash.com/photo-1566753323558-f4e0952af115?w=50&h=50&fit=crop&crop=face"
+                                        alt="Youssef Bassiony" class="player-avatar">
+                                    <div class="player-info">
+                                        <h4>Youssef Bassiony</h4>
+                                        <span class="position">Forward</span>
+                                    </div>
+                                    <div class="development-progress">
+                                        <div class="progress-bar">
+                                            <div class="progress-fill" style="width: 85%;"></div>
+                                        </div>
+                                        <span class="progress-text">+15% improvement</span>
+                                    </div>
+                                    <div class="development-rating">
+                                        <span class="rating">9.2</span>
+                                    </div>
+                                </div>
+
+                                <div class="development-item">
+                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=50&h=50&fit=crop&crop=face"
+                                        alt="Ahmed Zizo" class="player-avatar">
+                                    <div class="player-info">
+                                        <h4>Ahmed Zizo</h4>
+                                        <span class="position">Midfielder</span>
+                                    </div>
+                                    <div class="development-progress">
+                                        <div class="progress-bar">
+                                            <div class="progress-fill" style="width: 78%;"></div>
+                                        </div>
+                                        <span class="progress-text">+12% improvement</span>
+                                    </div>
+                                    <div class="development-rating">
+                                        <span class="rating">8.8</span>
+                                    </div>
+                                </div>
+
+                                <div class="development-item">
+                                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=50&h=50&fit=crop&crop=face"
+                                        alt="Karim Fouad" class="player-avatar">
+                                    <div class="player-info">
+                                        <h4>Karim Fouad</h4>
+                                        <span class="position">Defender</span>
+                                    </div>
+                                    <div class="development-progress">
+                                        <div class="progress-bar">
+                                            <div class="progress-fill" style="width: 72%;"></div>
+                                        </div>
+                                        <span class="progress-text">+8% improvement</span>
+                                    </div>
+                                    <div class="development-rating">
+                                        <span class="rating">8.6</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Training Effectiveness -->
+                        <div class="detail-card">
+                            <div class="detail-header">
+                                <h3>Training Effectiveness</h3>
+                                <p>How effective your training methods are</p>
+                            </div>
+                            <div class="effectiveness-metrics">
+                                <div class="metric-item">
+                                    <div class="metric-icon">
+                                        <i class="fas fa-target"></i>
+                                    </div>
+                                    <div class="metric-info">
+                                        <h4>Goal Achievement</h4>
+                                        <div class="metric-value">87%</div>
+                                        <div class="metric-description">Players meeting training objectives</div>
+                                    </div>
+                                </div>
+
+                                <div class="metric-item">
+                                    <div class="metric-icon">
+                                        <i class="fas fa-clock"></i>
+                                    </div>
+                                    <div class="metric-info">
+                                        <h4>Session Efficiency</h4>
+                                        <div class="metric-value">92%</div>
+                                        <div class="metric-description">Optimal use of training time</div>
+                                    </div>
+                                </div>
+
+                                <div class="metric-item">
+                                    <div class="metric-icon">
+                                        <i class="fas fa-users"></i>
+                                    </div>
+                                    <div class="metric-info">
+                                        <h4>Team Cohesion</h4>
+                                        <div class="metric-value">89%</div>
+                                        <div class="metric-description">Team working together effectively</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Recent Achievements -->
+                        <div class="detail-card">
+                            <div class="detail-header">
+                                <h3>Recent Achievements</h3>
+                                <p>Your coaching milestones and accomplishments</p>
+                            </div>
+                            <div class="achievements-list">
+                                <div class="achievement-item">
+                                    <div class="achievement-icon gold">
+                                        <i class="fas fa-trophy"></i>
+                                    </div>
+                                    <div class="achievement-info">
+                                        <h4>Perfect Attendance Week</h4>
+                                        <p>100% team attendance for 5 consecutive sessions</p>
+                                        <span class="achievement-date">2 days ago</span>
+                                    </div>
+                                </div>
+
+                                <div class="achievement-item">
+                                    <div class="achievement-icon silver">
+                                        <i class="fas fa-chart-line"></i>
+                                    </div>
+                                    <div class="achievement-info">
+                                        <h4>Performance Boost</h4>
+                                        <p>Team performance improved by 15% this month</p>
+                                        <span class="achievement-date">1 week ago</span>
+                                    </div>
+                                </div>
+
+                                <div class="achievement-item">
+                                    <div class="achievement-icon bronze">
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <div class="achievement-info">
+                                        <h4>Player Development</h4>
+                                        <p>5 players achieved personal best ratings</p>
+                                        <span class="achievement-date">2 weeks ago</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <script src="scripts/main.js"></script>
+        <script src="scripts/coach-analytics.js"></script>
+    </body>
+
+</html>

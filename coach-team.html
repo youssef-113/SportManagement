@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>My Team - Al Ahly SC Coach Portal</title>
+        <link rel="stylesheet" href="styles/main.css">
+        <link rel="stylesheet" href="styles/players.css">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet">
+    </head>
+
+    <body>
+        <div class="app-container">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="sidebar-header">
+                    <img src="./Images/Al Ahly Creative Logo Option 3 (1).png" alt="Al Ahly SC" class="sidebar-logo">
+                    <div class="sidebar-title">
+                        <h3>Al Ahly SC</h3>
+                        <p>Coach Portal</p>
+                    </div>
+                </div>
+
+                <nav class="sidebar-nav">
+                    <div class="nav-section">
+                        <h4>OVERVIEW</h4>
+                        <ul>
+                            <li><a href="coach-dashboard.html" class="nav-link"><i class="fas fa-home"></i>
+                                    Dashboard</a></li>
+                            <li><a href="coach-analytics.html" class="nav-link"><i class="fas fa-chart-bar"></i> My
+                                    Analytics</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="nav-section">
+                        <h4>TEAM MANAGEMENT</h4>
+                        <ul>
+                            <li><a href="coach-team.html" class="nav-link active"><i class="fas fa-users"></i> My
+                                    Team</a></li>
+                            <li><a href="schedule.html" class="nav-link"><i class="fas fa-calendar-alt"></i>
+                                    Schedule</a></li>
+                            <li><a href="drills.html" class="nav-link"><i class="fas fa-dumbbell"></i> Drill Library</a>
+                            </li>
+                            <li><a href="players.html" class="nav-link"><i class="fas fa-user-friends"></i> My
+                                    Players</a></li>
+                            <li><a href="coach-attendance.html" class="nav-link"><i class="fas fa-clipboard-check"></i>
+                                    Attendance</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="nav-section">
+                        <h4>TRAINING</h4>
+                        <ul>
+                            <li><a href="coach-sessions.html" class="nav-link"><i class="fas fa-play-circle"></i>
+                                    Training Sessions</a></li>
+                            <li><a href="coach-performance.html" class="nav-link"><i class="fas fa-chart-line"></i>
+                                    Performance</a></li>
+                            <li><a href="coach-reports.html" class="nav-link"><i class="fas fa-file-alt"></i>
+                                    Reports</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="nav-section">
+                        <h4>COMMUNICATION</h4>
+                        <ul>
+                            <li><a href="coach-announcements.html" class="nav-link"><i class="fas fa-bullhorn"></i>
+                                    Announcements</a></li>
+                            <li><a href="coach-chat.html" class="nav-link"><i class="fas fa-comments"></i> Team Chat</a>
+                            </li>
+                            <li><a href="coach-feedback.html" class="nav-link"><i class="fas fa-star"></i> Player
+                                    Feedback</a></li>
+                        </ul>
+                    </div>
+                </nav>
+
+                <div class="sidebar-footer">
+                    <div class="user-profile">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop&crop=face"
+                            alt="User" class="user-avatar">
+                        <div class="user-info">
+                            <span class="user-name">Ahmed Hassan</span>
+                            <span class="user-role">Football Coach</span>
+                        </div>
+                        <div class="user-menu">
+                            <i class="fas fa-chevron-down"></i>
+                            <div class="dropdown-menu">
+                                <a href="coach-profile.html"><i class="fas fa-user"></i> Profile</a>
+                                <a href="coach-settings.html"><i class="fas fa-cog"></i> Settings</a>
+                                <a href="index.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="main-content">
+                <header class="main-header">
+                    <div class="header-left">
+                        <button class="sidebar-toggle">
+                            <i class="fas fa-bars"></i>
+                        </button>
+                        <h1>My Team</h1>
+                        <p>Manage your Football First Team players and squad</p>
+                    </div>
+
+                    <div class="header-right">
+                        <div class="search-box">
+                            <i class="fas fa-search"></i>
+                            <input type="text" placeholder="Search players..." id="player-search">
+                        </div>
+                        <button class="btn-outline" onclick="exportTeamData()">
+                            <i class="fas fa-download"></i>
+                            Export
+                        </button>
+                        <button class="btn-primary" onclick="openFormationModal()">
+                            <i class="fas fa-chess-board"></i>
+                            Formation
+                        </button>
+                    </div>
+                </header>
+
+                <div class="players-content">
+                    <!-- Team Overview -->
+                    <div class="team-selector">
+                        <div class="team-info">
+                            <img src="./Images/Al Ahly Creative Logo Option 3 (1).png" alt="Team"
+                                class="team-logo">
+                            <div class="team-details">
+                                <h3>Football First Team</h3>
+                                <p>25 Active Players • Coach: Ahmed Hassan • Formation: 4-3-3</p>
+                            </div>
+                        </div>
+
+                        <div class="team-actions">
+                            <div class="team-stats">
+                                <div class="stat-item">
+                                    <span class="stat-value">92%</span>
+                                    <span class="stat-label">Avg Attendance</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-value">8.4</span>
+                                    <span class="stat-label">Team Rating</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-value">3</span>
+                                    <span class="stat-label">Injured</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Formation View -->
+                    <div class="formation-view">
+                        <div class="formation-header">
+                            <h3>Current Formation: 4-3-3</h3>
+                            <button class="btn-outline" onclick="editFormation()">
+                                <i class="fas fa-edit"></i>
+                                Edit Formation
+                            </button>
+                        </div>
+
+                        <div class="football-pitch">
+                            <div class="pitch-section goalkeeper">
+                                <div class="player-position" data-position="GK">
+                                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=50&h=50&fit=crop&crop=face"
+                                        alt="Hassan Ahmed" class="position-avatar">
+                                    <span class="player-name">Hassan Ahmed</span>
+                                    <span class="player-number">#1</span>
+                                </div>
+                            </div>
+
+                            <div class="pitch-section defense">
+                                <div class="player-position" data-position="RB">
+                                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=50&h=50&fit=crop&crop=face"
+                                        alt="Karim Fouad" class="position-avatar">
+                                    <span class="player-name">Karim Fouad</span>
+                                    <span class="player-number">#4</span>
+                                </div>
+                                <div class="player-position" data-position="CB">
+                                    <img src="https://images.unsplash.com/photo-1552058544-f2b08422138a?w=50&h=50&fit=crop&crop=face"
+                                        alt="Omar Tarek" class="position-avatar">
+                                    <span class="player-name">Omar Tarek</span>
+                                    <span class="player-number">#5</span>
+                                </div>
+                                <div class="player-position" data-position="CB">
+                                    <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=50&h=50&fit=crop&crop=face"
+                                        alt="Mahmoud Ali" class="position-avatar">
+                                    <span class="player-name">Mahmoud Ali</span>
+                                    <span class="player-number">#6</span>
+                                </div>
+                                <div class="player-position" data-position="LB">
+                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=50&h=50&fit=crop&crop=face"
+                                        alt="Ahmed Zizo" class="position-avatar">
+                                    <span class="player-name">Ahmed Zizo</span>
+                                    <span class="player-number">#3</span>
+                                </div>
+                            </div>
+
+                            <div class="pitch-section midfield">
+                                <div class="player-position" data-position="CM">
+                                    <img src="https://images.unsplash.com/photo-1566753323558-f4e0952af115?w=50&h=50&fit=crop&crop=face"
+                                        alt="Youssef Bassiony" class="position-avatar">
+                                    <span class="player-name">Youssef Bassiony</span>
+                                    <span class="player-number">#8</span>
+                                </div>
+                                <div class="player-position" data-position="CM">
+                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=50&h=50&fit=crop&crop=face"
+                                        alt="Ahmed Hassan" class="position-avatar">
+                                    <span class="player-name">Ahmed Hassan</span>
+                                    <span class="player-number">#10</span>
+                                </div>
+                                <div class="player-position" data-position="CM">
+                                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=50&h=50&fit=crop&crop=face"
+                                        alt="Karim Mohamed" class="position-avatar">
+                                    <span class="player-name">Karim Mohamed</span>
+                                    <span class="player-number">#7</span>
+                                </div>
+                            </div>
+
+                            <div class="pitch-section attack">
+                                <div class="player-position" data-position="RW">
+                                    <img src="https://images.unsplash.com/photo-1552058544-f2b08422138a?w=50&h=50&fit=crop&crop=face"
+                                        alt="Omar Salah" class="position-avatar">
+                                    <span class="player-name">Omar Salah</span>
+                                    <span class="player-number">#11</span>
+                                </div>
+                                <div class="player-position" data-position="ST">
+                                    <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=50&h=50&fit=crop&crop=face"
+                                        alt="Mohamed Tarek" class="position-avatar">
+                                    <span class="player-name">Mohamed Tarek</span>
+                                    <span class="player-number">#9</span>
+                                </div>
+                                <div class="player-position" data-position="LW">
+                                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=50&h=50&fit=crop&crop=face"
+                                        alt="Hassan Mohamed" class="position-avatar">
+                                    <span class="player-name">Hassan Mohamed</span>
+                                    <span class="player-number">#17</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Squad List -->
+                    <div class="squad-section">
+                        <div class="section-header">
+                            <h3>Full Squad</h3>
+                            <div class="squad-filters">
+                                <select id="position-filter">
+                                    <option value="">All Positions</option>
+                                    <option value="goalkeeper">Goalkeeper</option>
+                                    <option value="defender">Defender</option>
+                                    <option value="midfielder">Midfielder</option>
+                                    <option value="forward">Forward</option>
+                                </select>
+                                <select id="status-filter">
+                                    <option value="">All Status</option>
+                                    <option value="available">Available</option>
+                                    <option value="injured">Injured</option>
+                                    <option value="suspended">Suspended</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="squad-grid">
+                            <div class="squad-player available">
+                                <img src="https://images.unsplash.com/photo-1566753323558-f4e0952af115?w=60&h=60&fit=crop&crop=face"
+                                    alt="Youssef Bassiony" class="squad-avatar">
+                                <div class="squad-info">
+                                    <h4>Youssef Bassiony</h4>
+                                    <span class="position">Forward</span>
+                                    <span class="jersey">#11</span>
+                                </div>
+                                <div class="squad-stats">
+                                    <span class="rating">9.2</span>
+                                    <span class="attendance">98%</span>
+                                </div>
+                                <div class="squad-actions">
+                                    <button class="action-btn" onclick="viewPlayerProfile(1)" title="View Profile">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button class="action-btn" onclick="ratePlayer(1)" title="Rate Player">
+                                        <i class="fas fa-star"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="squad-player available">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=60&h=60&fit=crop&crop=face"
+                                    alt="Ahmed Zizo" class="squad-avatar">
+                                <div class="squad-info">
+                                    <h4>Ahmed Zizo</h4>
+                                    <span class="position">Midfielder</span>
+                                    <span class="jersey">#8</span>
+                                </div>
+                                <div class="squad-stats">
+                                    <span class="rating">8.8</span>
+                                    <span class="attendance">95%</span>
+                                </div>
+                                <div class="squad-actions">
+                                    <button class="action-btn" onclick="viewPlayerProfile(2)" title="View Profile">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button class="action-btn" onclick="ratePlayer(2)" title="Rate Player">
+                                        <i class="fas fa-star"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="squad-player injured">
+                                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=60&h=60&fit=crop&crop=face"
+                                    alt="Karim Fouad" class="squad-avatar">
+                                <div class="squad-info">
+                                    <h4>Karim Fouad</h4>
+                                    <span class="position">Defender</span>
+                                    <span class="jersey">#4</span>
+                                </div>
+                                <div class="squad-stats">
+                                    <span class="rating">8.6</span>
+                                    <span class="attendance">88%</span>
+                                </div>
+                                <div class="squad-actions">
+                                    <button class="action-btn" onclick="viewPlayerProfile(3)" title="View Profile">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button class="action-btn" onclick="ratePlayer(3)" title="Rate Player">
+                                        <i class="fas fa-star"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="squad-player available">
+                                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=60&h=60&fit=crop&crop=face"
+                                    alt="Hassan Ahmed" class="squad-avatar">
+                                <div class="squad-info">
+                                    <h4>Hassan Ahmed</h4>
+                                    <span class="position">Goalkeeper</span>
+                                    <span class="jersey">#1</span>
+                                </div>
+                                <div class="squad-stats">
+                                    <span class="rating">8.4</span>
+                                    <span class="attendance">100%</span>
+                                </div>
+                                <div class="squad-actions">
+                                    <button class="action-btn" onclick="viewPlayerProfile(4)" title="View Profile">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button class="action-btn" onclick="ratePlayer(4)" title="Rate Player">
+                                        <i class="fas fa-star"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <script src="scripts/main.js"></script>
+        <script src="scripts/coach-team.js"></script>
+    </body>
+
+</html>

@@ -1,0 +1,566 @@
+   :root {
+       --primary-red: #840a22;
+       --dark-red: #8B0000;
+       --gold: #FFD700;
+       --dark-gold: #B8860B;
+       --white: #FFFFFF;
+       --light-gray: #F8F9FA;
+       --dark-gray: #2C3E50;
+       --shadow-light: rgba(220, 20, 60, 0.1);
+       --shadow-medium: rgba(220, 20, 60, 0.2);
+       --shadow-heavy: rgba(220, 20, 60, 0.3);
+   }
+
+   * {
+       margin: 0;
+       padding: 0;
+       box-sizing: border-box;
+   }
+
+   body {
+       font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+       background: linear-gradient(135deg, var(--dark-red) 0%, var(--primary-red) 50%, #FF6B6B 100%);
+       min-height: 100vh;
+       overflow-x: hidden;
+       position: relative;
+       line-height: 1.6;
+       color: var(--white);
+   }
+
+   /* Professional background elements */
+   .bg-elements {
+       position: absolute;
+       top: 0;
+       left: 0;
+       width: 100%;
+       height: 100%;
+       overflow: hidden;
+       z-index: 1;
+   }
+
+   .bg-circle {
+       position: absolute;
+       border-radius: 50%;
+       background: rgba(255, 255, 255, 0.03);
+       animation: float-slow 15s ease-in-out infinite;
+   }
+
+   .bg-circle:nth-child(1) {
+       width: 300px;
+       height: 300px;
+       top: 10%;
+       left: -150px;
+       animation-delay: 0s;
+   }
+
+   .bg-circle:nth-child(2) {
+       width: 200px;
+       height: 200px;
+       top: 60%;
+       right: -100px;
+       animation-delay: 7s;
+   }
+
+   .bg-circle:nth-child(3) {
+       width: 150px;
+       height: 150px;
+       bottom: 20%;
+       left: 20%;
+       animation-delay: 3s;
+   }
+
+   @keyframes float-slow {
+
+       0%,
+       100% {
+           transform: translateY(0px) scale(1);
+           opacity: 0.03;
+       }
+
+       50% {
+           transform: translateY(-20px) scale(1.1);
+           opacity: 0.08;
+       }
+   }
+
+   /* Main container */
+   .container {
+       display: flex;
+       flex-direction: column;
+       justify-content: center;
+       align-items: center;
+       min-height: 100vh;
+       text-align: center;
+       padding: 40px 20px;
+       position: relative;
+       z-index: 10;
+       max-width: 1200px;
+       margin: 0 auto;
+   }
+
+   /* Header section */
+   .header-section {
+       margin-bottom: 60px;
+       animation: fadeInUp 0.8s ease-out;
+   }
+
+   .club-logo {
+       width: 100px;
+       height: 100px;
+       background: linear-gradient(135deg, var(--primary-red), var(--dark-red));
+       border-radius: 50%;
+       margin: 0 auto 30px;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       position: relative;
+       box-shadow: 0 20px 40px var(--shadow-medium);
+       transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+       cursor: pointer;
+       border: 3px solid rgba(255, 255, 255, 0.1);
+   }
+
+   .club-logo::before {
+       content: 'AFC';
+       color: var(--white);
+       font-size: 28px;
+       font-weight: 800;
+       letter-spacing: 2px;
+   }
+
+   .club-logo::after {
+       content: '';
+       position: absolute;
+       top: -5px;
+       left: -5px;
+       right: -5px;
+       bottom: -5px;
+       border-radius: 50%;
+       border: 2px solid var(--gold);
+       opacity: 0;
+       transform: scale(0.8);
+       transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+   }
+
+   .club-logo:hover {
+       transform: translateY(-5px) scale(1.05);
+       box-shadow: 0 30px 60px var(--shadow-heavy);
+   }
+
+   .club-logo:hover::after {
+       opacity: 1;
+       transform: scale(1);
+   }
+
+   .club-name {
+       font-size: 24px;
+       font-weight: 600;
+       color: var(--gold);
+       margin-bottom: 10px;
+       letter-spacing: 1px;
+   }
+
+   .club-subtitle {
+       font-size: 14px;
+       color: rgba(255, 255, 255, 0.8);
+       font-weight: 400;
+       text-transform: uppercase;
+       letter-spacing: 2px;
+   }
+
+   /* Error section */
+   .error-section {
+       margin-bottom: 60px;
+   }
+
+   .error-code {
+       font-size: clamp(120px, 15vw, 200px);
+       font-weight: 900;
+       background: linear-gradient(135deg, var(--gold) 0%, #FFA500 50%, var(--gold) 100%);
+       background-clip: text;
+       -webkit-background-clip: text;
+       color: transparent;
+       margin-bottom: 30px;
+       position: relative;
+       animation: glow-pulse 3s ease-in-out infinite;
+       line-height: 0.9;
+   }
+
+   @keyframes glow-pulse {
+
+       0%,
+       100% {
+           filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.3));
+           transform: scale(1);
+       }
+
+       50% {
+           filter: drop-shadow(0 0 40px rgba(255, 215, 0, 0.6));
+           transform: scale(1.02);
+       }
+   }
+
+   .error-title {
+       font-size: clamp(32px, 5vw, 48px);
+       font-weight: 700;
+       color: var(--white);
+       margin-bottom: 20px;
+       animation: fadeInUp 0.8s ease-out 0.2s both;
+   }
+
+   .error-message {
+       font-size: clamp(16px, 3vw, 20px);
+       color: rgba(255, 255, 255, 0.9);
+       margin-bottom: 50px;
+       max-width: 600px;
+       line-height: 1.8;
+       animation: fadeInUp 0.8s ease-out 0.4s both;
+       font-weight: 400;
+   }
+
+   /* Football field visualization */
+   .field-container {
+       position: relative;
+       width: 300px;
+       height: 200px;
+       margin: 40px auto;
+       background: linear-gradient(135deg, #228B22 0%, #32CD32 100%);
+       border-radius: 15px;
+       overflow: hidden;
+       box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+       animation: fadeInUp 0.8s ease-out 0.6s both;
+   }
+
+   .field-lines {
+       position: absolute;
+       top: 0;
+       left: 0;
+       width: 100%;
+       height: 100%;
+       border: 3px solid rgba(255, 255, 255, 0.8);
+       border-radius: 12px;
+   }
+
+   .field-lines::before {
+       content: '';
+       position: absolute;
+       top: 50%;
+       left: 50%;
+       transform: translate(-50%, -50%);
+       width: 80px;
+       height: 80px;
+       border: 2px solid rgba(255, 255, 255, 0.8);
+       border-radius: 50%;
+   }
+
+   .field-lines::after {
+       content: '';
+       position: absolute;
+       top: 0;
+       left: 50%;
+       transform: translateX(-50%);
+       width: 2px;
+       height: 100%;
+       background: rgba(255, 255, 255, 0.8);
+   }
+
+   .goal-left,
+   .goal-right {
+       position: absolute;
+       top: 50%;
+       transform: translateY(-50%);
+       width: 20px;
+       height: 60px;
+       border: 2px solid rgba(255, 255, 255, 0.8);
+       border-radius: 3px;
+   }
+
+   .goal-left {
+       left: -2px;
+       border-right: none;
+   }
+
+   .goal-right {
+       right: -2px;
+       border-left: none;
+   }
+
+   .ball {
+       position: absolute;
+       width: 20px;
+       height: 20px;
+       background: var(--white);
+       border-radius: 50%;
+       top: 50%;
+       left: 40%;
+       transform: translate(-50%, -50%);
+       animation: ball-bounce 2s ease-in-out infinite;
+       box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+   }
+
+   .ball::before {
+       content: '';
+       position: absolute;
+       top: 50%;
+       left: 50%;
+       transform: translate(-50%, -50%);
+       width: 8px;
+       height: 8px;
+       border: 1px solid #333;
+       border-radius: 50%;
+   }
+
+   @keyframes ball-bounce {
+
+       0%,
+       100% {
+           transform: translate(-50%, -50%) scale(1);
+           left: 40%;
+       }
+
+       25% {
+           transform: translate(-50%, -60%) scale(0.9);
+           left: 60%;
+       }
+
+       50% {
+           transform: translate(-50%, -50%) scale(1);
+           left: 80%;
+       }
+
+       75% {
+           transform: translate(-50%, -60%) scale(0.9);
+           left: 60%;
+       }
+   }
+
+   /* Action buttons */
+   .action-section {
+       animation: fadeInUp 0.8s ease-out 0.8s both;
+   }
+
+   .action-buttons {
+       display: flex;
+       gap: 20px;
+       flex-wrap: wrap;
+       justify-content: center;
+       margin-bottom: 40px;
+   }
+
+   .btn {
+       display: inline-flex;
+       align-items: center;
+       gap: 10px;
+       padding: 16px 32px;
+       background: var(--white);
+       color: var(--primary-red);
+       text-decoration: none;
+       border-radius: 50px;
+       font-weight: 600;
+       font-size: 16px;
+       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+       position: relative;
+       overflow: hidden;
+       border: 2px solid transparent;
+   }
+
+   .btn::before {
+       content: '';
+       position: absolute;
+       top: 0;
+       left: -100%;
+       width: 100%;
+       height: 100%;
+       background: linear-gradient(90deg, transparent, rgba(220, 20, 60, 0.1), transparent);
+       transition: left 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+   }
+
+   .btn:hover::before {
+       left: 100%;
+   }
+
+   .btn:hover {
+       transform: translateY(-3px);
+       box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+       border-color: var(--gold);
+   }
+
+   .btn-secondary {
+       background: transparent;
+       color: var(--white);
+       border: 2px solid rgba(255, 255, 255, 0.3);
+   }
+
+   .btn-secondary:hover {
+       background: var(--white);
+       color: var(--primary-red);
+       border-color: var(--white);
+   }
+
+   /* Professional stats section */
+   .stats-section {
+       display: flex;
+       gap: 40px;
+       justify-content: center;
+       margin-top: 20px;
+       flex-wrap: wrap;
+   }
+
+   .stat-item {
+       text-align: center;
+       padding: 20px;
+       background: rgba(255, 255, 255, 0.1);
+       border-radius: 15px;
+       backdrop-filter: blur(10px);
+       border: 1px solid rgba(255, 255, 255, 0.2);
+       min-width: 120px;
+       transition: all 0.3s ease;
+   }
+
+   .stat-item:hover {
+       transform: translateY(-5px);
+       background: rgba(255, 255, 255, 0.15);
+   }
+
+   .stat-number {
+       font-size: 24px;
+       font-weight: 800;
+       color: var(--gold);
+       margin-bottom: 5px;
+   }
+
+   .stat-label {
+       font-size: 12px;
+       color: rgba(255, 255, 255, 0.8);
+       text-transform: uppercase;
+       letter-spacing: 1px;
+       font-weight: 500;
+   }
+
+   @keyframes fadeInUp {
+       from {
+           opacity: 0;
+           transform: translateY(30px);
+       }
+
+       to {
+           opacity: 1;
+           transform: translateY(0);
+       }
+   }
+
+   /* Loading animation */
+   .loading-overlay {
+       position: fixed;
+       top: 0;
+       left: 0;
+       width: 100%;
+       height: 100%;
+       background: var(--primary-red);
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       z-index: 9999;
+       opacity: 1;
+       transition: opacity 0.5s ease-out;
+   }
+
+   .loading-overlay.hidden {
+       opacity: 0;
+       pointer-events: none;
+   }
+
+   .loader {
+       width: 60px;
+       height: 60px;
+       border: 4px solid rgba(255, 255, 255, 0.3);
+       border-top: 4px solid var(--white);
+       border-radius: 50%;
+       animation: spin 1s linear infinite;
+   }
+
+   @keyframes spin {
+       0% {
+           transform: rotate(0deg);
+       }
+
+       100% {
+           transform: rotate(360deg);
+       }
+   }
+
+   /* Responsive design */
+   @media (max-width: 768px) {
+       .container {
+           padding: 20px 15px;
+       }
+
+       .action-buttons {
+           flex-direction: column;
+           align-items: center;
+       }
+
+       .btn {
+           width: 250px;
+           justify-content: center;
+       }
+
+       .stats-section {
+           gap: 20px;
+       }
+
+       .stat-item {
+           min-width: 100px;
+           padding: 15px;
+       }
+
+       .field-container {
+           width: 250px;
+           height: 160px;
+       }
+   }
+
+   @media (max-width: 480px) {
+       .header-section {
+           margin-bottom: 40px;
+       }
+
+       .error-section {
+           margin-bottom: 40px;
+       }
+
+       .field-container {
+           width: 200px;
+           height: 130px;
+           margin: 20px auto;
+       }
+   }
+
+   /* Accessibility improvements */
+   @media (prefers-reduced-motion: reduce) {
+
+       *,
+       *::before,
+       *::after {
+           animation-duration: 0.01ms !important;
+           animation-iteration-count: 1 !important;
+           transition-duration: 0.01ms !important;
+       }
+   }
+
+   /* Focus states for accessibility */
+   .btn:focus,
+   .club-logo:focus {
+       outline: 3px solid var(--gold);
+       outline-offset: 2px;
+   }
+
+   /* High contrast mode support */
+   @media (prefers-contrast: high) {
+       :root {
+           --primary-red: #FF0000;
+           --gold: #FFFF00;
+           --white: #FFFFFF;
+       }
+   }

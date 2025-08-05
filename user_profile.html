@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Player Profile - Al Ahly SC Player Portal</title>
+        <link rel="stylesheet" href="styles/main.css">
+        <link rel="stylesheet" href="styles/player.css">
+        <link rel="stylesheet" href="styles/user_profile.css">
+
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet">
+        <style>
+
+        </style>
+    </head>
+
+    <body>
+        <div class="app-container">
+            <!-- Player Sidebar -->
+            <aside class="sidebar">
+                <div class="sidebar-header">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/4/41/Al_Ahly_SC_logo.png" alt="Al Ahly SC"
+                        class="sidebar-logo">
+                    <div class="sidebar-title">
+                        <h3>Al Ahly SC</h3>
+                        <p>Player Portal</p>
+                    </div>
+                </div>
+
+                <nav class="sidebar-nav">
+                    <div class="nav-section">
+                        <h4>OVERVIEW</h4>
+                        <ul>
+                            <li><a href="player-dashboard.html" class="nav-link"><i class="fas fa-home"></i>
+                                    Dashboard</a></li>
+                            <li><a href="user_profile8.html" class="nav-link active"><i class="fas fa-user"></i>
+                                    Profile</a></li>
+                            <li><a href="player-schedule.html" class="nav-link"><i class="fas fa-calendar-alt"></i>
+                                    Schedule</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="nav-section">
+                        <h4>TRAINING</h4>
+                        <ul>
+                            <li><a href="player-performance.html" class="nav-link"><i class="fas fa-chart-line"></i>
+                                    Performance</a></li>
+                            <li><a href="player-attendance.html" class="nav-link"><i class="fas fa-clipboard-check"></i>
+                                    Attendance</a></li>
+                            <li><a href="player-drills.html" class="nav-link"><i class="fas fa-dumbbell"></i> Training
+                                    Drills</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="nav-section">
+                        <h4>COMMUNICATION</h4>
+                        <ul>
+                            <li><a href="player-announcements.html" class="nav-link"><i class="fas fa-bullhorn"></i>
+                                    Announcements</a></li>
+                            <li><a href="player-chat.html" class="nav-link"><i class="fas fa-comments"></i> Chat with
+                                    Doctor</a></li>
+                            <li><a href="player-feedback.html" class="nav-link"><i class="fas fa-star"></i> Feedback</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="nav-section">
+                        <h4>HEALTH</h4>
+                        <ul>
+                            <li><a href="player-medical.html" class="nav-link"><i class="fas fa-heartbeat"></i> Medical
+                                    Records</a></li>
+                            <li><a href="player-nutrition.html" class="nav-link"><i class="fas fa-apple-alt"></i>
+                                    Nutrition Plan</a></li>
+                        </ul>
+                    </div>
+                </nav>
+
+                <div class="sidebar-footer">
+                    <div class="user-profile">
+                        <img src="https://images.unsplash.com/photo-1566753323558-f4e0952af115?w=40&h=40&fit=crop&crop=face"
+                            alt="Youssef Bassiony" class="user-avatar">
+                        <div class="user-info">
+                            <span class="user-name">Youssef Bassiony</span>
+                            <span class="user-role">Goalkeeper • #1</span>
+                        </div>
+                        <div class="user-menu">
+                            <i class="fas fa-chevron-down"></i>
+                            <div class="dropdown-menu">
+                                <a href="user_profile8.html"><i class="fas fa-user"></i> Profile</a>
+                                <a href="player-settings.html"><i class="fas fa-cog"></i> Settings</a>
+                                <a href="index.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="main-content">
+                <header class="main-header">
+                    <div class="header-left">
+                        <button class="sidebar-toggle">
+                            <i class="fas fa-bars"></i>
+                        </button>
+                        <h1>Player Profile</h1>
+                        <p>Manage your personal information and settings</p>
+                    </div>
+
+                    <div class="header-right">
+                        <button class="notifications">
+                            <i class="fas fa-bell"></i>
+                            <span class="notification-badge">3</span>
+                        </button>
+                        <button class="theme-toggle">
+                            <i class="fas fa-moon"></i>
+                        </button>
+                        <button class="btn btn-outline">
+                            <i class="fas fa-sign-out-alt"></i> Logout
+                        </button>
+                    </div>
+                </header>
+
+                <div class="profile-content">
+                    <div id="notification" class="notification"></div>
+
+                    <div class="profile-header">
+                        <div class="profile-avatar-section">
+                            <div class="profile-avatar" id="profileAvatar">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <button class="avatar-upload" onclick="openModal('avatarModal')">
+                                <i class="fas fa-camera"></i> Change Photo
+                            </button>
+                        </div>
+
+                        <div class="profile-info">
+                            <h2 id="profileName">Youssef Bassiony</h2>
+                            <div class="profile-meta">
+                                <div class="meta-item">
+                                    <i class="fas fa-envelope"></i>
+                                    <span id="profileEmail">ybass@alahly.com</span>
+                                </div>
+                                <div class="meta-item">
+                                    <i class="fas fa-phone"></i>
+                                    <span id="profilePhone">+20 123 456 7890</span>
+                                </div>
+                                <div class="meta-item">
+                                    <i class="fas fa-user-tag"></i>
+                                    <span id="profileRole">Player</span>
+                                </div>
+                            </div>
+                            <div class="profile-status">
+                                <div class="status-badge">
+                                    <i class="fas fa-circle" style="color: #10b981;"></i>
+                                    <span>Active</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="profile-tabs">
+                        <button class="tab-btn active" data-tab="profile">Profile</button>
+                        <button class="tab-btn" data-tab="security">Security</button>
+                        <button class="tab-btn" data-tab="medical">Medical</button>
+                        <button class="tab-btn" data-tab="training">Training</button>
+                        <button class="tab-btn" data-tab="schedule">Schedule</button>
+                    </div>
+
+                    <div class="tab-content active" id="profile-tab">
+                        <div class="profile-grid">
+                            <div class="profile-card">
+                                <div class="card-header">
+                                    <h2 class="card-title">Personal Information</h2>
+                                    <button class="edit-btn" id="editPersonalBtn">
+                                        <i class="fas fa-edit"></i> Edit
+                                    </button>
+                                </div>
+                                <div class="info-grid">
+                                    <div class="info-item">
+                                        <div class="info-label">Full Name</div>
+                                        <div class="info-value" id="fullName">Youssef Bassiony</div>
+                                    </div>
+                                    <div class="info-item">
+                                        <div class="info-label">Email</div>
+                                        <div class="info-value" id="email">m.elshenawy@alahly.com</div>
+                                    </div>
+                                    <div class="info-item">
+                                        <div class="info-label">Phone Number</div>
+                                        <div class="info-value" id="phone">+20 100 123 4567</div>
+                                    </div>
+                                    <div class="info-item">
+                                        <div class="info-label">Nationality</div>
+                                        <div class="info-value" id="nationality">Egyptian</div>
+                                    </div>
+                                    <div class="info-item">
+                                        <div class="info-label">Date of Birth</div>
+                                        <div class="info-value" id="dob">18 December 1988</div>
+                                    </div>
+                                    <div class="info-item">
+                                        <div class="info-label">National ID</div>
+                                        <div class="info-value" id="nationalId">28812181234567</div>
+                                    </div>
+                                    <div class="info-item">
+                                        <div class="info-label">Gender</div>
+                                        <div class="info-value" id="gender">Male</div>
+                                    </div>
+                                    <div class="info-item">
+                                        <div class="info-label">Status</div>
+                                        <div class="info-value">
+                                            <span class="status-badge status-active" id="status">Active</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="personalForm" style="display: none;">
+                                    <div class="form-group">
+                                        <label class="form-label">Full Name</label>
+                                        <input type="text" class="form-control" id="editFullName"
+                                            value="Youssef Bassiony">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Phone Number</label>
+                                        <input type="text" class="form-control" id="editPhone" value="+20 100 123 4567">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Nationality</label>
+                                        <input type="text" class="form-control" id="editNationality" value="Egyptian">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Date of Birth</label>
+                                        <input type="date" class="form-control" id="editDob" value="1988-12-18">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">National ID</label>
+                                        <input type="text" class="form-control" id="editNationalId"
+                                            value="28812181234567">
+                                    </div>
+                                    <div class="form-actions">
+                                        <button class="btn btn-outline" id="cancelPersonalEdit">Cancel</button>
+                                        <button class="btn btn-primary" id="savePersonal">Save Changes</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="profile-card">
+                                <div class="card-header">
+                                    <h2 class="card-title">Sports Information</h2>
+                                </div>
+                                <div class="info-grid">
+                                    <div class="info-item">
+                                        <div class="info-label">Sport</div>
+                                        <div class="info-value" id="sport">Football</div>
+                                    </div>
+                                    <div class="info-item">
+                                        <div class="info-label">Position</div>
+                                        <div class="info-value" id="position">Goalkeeper</div>
+                                    </div>
+                                    <div class="info-item">
+                                        <div class="info-label">Team</div>
+                                        <div class="info-value" id="team">First Team</div>
+                                    </div>
+                                    <div class="info-item">
+                                        <div class="info-label">Join Date</div>
+                                        <div class="info-value" id="joinDate">15 July 2016</div>
+                                    </div>
+                                    <div class="info-item">
+                                        <div class="info-label">Contract Start</div>
+                                        <div class="info-value" id="contractStart">1 July 2022</div>
+                                    </div>
+                                    <div class="info-item">
+                                        <div class="info-label">Contract End</div>
+                                        <div class="info-value" id="contractEnd">30 June 2025</div>
+                                    </div>
+                                    <div class="info-item">
+                                        <div class="info-label">Height</div>
+                                        <div class="info-value" id="height">191 cm</div>
+                                    </div>
+                                    <div class="info-item">
+                                        <div class="info-label">Weight</div>
+                                        <div class="info-value" id="weight">88 kg</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="profile-card">
+                                <div class="card-header">
+                                    <h2 class="card-title">Medical Information</h2>
+                                </div>
+                                <div class="info-grid">
+                                    <div class="info-item">
+                                        <div class="info-label">Last Checkup</div>
+                                        <div class="info-value">15 May 2023</div>
+                                    </div>
+                                    <div class="info-item">
+                                        <div class="info-label">Medical Status</div>
+                                        <div class="info-value">Fit to Play</div>
+                                    </div>
+                                    <div class="info-item">
+                                        <div class="info-label">Current Treatment</div>
+                                        <div class="info-value">None</div>
+                                    </div>
+                                    <div class="info-item">
+                                        <div class="info-label">Next Appointment</div>
+                                        <div class="info-value">30 June 2023</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="profile-card">
+                                <div class="card-header">
+                                    <h2 class="card-title">Emergency Contact</h2>
+                                </div>
+                                <div class="info-grid">
+                                    <div class="info-item">
+                                        <div class="info-label">Contact Name</div>
+                                        <div class="info-value">Ahmed El Shenawy</div>
+                                    </div>
+                                    <div class="info-item">
+                                        <div class="info-label">Relationship</div>
+                                        <div class="info-value">Brother</div>
+                                    </div>
+                                    <div class="info-item">
+                                        <div class="info-label">Phone Number</div>
+                                        <div class="info-value">+20 122 345 6789</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-content" id="security-tab">
+                        <div class="security-card">
+                            <div class="security-header">
+                                <div class="security-icon">
+                                    <i class="fas fa-lock"></i>
+                                </div>
+                                <div class="security-title">Password Security</div>
+                                <div class="security-status active">Active</div>
+                            </div>
+                            <p>Your password was last changed 3 months ago. We recommend changing it regularly for
+                                better
+                                security.</p>
+
+                            <div class="form-group">
+                                <label class="form-label">Current Password</label>
+                                <input type="password" class="form-control" id="currentPassword"
+                                    placeholder="Enter your current password">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">New Password</label>
+                                <input type="password" class="form-control" id="newPassword"
+                                    placeholder="Create a new password">
+                                <div class="password-strength" id="passwordStrength">
+                                    <div class="password-strength-fill"></div>
+                                </div>
+                                <div class="password-rules">
+                                    <p>Your password must contain:</p>
+                                    <ul>
+                                        <li id="ruleLength">At least 8 characters</li>
+                                        <li id="ruleUppercase">One uppercase letter</li>
+                                        <li id="ruleNumber">One number</li>
+                                        <li id="ruleSpecial">One special character</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Confirm New Password</label>
+                                <input type="password" class="form-control" id="confirmPassword"
+                                    placeholder="Confirm your new password">
+                            </div>
+
+                            <div class="form-actions">
+                                <button class="btn btn-primary" id="changePasswordBtn">
+                                    <i class="fas fa-key"></i> Change Password
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="security-card">
+                            <div class="security-header">
+                                <div class="security-icon">
+                                    <i class="fas fa-mobile-alt"></i>
+                                </div>
+                                <div class="security-title">Two-Factor Authentication</div>
+                                <div class="security-status inactive">Not Active</div>
+                            </div>
+                            <p>Add an extra layer of security to your account. When enabled, you'll be required to enter
+                                a
+                                verification code each time you sign in.</p>
+
+                            <div class="form-actions">
+                                <button class="btn btn-outline">
+                                    <i class="fas fa-plus"></i> Enable 2FA
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-content" id="medical-tab">
+                        <div class="profile-card">
+                            <div class="card-header">
+                                <h2 class="card-title">Medical History</h2>
+                            </div>
+                            <div class="table-container">
+                                <table class="info-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Diagnosis</th>
+                                            <th>Treatment</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>2023-03-12</td>
+                                            <td>Minor Ankle Sprain</td>
+                                            <td>Rest, Ice, Compression, Elevation</td>
+                                            <td>Recovered</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2022-11-05</td>
+                                            <td>Shoulder Strain</td>
+                                            <td>Physical Therapy</td>
+                                            <td>Recovered</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2022-06-20</td>
+                                            <td>Knee Inflammation</td>
+                                            <td>Anti-inflammatory medication</td>
+                                            <td>Recovered</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2021-09-15</td>
+                                            <td>Concussion</td>
+                                            <td>Rest, Cognitive Therapy</td>
+                                            <td>Recovered</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-content" id="training-tab">
+                        <div class="profile-card">
+                            <div class="card-header">
+                                <h2 class="card-title">Training Program</h2>
+                            </div>
+                            <div class="table-container">
+                                <table class="info-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Session Type</th>
+                                            <th>Drills</th>
+                                            <th>Coach</th>
+                                            <th>Rating</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>2023-06-15</td>
+                                            <td>Goalkeeping</td>
+                                            <td>Reflex Training, Crosses</td>
+                                            <td>Michelle Alves</td>
+                                            <td>8.5</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2023-06-14</td>
+                                            <td>Strength</td>
+                                            <td>Upper Body, Core</td>
+                                            <td>Ricardo Ferreira</td>
+                                            <td>8.0</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2023-06-13</td>
+                                            <td>Tactical</td>
+                                            <td>Defensive Positioning</td>
+                                            <td>Marcelo Gallardo</td>
+                                            <td>9.0</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2023-06-12</td>
+                                            <td>Recovery</td>
+                                            <td>Pool Session, Stretching</td>
+                                            <td>Ricardo Ferreira</td>
+                                            <td>8.0</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-content" id="schedule-tab">
+                        <div class="profile-card">
+                            <div class="card-header">
+                                <h2 class="card-title">Upcoming Schedule</h2>
+                            </div>
+                            <div class="table-container">
+                                <table class="info-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Time</th>
+                                            <th>Event</th>
+                                            <th>Location</th>
+                                            <th>Type</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>2023-06-18</td>
+                                            <td>18:00</td>
+                                            <td>Training Session</td>
+                                            <td>Main Training Ground</td>
+                                            <td>Training</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2023-06-19</td>
+                                            <td>10:00</td>
+                                            <td>Medical Checkup</td>
+                                            <td>Medical Center</td>
+                                            <td>Medical</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2023-06-20</td>
+                                            <td>20:00</td>
+                                            <td>Match vs Zamalek</td>
+                                            <td>Cairo International Stadium</td>
+                                            <td>Match</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2023-06-22</td>
+                                            <td>16:00</td>
+                                            <td>Team Meeting</td>
+                                            <td>Conference Room</td>
+                                            <td>Meeting</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <!-- Photo Upload Modal -->
+        <div id="avatarModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Change Profile Photo</h3>
+                    <button class="modal-close" onclick="closeModal('avatarModal')">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="upload-section">
+                        <div class="upload-area" id="uploadArea">
+                            <div class="upload-icon">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                            </div>
+                            <p>Drag and drop your photo here or</p>
+                            <button class="upload-btn" onclick="document.getElementById('fileInput').click()">
+                                Choose File
+                            </button>
+                            <input type="file" id="fileInput" accept="image/*" style="display: none;"
+                                onchange="handleFileSelect(event)">
+                        </div>
+                        <div class="upload-preview" id="uploadPreview" style="display: none;">
+                            <img id="previewImage" src="" alt="Preview">
+                            <div class="preview-actions">
+                                <button class="btn btn-primary" onclick="uploadPhoto()">
+                                    <i class="fas fa-upload"></i> Upload Photo
+                                </button>
+                                <button class="btn btn-outline" onclick="cancelUpload()">
+                                    <i class="fas fa-times"></i> Cancel
+                                </button>
+                            </div>
+                        </div>
+                        <div class="upload-progress">
+                            <div class="upload-progress-fill"></div>
+                        </div>
+                    </div>
+                    <div class="upload-info">
+                        <h4>Photo Requirements:</h4>
+                        <ul>
+                            <li>Maximum file size: 5MB</li>
+                            <li>Supported formats: JPG, PNG, GIF</li>
+                            <li>Recommended size: 400x400 pixels</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="scripts/main.js"></script>
+        <script src="scripts/player.js"></script>
+        <script src="scripts/profile-tabs.js"></script>
+        <script src="scripts/user_profile.js"></script>
+
+    </body>
+
+</html>

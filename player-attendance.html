@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Attendance Records - Al Ahly SC Player Portal</title>
+        <link rel="stylesheet" href="styles/main.css">
+        <link rel="stylesheet" href="styles/player.css">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet">
+    </head>
+
+    <body>
+        <div class="app-container">
+            <!-- Player Sidebar -->
+            <aside class="sidebar">
+                <div class="sidebar-header">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/4/41/Al_Ahly_SC_logo.png" alt="Al Ahly SC"
+                        class="sidebar-logo">
+                    <div class="sidebar-title">
+                        <h3>Al Ahly SC</h3>
+                        <p>Player Portal</p>
+                    </div>
+                </div>
+
+                <nav class="sidebar-nav">
+                    <div class="nav-section">
+                        <h4>OVERVIEW</h4>
+                        <ul>
+                            <li><a href="player-dashboard.html" class="nav-link"><i class="fas fa-home"></i>
+                                    Dashboard</a></li>
+                            <li><a href="player-performance.html" class="nav-link"><i class="fas fa-chart-line"></i>
+                                    Performance</a></li>
+                            <li><a href="player-schedule.html" class="nav-link"><i class="fas fa-calendar-alt"></i>
+                                    Schedule</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="nav-section">
+                        <h4>TRAINING</h4>
+                        <ul>
+                            <li><a href="player-attendance.html" class="nav-link active"><i
+                                        class="fas fa-clipboard-check"></i> Attendance</a></li>
+                            <li><a href="player-drills.html" class="nav-link"><i class="fas fa-dumbbell"></i> Training
+                                    Drills</a></li>
+                            <li><a href="player-goals.html" class="nav-link"><i class="fas fa-target"></i> Goals &
+                                    Progress</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="nav-section">
+                        <h4>COMMUNICATION</h4>
+                        <ul>
+                            <li><a href="player-announcements.html" class="nav-link"><i class="fas fa-bullhorn"></i>
+                                    Announcements</a></li>
+                            <li><a href="player-chat.html" class="nav-link"><i class="fas fa-comments"></i> Chat with
+                                    Doctor</a></li>
+                            <li><a href="player-feedback.html" class="nav-link"><i class="fas fa-star"></i> Feedback</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="nav-section">
+                        <h4>HEALTH</h4>
+                        <ul>
+                            <li><a href="player-medical.html" class="nav-link"><i class="fas fa-heartbeat"></i> Medical
+                                    Records</a></li>
+                            <li><a href="player-nutrition.html" class="nav-link"><i class="fas fa-apple-alt"></i>
+                                    Nutrition Plan</a></li>
+                        </ul>
+                    </div>
+                </nav>
+
+                <div class="sidebar-footer">
+                    <div class="user-profile">
+                        <img src="https://images.unsplash.com/photo-1566753323558-f4e0952af115?w=40&h=40&fit=crop&crop=face"
+                            alt="Youssef Bassiony" class="user-avatar">
+                        <div class="user-info">
+                            <span class="user-name">Youssef Bassiony</span>
+                            <span class="user-role">Forward • #11</span>
+                        </div>
+                        <div class="user-menu">
+                            <i class="fas fa-chevron-down"></i>
+                            <div class="dropdown-menu">
+                                <a href="player-profile.html"><i class="fas fa-user"></i> Profile</a>
+                                <a href="player-settings.html"><i class="fas fa-cog"></i> Settings</a>
+                                <a href="index.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="main-content">
+                <header class="main-header">
+                    <div class="header-left">
+                        <button class="sidebar-toggle">
+                            <i class="fas fa-bars"></i>
+                        </button>
+                        <h1>Attendance Records</h1>
+                        <p>Track your training session attendance and participation</p>
+                    </div>
+
+                    <div class="header-right">
+                        <div class="date-range-selector">
+                            <select id="attendance-period">
+                                <option value="this-month">This Month</option>
+                                <option value="last-month">Last Month</option>
+                                <option value="this-year">This Year</option>
+                                <option value="custom">Custom Range</option>
+                            </select>
+                        </div>
+                        <button class="btn-outline" onclick="exportAttendance()">
+                            <i class="fas fa-download"></i>
+                            Export
+                        </button>
+                    </div>
+                </header>
+
+                <div class="attendance-content">
+                    <!-- Attendance Overview -->
+                    <div class="attendance-overview-section">
+                        <div class="overview-cards">
+                            <div class="overview-card">
+                                <div class="card-icon present">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <div class="card-info">
+                                    <h3>38</h3>
+                                    <p>Sessions Attended</p>
+                                    <span class="card-change positive">+3 this week</span>
+                                </div>
+                            </div>
+
+                            <div class="overview-card">
+                                <div class="card-icon absent">
+                                    <i class="fas fa-times-circle"></i>
+                                </div>
+                                <div class="card-info">
+                                    <h3>2</h3>
+                                    <p>Sessions Missed</p>
+                                    <span class="card-change neutral">No change</span>
+                                </div>
+                            </div>
+
+                            <div class="overview-card">
+                                <div class="card-icon percentage">
+                                    <i class="fas fa-percentage"></i>
+                                </div>
+                                <div class="card-info">
+                                    <h3>95%</h3>
+                                    <p>Attendance Rate</p>
+                                    <span class="card-change positive">+2% this month</span>
+                                </div>
+                            </div>
+
+                            <div class="overview-card">
+                                <div class="card-icon streak">
+                                    <i class="fas fa-fire"></i>
+                                </div>
+                                <div class="card-info">
+                                    <h3>12</h3>
+                                    <p>Current Streak</p>
+                                    <span class="card-change positive">Best this year</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Attendance Calendar -->
+                    <div class="attendance-calendar-section">
+                        <div class="dashboard-card">
+                            <div class="card-header">
+                                <h3>Monthly Calendar</h3>
+                                <p>Visual overview of your attendance this month</p>
+                                <div class="calendar-navigation">
+                                    <button class="nav-btn" onclick="previousMonth()">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </button>
+                                    <span class="current-month">January 2024</span>
+                                    <button class="nav-btn" onclick="nextMonth()">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="calendar-container">
+                                <div class="calendar-legend">
+                                    <div class="legend-item">
+                                        <div class="legend-color present"></div>
+                                        <span>Present</span>
+                                    </div>
+                                    <div class="legend-item">
+                                        <div class="legend-color absent"></div>
+                                        <span>Absent</span>
+                                    </div>
+                                    <div class="legend-item">
+                                        <div class="legend-color excused"></div>
+                                        <span>Excused</span>
+                                    </div>
+                                    <div class="legend-item">
+                                        <div class="legend-color no-session"></div>
+                                        <span>No Session</span>
+                                    </div>
+                                </div>
+
+                                <div class="calendar-grid">
+                                    <div class="calendar-header">
+                                        <div class="day-header">Sun</div>
+                                        <div class="day-header">Mon</div>
+                                        <div class="day-header">Tue</div>
+                                        <div class="day-header">Wed</div>
+                                        <div class="day-header">Thu</div>
+                                        <div class="day-header">Fri</div>
+                                        <div class="day-header">Sat</div>
+                                    </div>
+
+                                    <div class="calendar-body">
+                                        <div class="calendar-day no-session"><span>31</span></div>
+                                        <div class="calendar-day present" title="Team Training - Present">
+                                            <span>1</span><i class="fas fa-check"></i></div>
+                                        <div class="calendar-day present" title="Gym Session - Present"><span>2</span><i
+                                                class="fas fa-check"></i></div>
+                                        <div class="calendar-day present" title="Team Training - Present">
+                                            <span>3</span><i class="fas fa-check"></i></div>
+                                        <div class="calendar-day no-session"><span>4</span></div>
+                                        <div class="calendar-day present" title="Match Day - Present"><span>5</span><i
+                                                class="fas fa-check"></i></div>
+                                        <div class="calendar-day no-session"><span>6</span></div>
+
+                                        <div class="calendar-day no-session"><span>7</span></div>
+                                        <div class="calendar-day present" title="Team Training - Present">
+                                            <span>8</span><i class="fas fa-check"></i></div>
+                                        <div class="calendar-day present" title="Tactical Session - Present">
+                                            <span>9</span><i class="fas fa-check"></i></div>
+                                        <div class="calendar-day present" title="Team Training - Present">
+                                            <span>10</span><i class="fas fa-check"></i></div>
+                                        <div class="calendar-day no-session"><span>11</span></div>
+                                        <div class="calendar-day present" title="Match Day - Present"><span>12</span><i
+                                                class="fas fa-check"></i></div>
+                                        <div class="calendar-day no-session"><span>13</span></div>
+
+                                        <div class="calendar-day no-session"><span>14</span></div>
+                                        <div class="calendar-day present" title="Team Training - Present">
+                                            <span>15</span><i class="fas fa-check"></i></div>
+                                        <div class="calendar-day present" title="Gym Session - Present">
+                                            <span>16</span><i class="fas fa-check"></i></div>
+                                        <div class="calendar-day absent" title="Team Training - Absent (Personal)">
+                                            <span>17</span><i class="fas fa-times"></i></div>
+                                        <div class="calendar-day no-session"><span>18</span></div>
+                                        <div class="calendar-day present" title="Match Day - Present"><span>19</span><i
+                                                class="fas fa-check"></i></div>
+                                        <div class="calendar-day no-session"><span>20</span></div>
+
+                                        <div class="calendar-day no-session"><span>21</span></div>
+                                        <div class="calendar-day present" title="Team Training - Present">
+                                            <span>22</span><i class="fas fa-check"></i></div>
+                                        <div class="calendar-day present" title="Recovery Session - Present">
+                                            <span>23</span><i class="fas fa-check"></i></div>
+                                        <div class="calendar-day present" title="Team Training - Present">
+                                            <span>24</span><i class="fas fa-check"></i></div>
+                                        <div class="calendar-day no-session"><span>25</span></div>
+                                        <div class="calendar-day present" title="Match Day - Present"><span>26</span><i
+                                                class="fas fa-check"></i></div>
+                                        <div class="calendar-day no-session"><span>27</span></div>
+
+                                        <div class="calendar-day no-session"><span>28</span></div>
+                                        <div class="calendar-day present" title="Team Training - Present">
+                                            <span>29</span><i class="fas fa-check"></i></div>
+                                        <div class="calendar-day present" title="Tactical Session - Present">
+                                            <span>30</span><i class="fas fa-check"></i></div>
+                                        <div class="calendar-day present" title="Team Training - Present">
+                                            <span>31</span><i class="fas fa-check"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Detailed Attendance Records -->
+                    <div class="attendance-records-section">
+                        <div class="dashboard-card">
+                            <div class="card-header">
+                                <h3>Detailed Records</h3>
+                                <p>Complete list of your training sessions</p>
+                                <div class="records-filters">
+                                    <select id="session-type-filter">
+                                        <option value="">All Sessions</option>
+                                        <option value="team-training">Team Training</option>
+                                        <option value="gym">Gym Session</option>
+                                        <option value="match">Match Day</option>
+                                        <option value="recovery">Recovery</option>
+                                    </select>
+                                    <select id="status-filter">
+                                        <option value="">All Status</option>
+                                        <option value="present">Present</option>
+                                        <option value="absent">Absent</option>
+                                        <option value="excused">Excused</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="records-table-container">
+                                <table class="attendance-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Session Type</th>
+                                            <th>Time</th>
+                                            <th>Duration</th>
+                                            <th>Coach</th>
+                                            <th>Status</th>
+                                            <th>Notes</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="present">
+                                            <td>Jan 31, 2024</td>
+                                            <td>
+                                                <div class="session-type team-training">
+                                                    <i class="fas fa-users"></i>
+                                                    Team Training
+                                                </div>
+                                            </td>
+                                            <td>4:00 PM</td>
+                                            <td>90 min</td>
+                                            <td>Ahmed Hassan</td>
+                                            <td>
+                                                <span class="status-badge present">
+                                                    <i class="fas fa-check"></i>
+                                                    Present
+                                                </span>
+                                            </td>
+                                            <td>Excellent performance</td>
+                                        </tr>
+
+                                        <tr class="present">
+                                            <td>Jan 30, 2024</td>
+                                            <td>
+                                                <div class="session-type tactical">
+                                                    <i class="fas fa-chess"></i>
+                                                    Tactical Session
+                                                </div>
+                                            </td>
+                                            <td>3:00 PM</td>
+                                            <td>60 min</td>
+                                            <td>Ahmed Hassan</td>
+                                            <td>
+                                                <span class="status-badge present">
+                                                    <i class="fas fa-check"></i>
+                                                    Present
+                                                </span>
+                                            </td>
+                                            <td>Good understanding of tactics</td>
+                                        </tr>
+
+                                        <tr class="present">
+                                            <td>Jan 29, 2024</td>
+                                            <td>
+                                                <div class="session-type team-training">
+                                                    <i class="fas fa-users"></i>
+                                                    Team Training
+                                                </div>
+                                            </td>
+                                            <td>4:00 PM</td>
+                                            <td>90 min</td>
+                                            <td>Ahmed Hassan</td>
+                                            <td>
+                                                <span class="status-badge present">
+                                                    <i class="fas fa-check"></i>
+                                                    Present
+                                                </span>
+                                            </td>
+                                            <td>Great energy and focus</td>
+                                        </tr>
+
+                                        <tr class="present">
+                                            <td>Jan 26, 2024</td>
+                                            <td>
+                                                <div class="session-type match">
+                                                    <i class="fas fa-trophy"></i>
+                                                    Match Day
+                                                </div>
+                                            </td>
+                                            <td>7:00 PM</td>
+                                            <td>90 min</td>
+                                            <td>Ahmed Hassan</td>
+                                            <td>
+                                                <span class="status-badge present">
+                                                    <i class="fas fa-check"></i>
+                                                    Present
+                                                </span>
+                                            </td>
+                                            <td>Scored 2 goals</td>
+                                        </tr>
+
+                                        <tr class="present">
+                                            <td>Jan 24, 2024</td>
+                                            <td>
+                                                <div class="session-type team-training">
+                                                    <i class="fas fa-users"></i>
+                                                    Team Training
+                                                </div>
+                                            </td>
+                                            <td>4:00 PM</td>
+                                            <td>90 min</td>
+                                            <td>Ahmed Hassan</td>
+                                            <td>
+                                                <span class="status-badge present">
+                                                    <i class="fas fa-check"></i>
+                                                    Present
+                                                </span>
+                                            </td>
+                                            <td>Good passing accuracy</td>
+                                        </tr>
+
+                                        <tr class="present">
+                                            <td>Jan 23, 2024</td>
+                                            <td>
+                                                <div class="session-type recovery">
+                                                    <i class="fas fa-spa"></i>
+                                                    Recovery Session
+                                                </div>
+                                            </td>
+                                            <td>10:00 AM</td>
+                                            <td>45 min</td>
+                                            <td>Physio Team</td>
+                                            <td>
+                                                <span class="status-badge present">
+                                                    <i class="fas fa-check"></i>
+                                                    Present
+                                                </span>
+                                            </td>
+                                            <td>Full recovery protocol</td>
+                                        </tr>
+
+                                        <tr class="present">
+                                            <td>Jan 22, 2024</td>
+                                            <td>
+                                                <div class="session-type team-training">
+                                                    <i class="fas fa-users"></i>
+                                                    Team Training
+                                                </div>
+                                            </td>
+                                            <td>4:00 PM</td>
+                                            <td>90 min</td>
+                                            <td>Ahmed Hassan</td>
+                                            <td>
+                                                <span class="status-badge present">
+                                                    <i class="fas fa-check"></i>
+                                                    Present
+                                                </span>
+                                            </td>
+                                            <td>Strong defensive work</td>
+                                        </tr>
+
+                                        <tr class="present">
+                                            <td>Jan 19, 2024</td>
+                                            <td>
+                                                <div class="session-type match">
+                                                    <i class="fas fa-trophy"></i>
+                                                    Match Day
+                                                </div>
+                                            </td>
+                                            <td>8:00 PM</td>
+                                            <td>90 min</td>
+                                            <td>Ahmed Hassan</td>
+                                            <td>
+                                                <span class="status-badge present">
+                                                    <i class="fas fa-check"></i>
+                                                    Present
+                                                </span>
+                                            </td>
+                                            <td>Man of the match</td>
+                                        </tr>
+
+                                        <tr class="absent">
+                                            <td>Jan 17, 2024</td>
+                                            <td>
+                                                <div class="session-type team-training">
+                                                    <i class="fas fa-users"></i>
+                                                    Team Training
+                                                </div>
+                                            </td>
+                                            <td>4:00 PM</td>
+                                            <td>90 min</td>
+                                            <td>Ahmed Hassan</td>
+                                            <td>
+                                                <span class="status-badge absent">
+                                                    <i class="fas fa-times"></i>
+                                                    Absent
+                                                </span>
+                                            </td>
+                                            <td>Personal reasons</td>
+                                        </tr>
+
+                                        <tr class="present">
+                                            <td>Jan 16, 2024</td>
+                                            <td>
+                                                <div class="session-type gym">
+                                                    <i class="fas fa-dumbbell"></i>
+                                                    Gym Session
+                                                </div>
+                                            </td>
+                                            <td>10:00 AM</td>
+                                            <td>60 min</td>
+                                            <td>Fitness Coach</td>
+                                            <td>
+                                                <span class="status-badge present">
+                                                    <i class="fas fa-check"></i>
+                                                    Present
+                                                </span>
+                                            </td>
+                                            <td>Strength improvements noted</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <script src="scripts/main.js"></script>
+        <script src="scripts/player.js"></script>
+    </body>
+
+</html>

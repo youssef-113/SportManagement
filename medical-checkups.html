@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Checkup Logs - Al Ahly SC Medical Center</title>
+        <link rel="stylesheet" href="styles/main.css">
+        <link rel="stylesheet" href="styles/medical.css">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet">
+    </head>
+
+    <body>
+        <div class="app-container">
+            <!-- Medical Sidebar -->
+            <aside class="sidebar">
+                <div class="sidebar-header">
+                    <img src="./Images/FwBoNGZ7XfGg.png" alt="Al Ahly SC" class="sidebar-logo">
+                    <div class="sidebar-title">
+                        <h3>Al Ahly SC</h3>
+                        <p>Medical Center</p>
+                    </div>
+                </div>
+
+                <nav class="sidebar-nav">
+                    <div class="nav-section">
+                        <h4>MEDICAL OVERVIEW</h4>
+                        <ul>
+                            <li><a href="medical-dashboard.html" class="nav-link"><i class="fas fa-heartbeat"></i>
+                                    Dashboard</a></li>
+                            <li><a href="medical-schedule.html" class="nav-link"><i class="fas fa-calendar-alt"></i> My
+                                    Schedule</a></li>
+                            <li><a href="medical-announcements.html" class="nav-link"><i class="fas fa-bullhorn"></i>
+                                    Announcements</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="nav-section">
+                        <h4>PLAYER MANAGEMENT</h4>
+                        <ul>
+                            <li><a href="medical-players.html" class="nav-link"><i class="fas fa-user-friends"></i>
+                                    Player Search</a></li>
+                            <li><a href="medical-injuries.html" class="nav-link"><i class="fas fa-band-aid"></i> Injury
+                                    Management</a></li>
+                            <li><a href="medical-checkups.html" class="nav-link active"><i
+                                        class="fas fa-clipboard-list"></i> Checkup Logs</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="nav-section">
+                        <h4>COMMUNICATION</h4>
+                        <ul>
+                            <li><a href="medical-chat.html" class="nav-link"><i class="fas fa-comments"></i> Player
+                                    Chat</a></li>
+                            <li><a href="medical-reports.html" class="nav-link"><i class="fas fa-file-medical"></i>
+                                    Medical Reports</a></li>
+                        </ul>
+                    </div>
+                </nav>
+
+                <div class="sidebar-footer">
+                    <div class="user-profile">
+                        <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=40&h=40&fit=crop&crop=face"
+                            alt="User" class="user-avatar">
+                        <div class="user-info">
+                            <span class="user-name">Dr. Sarah Ahmed</span>
+                            <span class="user-role">Medical Staff</span>
+                        </div>
+                        <div class="user-menu">
+                            <i class="fas fa-chevron-down"></i>
+                            <div class="dropdown-menu">
+                                <a href="profile.html"><i class="fas fa-user"></i> Profile</a>
+                                <a href="settings.html"><i class="fas fa-cog"></i> Settings</a>
+                                <a href="index.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="main-content">
+                <header class="main-header">
+                    <div class="header-left">
+                        <button class="sidebar-toggle">
+                            <i class="fas fa-bars"></i>
+                        </button>
+                        <h1>Checkup Logs</h1>
+                        <p>View and manage all medical checkup records</p>
+                    </div>
+
+                    <div class="header-right">
+                        <div class="date-range-picker">
+                            <input type="date" id="start-date" value="2024-01-01">
+                            <span>to</span>
+                            <input type="date" id="end-date" value="2024-01-31">
+                        </div>
+                        <button class="btn-outline" onclick="exportCheckupLogs()">
+                            <i class="fas fa-download"></i>
+                            Export
+                        </button>
+                        <button class="btn-primary" onclick="openNewCheckupLogModal()">
+                            <i class="fas fa-plus"></i>
+                            New Checkup Log
+                        </button>
+                    </div>
+                </header>
+
+                <div class="checkup-logs-content">
+                    <!-- Checkup Filters -->
+                    <div class="checkup-filters">
+                        <div class="filter-group">
+                            <label>Type:</label>
+                            <select id="checkup-type-filter">
+                                <option value="">All Types</option>
+                                <option value="routine">Routine Checkup</option>
+                                <option value="injury">Injury Assessment</option>
+                                <option value="recovery">Recovery Check</option>
+                                <option value="fitness">Fitness Test</option>
+                            </select>
+                        </div>
+
+                        <div class="filter-group">
+                            <label>Team:</label>
+                            <select id="team-filter">
+                                <option value="">All Teams</option>
+                                <option value="football-first">Football First Team</option>
+                                <option value="football-youth">Football Youth Team</option>
+                                <option value="basketball">Basketball Team</option>
+                                <option value="handball">Handball Team</option>
+                            </select>
+                        </div>
+
+                        <div class="filter-group">
+                            <label>Status:</label>
+                            <select id="status-filter">
+                                <option value="">All Status</option>
+                                <option value="completed">Completed</option>
+                                <option value="scheduled">Scheduled</option>
+                                <option value="cancelled">Cancelled</option>
+                            </select>
+                        </div>
+
+                        <button class="btn-outline" onclick="clearCheckupFilters()">
+                            <i class="fas fa-times"></i>
+                            Clear
+                        </button>
+                    </div>
+
+                    <!-- Checkup Logs Table -->
+                    <div class="checkup-logs-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Date & Time</th>
+                                    <th>Player</th>
+                                    <th>Type</th>
+                                    <th>Status</th>
+                                    <th>Findings</th>
+                                    <th>Doctor</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="datetime-cell">
+                                            <span class="date">Jan 16, 2024</span>
+                                            <span class="time">11:30 AM</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="player-cell">
+                                            <img src="https://images.unsplash.com/photo-1566753323558-f4e0952af115?w=30&h=30&fit=crop&crop=face"
+                                                alt="Youssef Bassiony" class="table-avatar">
+                                            <div class="player-info">
+                                                <span class="player-name">Youssef Bassiony</span>
+                                                <span class="player-team">Football First Team</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <span class="checkup-type injury">Injury Assessment</span>
+                                    </td>
+                                    <td>
+                                        <span class="status completed">Completed</span>
+                                    </td>
+                                    <td>
+                                        <div class="findings-cell">
+                                            <span class="finding-summary">Ankle sprain - Grade 2</span>
+                                            <span class="finding-detail">Swelling reduced, good progress</span>
+                                        </div>
+                                    </td>
+                                    <td>Dr. Sarah Ahmed</td>
+                                    <td>
+                                        <div class="table-actions">
+                                            <button class="table-action-btn" onclick="viewCheckupDetails(1)"
+                                                title="View Details">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <button class="table-action-btn" onclick="editCheckup(1)" title="Edit">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="table-action-btn" onclick="printCheckup(1)" title="Print">
+                                                <i class="fas fa-print"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <div class="datetime-cell">
+                                            <span class="date">Jan 15, 2024</span>
+                                            <span class="time">09:00 AM</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="player-cell">
+                                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=30&h=30&fit=crop&crop=face"
+                                                alt="Ahmed Zizo" class="table-avatar">
+                                            <div class="player-info">
+                                                <span class="player-name">Ahmed Zizo</span>
+                                                <span class="player-team">Football First Team</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <span class="checkup-type routine">Routine Checkup</span>
+                                    </td>
+                                    <td>
+                                        <span class="status completed">Completed</span>
+                                    </td>
+                                    <td>
+                                        <div class="findings-cell">
+                                            <span class="finding-summary">All normal</span>
+                                            <span class="finding-detail">Cleared for training</span>
+                                        </div>
+                                    </td>
+                                    <td>Dr. Sarah Ahmed</td>
+                                    <td>
+                                        <div class="table-actions">
+                                            <button class="table-action-btn" onclick="viewCheckupDetails(2)"
+                                                title="View Details">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <button class="table-action-btn" onclick="editCheckup(2)" title="Edit">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="table-action-btn" onclick="printCheckup(2)" title="Print">
+                                                <i class="fas fa-print"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <div class="datetime-cell">
+                                            <span class="date">Jan 18, 2024</span>
+                                            <span class="time">02:00 PM</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="player-cell">
+                                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=30&h=30&fit=crop&crop=face"
+                                                alt="Karim Fouad" class="table-avatar">
+                                            <div class="player-info">
+                                                <span class="player-name">Karim Fouad</span>
+                                                <span class="player-team">Football First Team</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <span class="checkup-type recovery">Recovery Check</span>
+                                    </td>
+                                    <td>
+                                        <span class="status scheduled">Scheduled</span>
+                                    </td>
+                                    <td>
+                                        <div class="findings-cell">
+                                            <span class="finding-summary">-</span>
+                                            <span class="finding-detail">Pending checkup</span>
+                                        </div>
+                                    </td>
+                                    <td>Dr. Sarah Ahmed</td>
+                                    <td>
+                                        <div class="table-actions">
+                                            <button class="table-action-btn" onclick="viewCheckupDetails(3)"
+                                                title="View Details">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <button class="table-action-btn" onclick="editCheckup(3)" title="Edit">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="table-action-btn" onclick="cancelCheckup(3)" title="Cancel">
+                                                <i class="fas fa-times"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <div class="datetime-cell">
+                                            <span class="date">Jan 14, 2024</span>
+                                            <span class="time">10:30 AM</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="player-cell">
+                                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=30&h=30&fit=crop&crop=face"
+                                                alt="Hassan Ahmed" class="table-avatar">
+                                            <div class="player-info">
+                                                <span class="player-name">Hassan Ahmed</span>
+                                                <span class="player-team">Football First Team</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <span class="checkup-type fitness">Fitness Test</span>
+                                    </td>
+                                    <td>
+                                        <span class="status completed">Completed</span>
+                                    </td>
+                                    <td>
+                                        <div class="findings-cell">
+                                            <span class="finding-summary">Excellent fitness level</span>
+                                            <span class="finding-detail">All parameters within range</span>
+                                        </div>
+                                    </td>
+                                    <td>Dr. Sarah Ahmed</td>
+                                    <td>
+                                        <div class="table-actions">
+                                            <button class="table-action-btn" onclick="viewCheckupDetails(4)"
+                                                title="View Details">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <button class="table-action-btn" onclick="editCheckup(4)" title="Edit">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="table-action-btn" onclick="printCheckup(4)" title="Print">
+                                                <i class="fas fa-print"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Pagination -->
+                    <div class="pagination">
+                        <button class="pagination-btn" disabled>
+                            <i class="fas fa-chevron-left"></i>
+                            Previous
+                        </button>
+                        <div class="pagination-info">
+                            Showing 1-4 of 24 checkups
+                        </div>
+                        <button class="pagination-btn">
+                            Next
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <!-- Checkup Details Modal -->
+        <div class="modal" id="checkup-details-modal">
+            <div class="modal-content large">
+                <div class="modal-header">
+                    <h3>Checkup Details</h3>
+                    <span class="close" onclick="closeCheckupDetailsModal()">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <div class="checkup-details-content">
+                        <div class="checkup-header">
+                            <div class="checkup-patient">
+                                <img id="details-player-avatar" src="/placeholder.svg" alt="Player"
+                                    class="details-avatar">
+                                <div class="patient-info">
+                                    <h4 id="details-player-name">Player Name</h4>
+                                    <p id="details-player-meta">Position • Team</p>
+                                    <div class="checkup-meta">
+                                        <span id="details-date">Date</span>
+                                        <span id="details-type">Type</span>
+                                        <span id="details-duration">Duration</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="checkup-sections">
+                            <div class="checkup-section">
+                                <h5>Vital Signs</h5>
+                                <div class="vitals-grid">
+                                    <div class="vital-item">
+                                        <span class="vital-label">Blood Pressure</span>
+                                        <span class="vital-value">120/80 mmHg</span>
+                                    </div>
+                                    <div class="vital-item">
+                                        <span class="vital-label">Heart Rate</span>
+                                        <span class="vital-value">72 bpm</span>
+                                    </div>
+                                    <div class="vital-item">
+                                        <span class="vital-label">Temperature</span>
+                                        <span class="vital-value">36.8°C</span>
+                                    </div>
+                                    <div class="vital-item">
+                                        <span class="vital-label">Weight</span>
+                                        <span class="vital-value">75 kg</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="checkup-section">
+                                <h5>Physical Examination</h5>
+                                <div class="examination-details">
+                                    <p><strong>Chief Complaint:</strong> Follow-up on ankle injury sustained during
+                                        training</p>
+                                    <p><strong>Physical Findings:</strong> Reduced swelling in right ankle, improved
+                                        range of motion, minimal tenderness on palpation</p>
+                                    <p><strong>Assessment:</strong> Good progress in recovery, healing as expected</p>
+                                </div>
+                            </div>
+
+                            <div class="checkup-section">
+                                <h5>Recommendations</h5>
+                                <ul class="recommendations-list">
+                                    <li>Continue with current rehabilitation exercises</li>
+                                    <li>Gradual return to light training activities</li>
+                                    <li>Follow-up appointment in 1 week</li>
+                                    <li>Apply ice after training sessions</li>
+                                </ul>
+                            </div>
+
+                            <div class="checkup-section">
+                                <h5>Next Steps</h5>
+                                <div class="next-steps">
+                                    <div class="step-item">
+                                        <i class="fas fa-calendar"></i>
+                                        <span>Schedule follow-up in 1 week</span>
+                                    </div>
+                                    <div class="step-item">
+                                        <i class="fas fa-dumbbell"></i>
+                                        <span>Begin light training activities</span>
+                                    </div>
+                                    <div class="step-item">
+                                        <i class="fas fa-file-medical"></i>
+                                        <span>Update medical records</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- New Checkup Log Modal -->
+        <div class="modal" id="new-checkup-log-modal">
+            <div class="modal-content large">
+                <div class="modal-header">
+                    <h3>New Checkup Log</h3>
+                    <span class="close" onclick="closeNewCheckupLogModal()">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <form id="new-checkup-log-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="log-player">Player</label>
+                                <select id="log-player" name="player" required>
+                                    <option value="">Select Player</option>
+                                    <option value="1">Youssef Bassiony</option>
+                                    <option value="2">Ahmed Zizo</option>
+                                    <option value="3">Karim Fouad</option>
+                                    <option value="4">Hassan Ahmed</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="log-type">Checkup Type</label>
+                                <select id="log-type" name="type" required>
+                                    <option value="">Select Type</option>
+                                    <option value="routine">Routine Checkup</option>
+                                    <option value="injury">Injury Assessment</option>
+                                    <option value="recovery">Recovery Check</option>
+                                    <option value="fitness">Fitness Test</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="log-date">Date</label>
+                                <input type="date" id="log-date" name="date" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="log-time">Time</label>
+                                <input type="time" id="log-time" name="time" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="log-duration">Duration (minutes)</label>
+                                <input type="number" id="log-duration" name="duration" min="15" max="120" value="30"
+                                    required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="log-location">Location</label>
+                            <select id="log-location" name="location" required>
+                                <option value="">Select Location</option>
+                                <option value="medical-room-a">Medical Room A</option>
+                                <option value="medical-room-b">Medical Room B</option>
+                                <option value="recovery-center">Recovery Center</option>
+                                <option value="training-ground">Training Ground</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="log-findings">Findings</label>
+                            <textarea id="log-findings" name="findings" rows="3"
+                                placeholder="Medical findings and observations..." required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="log-recommendations">Recommendations</label>
+                            <textarea id="log-recommendations" name="recommendations" rows="3"
+                                placeholder="Treatment recommendations and next steps..."></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="log-notes">Additional Notes</label>
+                            <textarea id="log-notes" name="notes" rows="2"
+                                placeholder="Any additional notes or concerns..."></textarea>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="btn-outline"
+                                onclick="closeNewCheckupLogModal()">Cancel</button>
+                            <button type="submit" class="btn-primary">Save Checkup Log</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <script src="scripts/main.js"></script>
+        <script src="scripts/medical.js"></script>
+    </body>
+
+</html>

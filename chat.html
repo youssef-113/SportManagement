@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Al Ahly SC - Team Chat</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <link rel="stylesheet" href="./styles/chat.css">
+        <link rel="stylesheet" href="./styles/main.css">
+        <link rel="stylesheet" href="./styles/dashboard.css">
+
+
+
+    </head>
+
+    <body>
+        <div class="app-container">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="sidebar-header">
+                    <div class="user-avatar" id="userAvatar">MS</div>
+                    <div class="user-info">
+                        <h3 id="userName">Youssef Bassiony</h3>
+                        <div class="user-role" id="userRole">Player</div>
+                    </div>
+                </div>
+
+                <nav class="sidebar-nav">
+                    <div class="nav-section">
+                        <h4>Main</h4>
+                        <a href="#" class="nav-link"><i class="fas fa-home"></i> Dashboard</a>
+                        <a href="#" class="nav-link"><i class="fas fa-user"></i> Profile</a>
+                        <a href="#" class="nav-link active"><i class="fas fa-comments"></i> Chat</a>
+                        <a href="#" class="nav-link"><i class="fas fa-calendar"></i> Schedule</a>
+                        <a href="#" class="nav-link"><i class="fas fa-chart-line"></i> Performance</a>
+                    </div>
+
+                    <div class="nav-section">
+                        <h4>Communication</h4>
+                        <a href="#" class="nav-link"><i class="fas fa-bullhorn"></i> Announcements</a>
+                        <a href="#" class="nav-link"><i class="fas fa-users"></i> Team Groups</a>
+                    </div>
+
+                    <div class="nav-section">
+                        <h4>Management</h4>
+                        <a href="#" class="nav-link"><i class="fas fa-users"></i> Team</a>
+                        <a href="#" class="nav-link"><i class="fas fa-cog"></i> Settings</a>
+                        <a href="#" class="nav-link admin-link"><i class="fas fa-lock"></i> Admin Panel</a>
+                    </div>
+                </nav>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="main-content">
+                <header class="main-header">
+                    <div class="header-left">
+                        <h1>Team Communication</h1>
+                        <p id="headerSubtitle">Chat with medical staff and coaches</p>
+                    </div>
+                    <div class="header-actions">
+                        <button class="header-btn" id="toggleContacts">
+                            <i class="fas fa-users"></i>
+                            <span>Contacts</span>
+                        </button>
+                        <button class="header-btn admin-btn">
+                            <i class="fas fa-lock"></i>
+                            <span>Admin Panel</span>
+                        </button>
+                    </div>
+                </header>
+
+                <div class="chat-container">
+                    <!-- Contacts Sidebar -->
+                    <div class="contacts-sidebar" id="contactsSidebar">
+                        <div class="contacts-header">
+                            <h2>Messages</h2>
+                            <div class="search-container">
+                                <i class="fas fa-search"></i>
+                                <input type="text" id="contactSearch" placeholder="Search contacts or groups...">
+                            </div>
+                        </div>
+                        <div class="contacts-list" id="contactsList">
+                            <!-- Contacts will be loaded dynamically -->
+                            <div class="spinner-container" style="text-align: center; padding: 20px;">
+                                <div class="spinner"></div>
+                                <p>Loading contacts...</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Chat Area -->
+                    <div class="chat-area">
+                        <div class="chat-header">
+                            <div class="chat-avatar" id="currentChatAvatar">?</div>
+                            <div class="chat-info">
+                                <h3 id="currentChatName">Select a contact</h3>
+                                <p id="currentChatStatus">Start a conversation</p>
+                            </div>
+                            <div class="chat-actions">
+                                <button class="chat-action-btn"><i class="fas fa-phone-alt"></i></button>
+                                <button class="chat-action-btn"><i class="fas fa-video"></i></button>
+                                <button class="chat-action-btn"><i class="fas fa-ellipsis-v"></i></button>
+                            </div>
+                        </div>
+
+                        <div class="messages-container" id="messagesContainer">
+                            <div class="welcome-message">
+                                <i class="fas fa-comments"></i>
+                                <h3>Welcome to Al Ahly Chat</h3>
+                                <p>Select a contact or group to start chatting</p>
+                            </div>
+                        </div>
+
+                        <div class="chat-input-container">
+                            <div class="chat-input-wrapper">
+                                <button class="emoji-picker-btn" id="emojiBtn">
+                                    <i class="far fa-smile"></i>
+                                </button>
+                                <textarea class="message-input" id="messageInput"
+                                    placeholder="Type your message here..."></textarea>
+                                <button class="send-button" id="sendButton">
+                                    <i class="fas fa-paper-plane"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <!-- Emoji Picker Container -->
+        <div class="emoji-picker-container" id="emojiPicker"></div>
+
+        <!-- Notification -->
+        <div class="notification" id="notification">
+            <i class="fas fa-check-circle"></i>
+            <span id="notificationText">Message sent successfully!</span>
+        </div>
+        <script src="scripts/chat.js"></script>
+        <script src="scripts/main.js"></script>
+
+    </body>
+
+</html>

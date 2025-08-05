@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drill Library - Al Ahly SC Training Management</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/drills.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="./Images/FwBoNGZ7XfGg.png" alt="Al Ahly SC" class="sidebar-logo">
+                <div class="sidebar-title">
+                    <h3>Al Ahly SC</h3>
+                    <p>Training Management</p>
+                </div>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <h4>OVERVIEW</h4>
+                    <ul>
+                        <li><a href="dashboard.html" class="nav-link"><i class="fas fa-home"></i> Dashboard</a></li>
+                        <li><a href="analytics.html" class="nav-link"><i class="fas fa-chart-bar"></i> Analytics</a></li>
+                    </ul>
+                </div>
+                
+                <div class="nav-section">
+                    <h4>SPORTS MANAGEMENT</h4>
+                    <ul>
+                        <li><a href="teams.html" class="nav-link"><i class="fas fa-users"></i> Teams</a></li>
+                        <li><a href="schedule.html" class="nav-link"><i class="fas fa-calendar-alt"></i> Schedule</a></li>
+                        <li><a href="drills.html" class="nav-link active"><i class="fas fa-dumbbell"></i> Drill Library</a></li>
+                        <li><a href="players.html" class="nav-link"><i class="fas fa-user-friends"></i> View Players</a></li>
+                        <li><a href="attendance.html" class="nav-link"><i class="fas fa-clipboard-check"></i> Attendance</a></li>
+                    </ul>
+                </div>
+                
+                <div class="nav-section">
+                    <h4>COMMUNICATION</h4>
+                    <ul>
+                        <li><a href="announcements.html" class="nav-link"><i class="fas fa-bullhorn"></i> Announcements</a></li>
+                        <li><a href="chat.html" class="nav-link"><i class="fas fa-comments"></i> Chat</a></li>
+                        <li><a href="feedback.html" class="nav-link"><i class="fas fa-star"></i> Feedback</a></li>
+                    </ul>
+                </div>
+                
+                <div class="nav-section">
+                    <h4>MEDICAL CENTER</h4>
+                    <ul>
+                        <li><a href="medical.html" class="nav-link"><i class="fas fa-heartbeat"></i> Medical Overview</a></li>
+                        <li><a href="injuries.html" class="nav-link"><i class="fas fa-band-aid"></i> Injury Management</a></li>
+                    </ul>
+                </div>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <div class="user-profile">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop&crop=face" alt="User" class="user-avatar">
+                    <div class="user-info">
+                        <span class="user-name">Ahmed Hassan</span>
+                        <span class="user-role">Football Coach</span>
+                    </div>
+                    <div class="user-menu">
+                        <i class="fas fa-chevron-down"></i>
+                        <div class="dropdown-menu">
+                            <a href="profile.html"><i class="fas fa-user"></i> Profile</a>
+                            <a href="settings.html"><i class="fas fa-cog"></i> Settings</a>
+                            <a href="index.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="main-header">
+                <div class="header-left">
+                    <button class="sidebar-toggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <h1>Drill Library</h1>
+                    <p>Comprehensive collection of training drills and exercises</p>
+                </div>
+                
+                <div class="header-right">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search drills..." id="drill-search">
+                    </div>
+                    <button class="btn-primary" onclick="openNewDrillModal()">
+                        <i class="fas fa-plus"></i>
+                        New Drill
+                    </button>
+                </div>
+            </header>
+            
+            <div class="drills-content">
+                <!-- Filters -->
+                <div class="drills-filters">
+                    <div class="filter-group">
+                        <label>Sport:</label>
+                        <select id="sport-filter">
+                            <option value="">All Sports</option>
+                            <option value="football">Football</option>
+                            <option value="basketball">Basketball</option>
+                            <option value="handball">Handball</option>
+                            <option value="volleyball">Volleyball</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label>Type:</label>
+                        <select id="type-filter">
+                            <option value="">All Types</option>
+                            <option value="technical">Technical</option>
+                            <option value="tactical">Tactical</option>
+                            <option value="physical">Physical</option>
+                            <option value="mental">Mental</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label>Difficulty:</label>
+                        <select id="difficulty-filter">
+                            <option value="">All Levels</option>
+                            <option value="beginner">Beginner</option>
+                            <option value="intermediate">Intermediate</option>
+                            <option value="advanced">Advanced</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label>Duration:</label>
+                        <select id="duration-filter">
+                            <option value="">Any Duration</option>
+                            <option value="short">0-15 min</option>
+                            <option value="medium">15-30 min</option>
+                            <option value="long">30+ min</option>
+                        </select>
+                    </div>
+                    
+                    <button class="btn-outline" onclick="clearDrillFilters()">
+                        <i class="fas fa-times"></i>
+                        Clear
+                    </button>
+                </div>
+                
+                <!-- Drill Categories -->
+                <div class="drill-categories">
+                    <button class="category-btn active" data-category="all">
+                        <i class="fas fa-th"></i>
+                        All Drills
+                        <span class="count">156</span>
+                    </button>
+                    <button class="category-btn" data-category="favorites">
+                        <i class="fas fa-heart"></i>
+                        Favorites
+                        <span class="count">23</span>
+                    </button>
+                    <button class="category-btn" data-category="recent">
+                        <i class="fas fa-clock"></i>
+                        Recently Used
+                        <span class="count">12</span>
+                    </button>
+                    <button class="category-btn" data-category="my-drills">
+                        <i class="fas fa-user"></i>
+                        My Drills
+                        <span class="count">34</span>
+                    </button>
+                </div>
+                
+                <!-- Drills Grid -->
+                <div class="drills-grid">
+                    <div class="drill-card">
+                        <div class="drill-thumbnail">
+                            <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=300&h=200&fit=crop" alt="Passing Drill">
+                            <div class="drill-overlay">
+                                <button class="play-btn">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                            </div>
+                            <div class="drill-duration">15 min</div>
+                            <button class="favorite-btn">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="drill-content">
+                            <div class="drill-header">
+                                <h3>Advanced Passing Combinations</h3>
+                                <div class="drill-tags">
+                                    <span class="tag football">Football</span>
+                                    <span class="tag technical">Technical</span>
+                                    <span class="tag intermediate">Intermediate</span>
+                                </div>
+                            </div>
+                            
+                            <p class="drill-description">Complex passing sequences to improve ball control and team coordination under pressure.</p>
+                            
+                            <div class="drill-stats">
+                                <div class="stat">
+                                    <i class="fas fa-users"></i>
+                                    <span>8-12 Players</span>
+                                </div>
+                                <div class="stat">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>Half Pitch</span>
+                                </div>
+                                <div class="stat">
+                                    <i class="fas fa-user"></i>
+                                    <span>Ahmed Hassan</span>
+                                </div>
+                            </div>
+                            
+                            <div class="drill-actions">
+                                <button class="btn-outline" onclick="viewDrill(1)">
+                                    <i class="fas fa-eye"></i>
+                                    View
+                                </button>
+                                <button class="btn-outline" onclick="assignDrill(1)">
+                                    <i class="fas fa-calendar-plus"></i>
+                                    Assign
+                                </button>
+                                <button class="btn-outline" onclick="editDrill(1)">
+                                    <i class="fas fa-edit"></i>
+                                    Edit
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="drill-card">
+                        <div class="drill-thumbnail">
+                            <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=300&h=200&fit=crop" alt="Shooting Drill">
+                            <div class="drill-overlay">
+                                <button class="play-btn">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                            </div>
+                            <div class="drill-duration">20 min</div>
+                            <button class="favorite-btn active">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="drill-content">
+                            <div class="drill-header">
+                                <h3>Precision Shooting Training</h3>
+                                <div class="drill-tags">
+                                    <span class="tag football">Football</span>
+                                    <span class="tag technical">Technical</span>
+                                    <span class="tag advanced">Advanced</span>
+                                </div>
+                            </div>
+                            
+                            <p class="drill-description">Target-based shooting exercises to improve accuracy and power in various game situations.</p>
+                            
+                            <div class="drill-stats">
+                                <div class="stat">
+                                    <i class="fas fa-users"></i>
+                                    <span>6-10 Players</span>
+                                </div>
+                                <div class="stat">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>Penalty Area</span>
+                                </div>
+                                <div class="stat">
+                                    <i class="fas fa-user"></i>
+                                    <span>Ahmed Hassan</span>
+                                </div>
+                            </div>
+                            
+                            <div class="drill-actions">
+                                <button class="btn-outline" onclick="viewDrill(2)">
+                                    <i class="fas fa-eye"></i>
+                                    View
+                                </button>
+                                <button class="btn-outline" onclick="assignDrill(2)">
+                                    <i class="fas fa-calendar-plus"></i>
+                                    Assign
+                                </button>
+                                <button class="btn-outline" onclick="editDrill(2)">
+                                    <i class="fas fa-edit"></i>
+                                    Edit
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="drill-card">
+                        <div class="drill-thumbnail">
+                            <img src="https://images.unsplash.com/photo-1546525848-3ce03ca516f6?w=300&h=200&fit=crop" alt="Basketball Drill">
+                            <div class="drill-overlay">
+                                <button class="play-btn">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                            </div>
+                            <div class="drill-duration">25 min</div>
+                            <button class="favorite-btn">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="drill-content">
+                            <div class="drill-header">
+                                <h3>Fast Break Fundamentals</h3>
+                                <div class="drill-tags">
+                                    <span class="tag basketball">Basketball</span>
+                                    <span class="tag tactical">Tactical</span>
+                                    <span class="tag intermediate">Intermediate</span>
+                                </div>
+                            </div>
+                            
+                            <p class="drill-description">High-tempo drill focusing on quick transitions and fast break execution.</p>
+                            
+                            <div class="drill-stats">
+                                <div class="stat">
+                                    <i class="fas fa-users"></i>
+                                    <span>10-15 Players</span>
+                                </div>
+                                <div class="stat">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>Full Court</span>
+                                </div>
+                                <div class="stat">
+                                    <i class="fas fa-user"></i>
+                                    <span>Mohamed Ali</span>
+                                </div>
+                            </div>
+                            
+                            <div class="drill-actions">
+                                <button class="btn-outline" onclick="viewDrill(3)">
+                                    <i class="fas fa-eye"></i>
+                                    View
+                                </button>
+                                <button class="btn-outline" onclick="assignDrill(3)">
+                                    <i class="fas fa-calendar-plus"></i>
+                                    Assign
+                                </button>
+                                <button class="btn-outline" onclick="editDrill(3)">
+                                    <i class="fas fa-edit"></i>
+                                    Edit
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="drill-card">
+                        <div class="drill-thumbnail">
+                            <img src="https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?w=300&h=200&fit=crop" alt="Handball Drill">
+                            <div class="drill-overlay">
+                                <button class="play-btn">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                            </div>
+                            <div class="drill-duration">18 min</div>
+                            <button class="favorite-btn">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="drill-content">
+                            <div class="drill-header">
+                                <h3>Defensive Wall Formation</h3>
+                                <div class="drill-tags">
+                                    <span class="tag handball">Handball</span>
+                                    <span class="tag tactical">Tactical</span>
+                                    <span class="tag advanced">Advanced</span>
+                                </div>
+                            </div>
+                            
+                            <p class="drill-description">Coordinated defensive positioning and movement patterns for effective team defense.</p>
+                            
+                            <div class="drill-stats">
+                                <div class="stat">
+                                    <i class="fas fa-users"></i>
+                                    <span>12-16 Players</span>
+                                </div>
+                                <div class="stat">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>Handball Court</span>
+                                </div>
+                                <div class="stat">
+                                    <i class="fas fa-user"></i>
+                                    <span>Karim Fouad</span>
+                                </div>
+                            </div>
+                            
+                            <div class="drill-actions">
+                                <button class="btn-outline" onclick="viewDrill(4)">
+                                    <i class="fas fa-eye"></i>
+                                    View
+                                </button>
+                                <button class="btn-outline" onclick="assignDrill(4)">
+                                    <i class="fas fa-calendar-plus"></i>
+                                    Assign
+                                </button>
+                                <button class="btn-outline" onclick="editDrill(4)">
+                                    <i class="fas fa-edit"></i>
+                                    Edit
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="drill-card">
+                        <div class="drill-thumbnail">
+                            <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=300&h=200&fit=crop" alt="Conditioning Drill">
+                            <div class="drill-overlay">
+                                <button class="play-btn">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                            </div>
+                            <div class="drill-duration">30 min</div>
+                            <button class="favorite-btn active">
+                                <i class="fas fa-heart"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="drill-content">
+                            <div class="drill-header">
+                                <h3>Endurance Circuit Training</h3>
+                                <div class="drill-tags">
+                                    <span class="tag general">General</span>
+                                    <span class="tag physical">Physical</span>
+                                    <span class="tag intermediate">Intermediate</span>
+                                </div>
+                            </div>
+                            
+                            <p class="drill-description">Multi-station circuit designed to build cardiovascular endurance and muscular strength.</p>
+                            
+                            <div class="drill-stats">
+                                <div class="stat">
+                                    <i class="fas fa-users"></i>
+                                    <span>15-25 Players</span>
+                                </div>
+                                <div class="stat">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>Training Ground</span>
+                                </div>
+                                <div class="stat">
+                                    <i class="fas fa-user"></i>
+                                    <span>Fitness Coach</span>
+                                </div>
+                            </div>
+                            
+                            <div class="drill-actions">
+                                <button class="btn-outline" onclick="viewDrill(5)">
+                                    <i class="fas fa-eye"></i>
+                                    View
+                                </button>
+                                <button class="btn-outline" onclick="assignDrill(5)">
+                                    <i class="fas fa-calendar-plus"></i>
+                                    Assign
+                                </button>
+                                <button class="btn-outline" onclick="editDrill(5)">
+                                    <i class="fas fa-edit"></i>
+                                    Edit
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="drill-card">
+                        <div class="drill-thumbnail">
+                            <img src="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=300&h=200&fit=crop" alt="Volleyball Drill">
+                            <div class="drill-overlay">
+                                <button class="play-btn">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                            </div>
+                            <div class="drill-duration">22 min</div>
+                            <button class="favorite-btn">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="drill-content">
+                            <div class="drill-header">
+                                <h3>Spike Attack Patterns</h3>
+                                <div class="drill-tags">
+                                    <span class="tag volleyball">Volleyball</span>
+                                    <span class="tag technical">Technical</span>
+                                    <span class="tag advanced">Advanced</span>
+                                </div>
+                            </div>
+                            
+                            <p class="drill-description">Advanced attacking combinations and spike timing for effective offensive plays.</p>
+                            
+                            <div class="drill-stats">
+                                <div class="stat">
+                                    <i class="fas fa-users"></i>
+                                    <span>8-12 Players</span>
+                                </div>
+                                <div class="stat">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>Volleyball Court</span>
+                                </div>
+                                <div class="stat">
+                                    <i class="fas fa-user"></i>
+                                    <span>Sara Ahmed</span>
+                                </div>
+                            </div>
+                            
+                            <div class="drill-actions">
+                                <button class="btn-outline" onclick="viewDrill(6)">
+                                    <i class="fas fa-eye"></i>
+                                    View
+                                </button>
+                                <button class="btn-outline" onclick="assignDrill(6)">
+                                    <i class="fas fa-calendar-plus"></i>
+                                    Assign
+                                </button>
+                                <button class="btn-outline" onclick="editDrill(6)">
+                                    <i class="fas fa-edit"></i>
+                                    Edit
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Load More -->
+                <div class="load-more">
+                    <button class="btn-outline" onclick="loadMoreDrills()">
+                        <i class="fas fa-plus"></i>
+                        Load More Drills
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <!-- New Drill Modal -->
+    <div class="modal" id="new-drill-modal">
+        <div class="modal-content large">
+            <div class="modal-header">
+                <h3>Create New Drill</h3>
+                <span class="close" onclick="closeNewDrillModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="new-drill-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="drill-name">Drill Name</label>
+                            <input type="text" id="drill-name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="drill-sport">Sport</label>
+                            <select id="drill-sport" name="sport" required>
+                                <option value="">Select Sport</option>
+                                <option value="football">Football</option>
+                                <option value="basketball">Basketball</option>
+                                <option value="handball">Handball</option>
+                                <option value="volleyball">Volleyball</option>
+                                <option value="general">General</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="drill-type">Type</label>
+                            <select id="drill-type" name="type" required>
+                                <option value="">Select Type</option>
+                                <option value="technical">Technical</option>
+                                <option value="tactical">Tactical</option>
+                                <option value="physical">Physical</option>
+                                <option value="mental">Mental</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="drill-difficulty">Difficulty</label>
+                            <select id="drill-difficulty" name="difficulty" required>
+                                <option value="">Select Difficulty</option>
+                                <option value="beginner">Beginner</option>
+                                <option value="intermediate">Intermediate</option>
+                                <option value="advanced">Advanced</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="drill-duration">Duration (minutes)</label>
+                            <input type="number" id="drill-duration" name="duration" min="5" max="120" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="drill-players">Number of Players</label>
+                            <input type="text" id="drill-players" name="players" placeholder="e.g., 8-12" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="drill-space">Space Required</label>
+                            <input type="text" id="drill-space" name="space" placeholder="e.g., Half Pitch" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="drill-description">Description</label>
+                        <textarea id="drill-description" name="description" rows="4" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="drill-instructions">Instructions</label>
+                        <textarea id="drill-instructions" name="instructions" rows="6" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="drill-equipment">Equipment Needed</label>
+                        <input type="text" id="drill-equipment" name="equipment" placeholder="e.g., Cones, Balls, Bibs">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="drill-video">Video URL (optional)</label>
+                        <input type="url" id="drill-video" name="video" placeholder="https://...">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="drill-image">Drill Image</label>
+                        <input type="file" id="drill-image" name="image" accept="image/*">
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn-outline" onclick="closeNewDrillModal()">Cancel</button>
+                        <button type="submit" class="btn-primary">Create Drill</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Drill Detail Modal -->
+    <div class="modal" id="drill-detail-modal">
+        <div class="modal-content large">
+            <div class="modal-header">
+                <h3 id="drill-detail-title">Drill Details</h3>
+                <span class="close" onclick="closeDrillDetailModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="drill-detail-content">
+                    <div class="drill-detail-header">
+                        <div class="drill-detail-image">
+                            <img id="drill-detail-img" src="/placeholder.svg" alt="Drill">
+                            <div class="drill-detail-overlay">
+                                <button class="play-btn large">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="drill-detail-info">
+                            <div class="drill-detail-tags" id="drill-detail-tags"></div>
+                            <p id="drill-detail-description"></p>
+                            
+                            <div class="drill-detail-stats">
+                                <div class="stat">
+                                    <i class="fas fa-clock"></i>
+                                    <span id="drill-detail-duration"></span>
+                                </div>
+                                <div class="stat">
+                                    <i class="fas fa-users"></i>
+                                    <span id="drill-detail-players"></span>
+                                </div>
+                                <div class="stat">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span id="drill-detail-space"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="drill-detail-sections">
+                        <div class="detail-section">
+                            <h4>Instructions</h4>
+                            <div id="drill-detail-instructions"></div>
+                        </div>
+                        
+                        <div class="detail-section">
+                            <h4>Equipment Needed</h4>
+                            <div id="drill-detail-equipment"></div>
+                        </div>
+                        
+                        <div class="detail-section">
+                            <h4>Variations</h4>
+                            <div id="drill-detail-variations">
+                                <p>• Increase/decrease the number of players</p>
+                                <p>• Add time pressure constraints</p>
+                                <p>• Modify the playing area size</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="drill-detail-actions">
+                        <button class="btn-outline" onclick="favoriteDrill()">
+                            <i class="far fa-heart"></i>
+                            Add to Favorites
+                        </button>
+                        <button class="btn-outline" onclick="duplicateDrill()">
+                            <i class="fas fa-copy"></i>
+                            Duplicate
+                        </button>
+                        <button class="btn-primary" onclick="assignDrillToSession()">
+                            <i class="fas fa-calendar-plus"></i>
+                            Assign to Session
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="scripts/main.js"></script>
+    <script src="scripts/drills.js"></script>
+</body>
+</html>

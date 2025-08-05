@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Performance Dashboard - Al Ahly SC Player Portal</title>
+        <link rel="stylesheet" href="styles/main.css">
+        <link rel="stylesheet" href="styles/player.css">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet">
+    </head>
+
+    <body>
+        <div class="app-container">
+            <!-- Player Sidebar -->
+            <aside class="sidebar">
+                <div class="sidebar-header">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/4/41/Al_Ahly_SC_logo.png" alt="Al Ahly SC"
+                        class="sidebar-logo">
+                    <div class="sidebar-title">
+                        <h3>Al Ahly SC</h3>
+                        <p>Player Portal</p>
+                    </div>
+                </div>
+
+                <nav class="sidebar-nav">
+                    <div class="nav-section">
+                        <h4>OVERVIEW</h4>
+                        <ul>
+                            <li><a href="player-dashboard.html" class="nav-link"><i class="fas fa-home"></i>
+                                    Dashboard</a></li>
+                            <li><a href="player-performance.html" class="nav-link active"><i
+                                        class="fas fa-chart-line"></i> Performance</a></li>
+                            <li><a href="player-schedule.html" class="nav-link"><i class="fas fa-calendar-alt"></i>
+                                    Schedule</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="nav-section">
+                        <h4>TRAINING</h4>
+                        <ul>
+                            <li><a href="player-attendance.html" class="nav-link"><i class="fas fa-clipboard-check"></i>
+                                    Attendance</a></li>
+                            <li><a href="player-drills.html" class="nav-link"><i class="fas fa-dumbbell"></i> Training
+                                    Drills</a></li>
+                            <li><a href="player-goals.html" class="nav-link"><i class="fas fa-target"></i> Goals &
+                                    Progress</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="nav-section">
+                        <h4>COMMUNICATION</h4>
+                        <ul>
+                            <li><a href="player-announcements.html" class="nav-link"><i class="fas fa-bullhorn"></i>
+                                    Announcements</a></li>
+                            <li><a href="player-chat.html" class="nav-link"><i class="fas fa-comments"></i> Chat with
+                                    Doctor</a></li>
+                            <li><a href="player-feedback.html" class="nav-link"><i class="fas fa-star"></i> Feedback</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="nav-section">
+                        <h4>HEALTH</h4>
+                        <ul>
+                            <li><a href="player-medical.html" class="nav-link"><i class="fas fa-heartbeat"></i> Medical
+                                    Records</a></li>
+                            <li><a href="player-nutrition.html" class="nav-link"><i class="fas fa-apple-alt"></i>
+                                    Nutrition Plan</a></li>
+                        </ul>
+                    </div>
+                </nav>
+
+                <div class="sidebar-footer">
+                    <div class="user-profile">
+                        <img src="https://images.unsplash.com/photo-1566753323558-f4e0952af115?w=40&h=40&fit=crop&crop=face"
+                            alt="Youssef Bassiony" class="user-avatar">
+                        <div class="user-info">
+                            <span class="user-name">Youssef Bassiony</span>
+                            <span class="user-role">Forward • #11</span>
+                        </div>
+                        <div class="user-menu">
+                            <i class="fas fa-chevron-down"></i>
+                            <div class="dropdown-menu">
+                                <a href="player-profile.html"><i class="fas fa-user"></i> Profile</a>
+                                <a href="player-settings.html"><i class="fas fa-cog"></i> Settings</a>
+                                <a href="index.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="main-content">
+                <header class="main-header">
+                    <div class="header-left">
+                        <button class="sidebar-toggle">
+                            <i class="fas fa-bars"></i>
+                        </button>
+                        <h1>Performance Dashboard</h1>
+                        <p>Track your progress and analyze your performance metrics</p>
+                    </div>
+
+                    <div class="header-right">
+                        <div class="performance-period">
+                            <select id="performance-period">
+                                <option value="this-month">This Month</option>
+                                <option value="last-month">Last Month</option>
+                                <option value="this-season">This Season</option>
+                                <option value="last-season">Last Season</option>
+                            </select>
+                        </div>
+                        <button class="btn-outline" onclick="exportPerformance()">
+                            <i class="fas fa-download"></i>
+                            Export Report
+                        </button>
+                    </div>
+                </header>
+
+                <div class="performance-content">
+                    <!-- Performance Overview -->
+                    <div class="performance-overview">
+                        <div class="overview-header">
+                            <div class="player-rating">
+                                <div class="rating-circle">
+                                    <svg class="rating-progress" width="120" height="120">
+                                        <circle class="rating-bg" stroke="#e5e7eb" stroke-width="8" fill="transparent"
+                                            r="52" cx="60" cy="60" />
+                                        <circle class="rating-fill" stroke="#dc2626" stroke-width="8" fill="transparent"
+                                            r="52" cx="60" cy="60"
+                                            style="stroke-dasharray: 326.73; stroke-dashoffset: 32.67;" />
+                                    </svg>
+                                    <div class="rating-value">9.2</div>
+                                    <div class="rating-label">Overall Rating</div>
+                                </div>
+                            </div>
+
+                            <div class="performance-stats">
+                                <div class="stat-group">
+                                    <div class="stat-item">
+                                        <span class="stat-value">23</span>
+                                        <span class="stat-label">Goals</span>
+                                        <span class="stat-change positive">+3 this month</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <span class="stat-value">12</span>
+                                        <span class="stat-label">Assists</span>
+                                        <span class="stat-change positive">+2 this month</span>
+                                    </div>
+                                </div>
+
+                                <div class="stat-group">
+                                    <div class="stat-item">
+                                        <span class="stat-value">1,890</span>
+                                        <span class="stat-label">Minutes Played</span>
+                                        <span class="stat-change neutral">21 matches</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <span class="stat-value">87%</span>
+                                        <span class="stat-label">Pass Accuracy</span>
+                                        <span class="stat-change positive">+2% improvement</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Performance Metrics -->
+                    <div class="performance-metrics-section">
+                        <div class="dashboard-card">
+                            <div class="card-header">
+                                <h3>Performance Metrics</h3>
+                                <p>Detailed breakdown of your skills and abilities</p>
+                            </div>
+
+                            <div class="metrics-grid">
+                                <div class="metric-card">
+                                    <div class="metric-header">
+                                        <div class="metric-icon speed">
+                                            <i class="fas fa-tachometer-alt"></i>
+                                        </div>
+                                        <div class="metric-info">
+                                            <h4>Speed</h4>
+                                            <span class="metric-value">9.5</span>
+                                        </div>
+                                    </div>
+                                    <div class="metric-bar">
+                                        <div class="metric-fill" style="width: 95%"></div>
+                                    </div>
+                                    <div class="metric-details">
+                                        <span class="metric-change positive">
+                                            <i class="fas fa-arrow-up"></i>
+                                            +0.3 from last month
+                                        </span>
+                                        <span class="metric-rank">#2 in team</span>
+                                    </div>
+                                </div>
+
+                                <div class="metric-card">
+                                    <div class="metric-header">
+                                        <div class="metric-icon shooting">
+                                            <i class="fas fa-bullseye"></i>
+                                        </div>
+                                        <div class="metric-info">
+                                            <h4>Shooting</h4>
+                                            <span class="metric-value">9.0</span>
+                                        </div>
+                                    </div>
+                                    <div class="metric-bar">
+                                        <div class="metric-fill" style="width: 90%"></div>
+                                    </div>
+                                    <div class="metric-details">
+                                        <span class="metric-change positive">
+                                            <i class="fas fa-arrow-up"></i>
+                                            +0.2 from last month
+                                        </span>
+                                        <span class="metric-rank">#1 in team</span>
+                                    </div>
+                                </div>
+
+                                <div class="metric-card">
+                                    <div class="metric-header">
+                                        <div class="metric-icon passing">
+                                            <i class="fas fa-exchange-alt"></i>
+                                        </div>
+                                        <div class="metric-info">
+                                            <h4>Passing</h4>
+                                            <span class="metric-value">8.7</span>
+                                        </div>
+                                    </div>
+                                    <div class="metric-bar">
+                                        <div class="metric-fill" style="width: 87%"></div>
+                                    </div>
+                                    <div class="metric-details">
+                                        <span class="metric-change neutral">
+                                            <i class="fas fa-minus"></i>
+                                            No change
+                                        </span>
+                                        <span class="metric-rank">#4 in team</span>
+                                    </div>
+                                </div>
+
+                                <div class="metric-card">
+                                    <div class="metric-header">
+                                        <div class="metric-icon dribbling">
+                                            <i class="fas fa-running"></i>
+                                        </div>
+                                        <div class="metric-info">
+                                            <h4>Dribbling</h4>
+                                            <span class="metric-value">9.3</span>
+                                        </div>
+                                    </div>
+                                    <div class="metric-bar">
+                                        <div class="metric-fill" style="width: 93%"></div>
+                                    </div>
+                                    <div class="metric-details">
+                                        <span class="metric-change positive">
+                                            <i class="fas fa-arrow-up"></i>
+                                            +0.1 from last month
+                                        </span>
+                                        <span class="metric-rank">#1 in team</span>
+                                    </div>
+                                </div>
+
+                                <div class="metric-card">
+                                    <div class="metric-header">
+                                        <div class="metric-icon defending">
+                                            <i class="fas fa-shield-alt"></i>
+                                        </div>
+                                        <div class="metric-info">
+                                            <h4>Defending</h4>
+                                            <span class="metric-value">7.2</span>
+                                        </div>
+                                    </div>
+                                    <div class="metric-bar">
+                                        <div class="metric-fill" style="width: 72%"></div>
+                                    </div>
+                                    <div class="metric-details">
+                                        <span class="metric-change positive">
+                                            <i class="fas fa-arrow-up"></i>
+                                            +0.4 from last month
+                                        </span>
+                                        <span class="metric-rank">#8 in team</span>
+                                    </div>
+                                </div>
+
+                                <div class="metric-card">
+                                    <div class="metric-header">
+                                        <div class="metric-icon physical">
+                                            <i class="fas fa-dumbbell"></i>
+                                        </div>
+                                        <div class="metric-info">
+                                            <h4>Physical</h4>
+                                            <span class="metric-value">8.8</span>
+                                        </div>
+                                    </div>
+                                    <div class="metric-bar">
+                                        <div class="metric-fill" style="width: 88%"></div>
+                                    </div>
+                                    <div class="metric-details">
+                                        <span class="metric-change negative">
+                                            <i class="fas fa-arrow-down"></i>
+                                            -0.1 from last month
+                                        </span>
+                                        <span class="metric-rank">#3 in team</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Performance Charts -->
+                    <div class="performance-charts">
+                        <div class="dashboard-card chart-card">
+                            <div class="card-header">
+                                <h3>Performance Trends</h3>
+                                <p>Your performance over the last 6 months</p>
+                                <div class="chart-controls">
+                                    <button class="chart-btn active" data-chart="overall">Overall</button>
+                                    <button class="chart-btn" data-chart="goals">Goals</button>
+                                    <button class="chart-btn" data-chart="assists">Assists</button>
+                                </div>
+                            </div>
+
+                            <div class="chart-container">
+                                <div class="chart-placeholder">
+                                    <div class="chart-line">
+                                        <div class="chart-point" style="left: 10%; bottom: 60%;" data-value="8.5"
+                                            data-month="Aug"></div>
+                                        <div class="chart-point" style="left: 25%; bottom: 65%;" data-value="8.7"
+                                            data-month="Sep"></div>
+                                        <div class="chart-point" style="left: 40%; bottom: 70%;" data-value="8.9"
+                                            data-month="Oct"></div>
+                                        <div class="chart-point" style="left: 55%; bottom: 75%;" data-value="9.0"
+                                            data-month="Nov"></div>
+                                        <div class="chart-point" style="left: 70%; bottom: 80%;" data-value="9.1"
+                                            data-month="Dec"></div>
+                                        <div class="chart-point active" style="left: 85%; bottom: 85%;" data-value="9.2"
+                                            data-month="Jan"></div>
+                                    </div>
+                                    <div class="chart-grid">
+                                        <div class="grid-line" style="bottom: 20%;">7.0</div>
+                                        <div class="grid-line" style="bottom: 40%;">8.0</div>
+                                        <div class="grid-line" style="bottom: 60%;">9.0</div>
+                                        <div class="grid-line" style="bottom: 80%;">10.0</div>
+                                    </div>
+                                    <div class="chart-labels">
+                                        <span>Aug</span>
+                                        <span>Sep</span>
+                                        <span>Oct</span>
+                                        <span>Nov</span>
+                                        <span>Dec</span>
+                                        <span>Jan</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="dashboard-card match-performance">
+                            <div class="card-header">
+                                <h3>Recent Match Performance</h3>
+                                <p>Your performance in the last 5 matches</p>
+                            </div>
+
+                            <div class="match-list">
+                                <div class="match-item">
+                                    <div class="match-info">
+                                        <div class="match-opponent">vs Zamalek</div>
+                                        <div class="match-date">Jan 12, 2024</div>
+                                        <div class="match-result win">W 3-1</div>
+                                    </div>
+                                    <div class="match-stats">
+                                        <div class="stat">
+                                            <span class="stat-label">Goals</span>
+                                            <span class="stat-value">2</span>
+                                        </div>
+                                        <div class="stat">
+                                            <span class="stat-label">Assists</span>
+                                            <span class="stat-value">1</span>
+                                        </div>
+                                        <div class="stat">
+                                            <span class="stat-label">Rating</span>
+                                            <span class="stat-value">9.5</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="match-item">
+                                    <div class="match-info">
+                                        <div class="match-opponent">vs Pyramids</div>
+                                        <div class="match-date">Jan 8, 2024</div>
+                                        <div class="match-result win">W 2-0</div>
+                                    </div>
+                                    <div class="match-stats">
+                                        <div class="stat">
+                                            <span class="stat-label">Goals</span>
+                                            <span class="stat-value">1</span>
+                                        </div>
+                                        <div class="stat">
+                                            <span class="stat-label">Assists</span>
+                                            <span class="stat-value">0</span>
+                                        </div>
+                                        <div class="stat">
+                                            <span class="stat-label">Rating</span>
+                                            <span class="stat-value">8.8</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="match-item">
+                                    <div class="match-info">
+                                        <div class="match-opponent">vs ENPPI</div>
+                                        <div class="match-date">Jan 4, 2024</div>
+                                        <div class="match-result win">W 4-1</div>
+                                    </div>
+                                    <div class="match-stats">
+                                        <div class="stat">
+                                            <span class="stat-label">Goals</span>
+                                            <span class="stat-value">1</span>
+                                        </div>
+                                        <div class="stat">
+                                            <span class="stat-label">Assists</span>
+                                            <span class="stat-value">2</span>
+                                        </div>
+                                        <div class="stat">
+                                            <span class="stat-label">Rating</span>
+                                            <span class="stat-value">9.2</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="match-item">
+                                    <div class="match-info">
+                                        <div class="match-opponent">vs Ismaily</div>
+                                        <div class="match-date">Dec 28, 2023</div>
+                                        <div class="match-result draw">D 1-1</div>
+                                    </div>
+                                    <div class="match-stats">
+                                        <div class="stat">
+                                            <span class="stat-label">Goals</span>
+                                            <span class="stat-value">0</span>
+                                        </div>
+                                        <div class="stat">
+                                            <span class="stat-label">Assists</span>
+                                            <span class="stat-value">1</span>
+                                        </div>
+                                        <div class="stat">
+                                            <span class="stat-label">Rating</span>
+                                            <span class="stat-value">7.8</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="match-item">
+                                    <div class="match-info">
+                                        <div class="match-opponent">vs Smouha</div>
+                                        <div class="match-date">Dec 22, 2023</div>
+                                        <div class="match-result win">W 3-0</div>
+                                    </div>
+                                    <div class="match-stats">
+                                        <div class="stat">
+                                            <span class="stat-label">Goals</span>
+                                            <span class="stat-value">1</span>
+                                        </div>
+                                        <div class="stat">
+                                            <span class="stat-label">Assists</span>
+                                            <span class="stat-value">0</span>
+                                        </div>
+                                        <div class="stat">
+                                            <span class="stat-label">Rating</span>
+                                            <span class="stat-value">8.5</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Goals and Achievements -->
+                    <div class="goals-achievements">
+                        <div class="dashboard-card goals-card">
+                            <div class="card-header">
+                                <h3>Personal Goals</h3>
+                                <p>Track your progress towards your targets</p>
+                                <a href="player-goals.html" class="view-all">Manage Goals <i
+                                        class="fas fa-arrow-right"></i></a>
+                            </div>
+
+                            <div class="goals-list">
+                                <div class="goal-item">
+                                    <div class="goal-info">
+                                        <h4>Season Goals</h4>
+                                        <p>Score 30 goals this season</p>
+                                    </div>
+                                    <div class="goal-progress">
+                                        <div class="progress-bar">
+                                            <div class="progress-fill" style="width: 77%"></div>
+                                        </div>
+                                        <span class="progress-text">23/30</span>
+                                    </div>
+                                </div>
+
+                                <div class="goal-item">
+                                    <div class="goal-info">
+                                        <h4>Assist Target</h4>
+                                        <p>Provide 15 assists this season</p>
+                                    </div>
+                                    <div class="goal-progress">
+                                        <div class="progress-bar">
+                                            <div class="progress-fill" style="width: 80%"></div>
+                                        </div>
+                                        <span class="progress-text">12/15</span>
+                                    </div>
+                                </div>
+
+                                <div class="goal-item">
+                                    <div class="goal-info">
+                                        <h4>Pass Accuracy</h4>
+                                        <p>Maintain 90% pass accuracy</p>
+                                    </div>
+                                    <div class="goal-progress">
+                                        <div class="progress-bar">
+                                            <div class="progress-fill" style="width: 97%"></div>
+                                        </div>
+                                        <span class="progress-text">87/90%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="dashboard-card achievements-card">
+                            <div class="card-header">
+                                <h3>Recent Achievements</h3>
+                                <p>Your latest accomplishments and milestones</p>
+                            </div>
+
+                            <div class="achievements-list">
+                                <div class="achievement-item">
+                                    <div class="achievement-icon gold">
+                                        <i class="fas fa-trophy"></i>
+                                    </div>
+                                    <div class="achievement-info">
+                                        <h4>Hat-trick Hero</h4>
+                                        <p>Scored a hat-trick against Zamalek</p>
+                                        <span class="achievement-date">Jan 12, 2024</span>
+                                    </div>
+                                </div>
+
+                                <div class="achievement-item">
+                                    <div class="achievement-icon silver">
+                                        <i class="fas fa-medal"></i>
+                                    </div>
+                                    <div class="achievement-info">
+                                        <h4>Goal Machine</h4>
+                                        <p>Reached 20 goals this season</p>
+                                        <span class="achievement-date">Jan 8, 2024</span>
+                                    </div>
+                                </div>
+
+                                <div class="achievement-item">
+                                    <div class="achievement-icon bronze">
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <div class="achievement-info">
+                                        <h4>Perfect Attendance</h4>
+                                        <p>100% attendance for December</p>
+                                        <span class="achievement-date">Jan 1, 2024</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <script src="scripts/main.js"></script>
+        <script src="scripts/player.js"></script>
+    </body>
+
+</html>

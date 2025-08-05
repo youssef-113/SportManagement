@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Player Dashboard - Al Ahly SC</title>
+        <link rel="stylesheet" href="styles/main.css">
+        <link rel="stylesheet" href="styles/player.css">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet">
+    </head>
+
+    <body>
+        <div class="app-container">
+            <!-- Player Sidebar -->
+            <aside class="sidebar">
+                <div class="sidebar-header">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/4/41/Al_Ahly_SC_logo.png" alt="Al Ahly SC"
+                        class="sidebar-logo">
+                    <div class="sidebar-title">
+                        <h3>Al Ahly SC</h3>
+                        <p>Player Portal</p>
+                    </div>
+                </div>
+
+                <nav class="sidebar-nav">
+                    <div class="nav-section">
+                        <h4>OVERVIEW</h4>
+                        <ul>
+                            <li><a href="player-dashboard.html" class="nav-link active"><i class="fas fa-home"></i>
+                                    Dashboard</a></li>
+                            <li><a href="player-performance.html" class="nav-link"><i class="fas fa-chart-line"></i>
+                                    Performance</a></li>
+                            <li><a href="player-schedule.html" class="nav-link"><i class="fas fa-calendar-alt"></i>
+                                    Schedule</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="nav-section">
+                        <h4>TRAINING</h4>
+                        <ul>
+                            <li><a href="player-attendance.html" class="nav-link"><i class="fas fa-clipboard-check"></i>
+                                    Attendance</a></li>
+                            <li><a href="drills.html" class="nav-link"><i class="fas fa-dumbbell"></i> Training
+                                    Drills</a></li>
+                            <li><a href="player-goals.html" class="nav-link"><i class="fas fa-target"></i> Goals &
+                                    Progress</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="nav-section">
+                        <h4>COMMUNICATION</h4>
+                        <ul>
+                            <li><a href="player-announcements.html" class="nav-link"><i class="fas fa-bullhorn"></i>
+                                    Announcements</a></li>
+                            <li><a href="player-chat.html" class="nav-link"><i class="fas fa-comments"></i> Chat with
+                                    Doctor</a></li>
+                            <li><a href="player-feedback.html" class="nav-link"><i class="fas fa-star"></i> Feedback</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="nav-section">
+                        <h4>HEALTH</h4>
+                        <ul>
+                            <li><a href="player-medical.html" class="nav-link"><i class="fas fa-heartbeat"></i> Medical
+                                    Records</a></li>
+                            <li><a href="player-nutrition.html" class="nav-link"><i class="fas fa-apple-alt"></i>
+                                    Nutrition Plan</a></li>
+                        </ul>
+                    </div>
+                </nav>
+
+                <div class="sidebar-footer">
+                    <div class="user-profile">
+                        <img src="https://images.unsplash.com/photo-1566753323558-f4e0952af115?w=40&h=40&fit=crop&crop=face"
+                            alt="Youssef Bassiony" class="user-avatar">
+                        <div class="user-info">
+                            <span class="user-name">Youssef Bassiony</span>
+                            <span class="user-role">Forward • #11</span>
+                        </div>
+                        <div class="user-menu">
+                            <i class="fas fa-chevron-down"></i>
+                            <div class="dropdown-menu">
+                                <a href="player-profile.html"><i class="fas fa-user"></i> Profile</a>
+                                <a href="player-settings.html"><i class="fas fa-cog"></i> Settings</a>
+                                <a href="index.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="main-content">
+                <header class="main-header">
+                    <div class="header-left">
+                        <button class="sidebar-toggle">
+                            <i class="fas fa-bars"></i>
+                        </button>
+                        <div class="welcome-section">
+                            <h1>Welcome back, Mohamed!</h1>
+                            <p>Here's your training overview for today</p>
+                        </div>
+                    </div>
+
+                    <div class="header-right">
+                        <div class="player-status">
+                            <div class="status-indicator active">
+                                <i class="fas fa-circle"></i>
+                                <span>Active</span>
+                            </div>
+                        </div>
+                        <div class="notifications">
+                            <i class="fas fa-bell"></i>
+                            <span class="notification-badge">3</span>
+                        </div>
+                        <div class="theme-toggle">
+                            <i class="fas fa-moon"></i>
+                        </div>
+                    </div>
+                </header>
+
+                <div class="player-dashboard-content">
+                    <!-- Player Stats Overview -->
+                    <div class="stats-overview">
+                        <div class="player-card-header">
+                            <img src="https://images.unsplash.com/photo-1566753323558-f4e0952af115?w=80&h=80&fit=crop&crop=face"
+                                alt="Youssef Bassiony" class="player-main-avatar">
+                            <div class="player-main-info">
+                                <h2>Youssef Bassiony</h2>
+                                <div class="player-details">
+                                    <span class="position">Forward</span>
+                                    <span class="jersey">#11</span>
+                                    <span class="team">Football First Team</span>
+                                </div>
+                                <div class="player-rating">
+                                    <span class="rating-value">9.2</span>
+                                    <span class="rating-label">Overall Rating</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="quick-stats">
+                            <div class="stat-item">
+                                <div class="stat-icon">
+                                    <i class="fas fa-calendar-check"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <span class="stat-value">95%</span>
+                                    <span class="stat-label">Attendance</span>
+                                </div>
+                            </div>
+
+                            <div class="stat-item">
+                                <div class="stat-icon">
+                                    <i class="fas fa-trophy"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <span class="stat-value">23</span>
+                                    <span class="stat-label">Goals</span>
+                                </div>
+                            </div>
+
+                            <div class="stat-item">
+                                <div class="stat-icon">
+                                    <i class="fas fa-hands-helping"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <span class="stat-value">12</span>
+                                    <span class="stat-label">Assists</span>
+                                </div>
+                            </div>
+
+                            <div class="stat-item">
+                                <div class="stat-icon">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <span class="stat-value">1,890</span>
+                                    <span class="stat-label">Minutes</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Main Dashboard Grid -->
+                    <div class="dashboard-grid">
+                        <!-- Today's Schedule -->
+                        <div class="dashboard-card schedule-card">
+                            <div class="card-header">
+                                <h3>Today's Schedule</h3>
+                                <p>Your training sessions and activities</p>
+                                <a href="player-schedule.html" class="view-all">View All <i
+                                        class="fas fa-arrow-right"></i></a>
+                            </div>
+
+                            <div class="schedule-list">
+                                <div class="schedule-item current">
+                                    <div class="schedule-time">
+                                        <span class="time">4:00 PM</span>
+                                        <span class="duration">90 min</span>
+                                    </div>
+                                    <div class="schedule-info">
+                                        <h4>Team Training Session</h4>
+                                        <p>Tactical training and ball work</p>
+                                        <div class="schedule-meta">
+                                            <span class="location"><i class="fas fa-map-marker-alt"></i> Main
+                                                Field</span>
+                                            <span class="coach"><i class="fas fa-user"></i> Ahmed Hassan</span>
+                                        </div>
+                                    </div>
+                                    <div class="schedule-status">
+                                        <span class="status-badge current">In Progress</span>
+                                    </div>
+                                </div>
+
+                                <div class="schedule-item upcoming">
+                                    <div class="schedule-time">
+                                        <span class="time">6:00 PM</span>
+                                        <span class="duration">45 min</span>
+                                    </div>
+                                    <div class="schedule-info">
+                                        <h4>Gym Session</h4>
+                                        <p>Strength and conditioning</p>
+                                        <div class="schedule-meta">
+                                            <span class="location"><i class="fas fa-map-marker-alt"></i> Fitness
+                                                Center</span>
+                                            <span class="coach"><i class="fas fa-user"></i> Fitness Coach</span>
+                                        </div>
+                                    </div>
+                                    <div class="schedule-status">
+                                        <span class="status-badge upcoming">Upcoming</span>
+                                    </div>
+                                </div>
+
+                                <div class="schedule-item">
+                                    <div class="schedule-time">
+                                        <span class="time">8:00 PM</span>
+                                        <span class="duration">30 min</span>
+                                    </div>
+                                    <div class="schedule-info">
+                                        <h4>Recovery Session</h4>
+                                        <p>Stretching and cool down</p>
+                                        <div class="schedule-meta">
+                                            <span class="location"><i class="fas fa-map-marker-alt"></i> Recovery
+                                                Room</span>
+                                            <span class="coach"><i class="fas fa-user"></i> Physio Team</span>
+                                        </div>
+                                    </div>
+                                    <div class="schedule-status">
+                                        <span class="status-badge scheduled">Scheduled</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Performance Overview -->
+                        <div class="dashboard-card performance-card">
+                            <div class="card-header">
+                                <h3>Performance Overview</h3>
+                                <p>Your recent performance metrics</p>
+                                <a href="player-performance.html" class="view-all">View Details <i
+                                        class="fas fa-arrow-right"></i></a>
+                            </div>
+
+                            <div class="performance-metrics">
+                                <div class="metric-item">
+                                    <div class="metric-header">
+                                        <span class="metric-name">Speed</span>
+                                        <span class="metric-value">9.5</span>
+                                    </div>
+                                    <div class="metric-bar">
+                                        <div class="metric-fill" style="width: 95%"></div>
+                                    </div>
+                                    <div class="metric-change positive">
+                                        <i class="fas fa-arrow-up"></i>
+                                        +0.3 from last week
+                                    </div>
+                                </div>
+
+                                <div class="metric-item">
+                                    <div class="metric-header">
+                                        <span class="metric-name">Shooting</span>
+                                        <span class="metric-value">9.0</span>
+                                    </div>
+                                    <div class="metric-bar">
+                                        <div class="metric-fill" style="width: 90%"></div>
+                                    </div>
+                                    <div class="metric-change positive">
+                                        <i class="fas fa-arrow-up"></i>
+                                        +0.2 from last week
+                                    </div>
+                                </div>
+
+                                <div class="metric-item">
+                                    <div class="metric-header">
+                                        <span class="metric-name">Passing</span>
+                                        <span class="metric-value">8.7</span>
+                                    </div>
+                                    <div class="metric-bar">
+                                        <div class="metric-fill" style="width: 87%"></div>
+                                    </div>
+                                    <div class="metric-change neutral">
+                                        <i class="fas fa-minus"></i>
+                                        No change
+                                    </div>
+                                </div>
+
+                                <div class="metric-item">
+                                    <div class="metric-header">
+                                        <span class="metric-name">Physical</span>
+                                        <span class="metric-value">8.8</span>
+                                    </div>
+                                    <div class="metric-bar">
+                                        <div class="metric-fill" style="width: 88%"></div>
+                                    </div>
+                                    <div class="metric-change negative">
+                                        <i class="fas fa-arrow-down"></i>
+                                        -0.1 from last week
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Secondary Grid -->
+                    <div class="dashboard-grid secondary">
+                        <!-- Recent Announcements -->
+                        <div class="dashboard-card announcements-card">
+                            <div class="card-header">
+                                <h3>Recent Announcements</h3>
+                                <p>Latest updates from the club</p>
+                                <a href="player-announcements.html" class="view-all">View All <i
+                                        class="fas fa-arrow-right"></i></a>
+                            </div>
+
+                            <div class="announcements-list">
+                                <div class="announcement-item important">
+                                    <div class="announcement-icon">
+                                        <i class="fas fa-exclamation-circle"></i>
+                                    </div>
+                                    <div class="announcement-content">
+                                        <h4>Match Day Preparation</h4>
+                                        <p>Special training session tomorrow at 3:00 PM for the upcoming match against
+                                            Zamalek.</p>
+                                        <span class="announcement-time">2 hours ago</span>
+                                    </div>
+                                </div>
+
+                                <div class="announcement-item">
+                                    <div class="announcement-icon">
+                                        <i class="fas fa-info-circle"></i>
+                                    </div>
+                                    <div class="announcement-content">
+                                        <h4>New Training Equipment</h4>
+                                        <p>New fitness equipment has been installed in the gym. Please familiarize
+                                            yourself with the new machines.</p>
+                                        <span class="announcement-time">1 day ago</span>
+                                    </div>
+                                </div>
+
+                                <div class="announcement-item">
+                                    <div class="announcement-icon">
+                                        <i class="fas fa-calendar"></i>
+                                    </div>
+                                    <div class="announcement-content">
+                                        <h4>Schedule Update</h4>
+                                        <p>Training schedule for next week has been updated. Please check your calendar.
+                                        </p>
+                                        <span class="announcement-time">2 days ago</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Attendance Summary -->
+                        <div class="dashboard-card attendance-card">
+                            <div class="card-header">
+                                <h3>Attendance Summary</h3>
+                                <p>Your training attendance record</p>
+                                <a href="player-attendance.html" class="view-all">View Details <i
+                                        class="fas fa-arrow-right"></i></a>
+                            </div>
+
+                            <div class="attendance-overview">
+                                <div class="attendance-stat">
+                                    <div class="attendance-circle">
+                                        <svg class="progress-ring" width="80" height="80">
+                                            <circle class="progress-ring-circle" stroke="#e5e7eb" stroke-width="6"
+                                                fill="transparent" r="34" cx="40" cy="40" />
+                                            <circle class="progress-ring-circle progress" stroke="#dc2626"
+                                                stroke-width="6" fill="transparent" r="34" cx="40" cy="40"
+                                                style="stroke-dasharray: 203.45; stroke-dashoffset: 10.17;" />
+                                        </svg>
+                                        <div class="attendance-percentage">95%</div>
+                                    </div>
+                                    <div class="attendance-details">
+                                        <div class="attendance-item">
+                                            <span class="label">Present:</span>
+                                            <span class="value">38 sessions</span>
+                                        </div>
+                                        <div class="attendance-item">
+                                            <span class="label">Missed:</span>
+                                            <span class="value">2 sessions</span>
+                                        </div>
+                                        <div class="attendance-item">
+                                            <span class="label">This Month:</span>
+                                            <span class="value">100%</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="recent-attendance">
+                                    <h4>Recent Sessions</h4>
+                                    <div class="attendance-calendar">
+                                        <div class="calendar-day present" title="Present - Team Training">
+                                            <span class="day">15</span>
+                                            <i class="fas fa-check"></i>
+                                        </div>
+                                        <div class="calendar-day present" title="Present - Gym Session">
+                                            <span class="day">16</span>
+                                            <i class="fas fa-check"></i>
+                                        </div>
+                                        <div class="calendar-day absent" title="Absent - Personal Reasons">
+                                            <span class="day">17</span>
+                                            <i class="fas fa-times"></i>
+                                        </div>
+                                        <div class="calendar-day present" title="Present - Team Training">
+                                            <span class="day">18</span>
+                                            <i class="fas fa-check"></i>
+                                        </div>
+                                        <div class="calendar-day present" title="Present - Match Day">
+                                            <span class="day">19</span>
+                                            <i class="fas fa-check"></i>
+                                        </div>
+                                        <div class="calendar-day present" title="Present - Recovery Session">
+                                            <span class="day">20</span>
+                                            <i class="fas fa-check"></i>
+                                        </div>
+                                        <div class="calendar-day present" title="Present - Team Training">
+                                            <span class="day">21</span>
+                                            <i class="fas fa-check"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Quick Actions -->
+                        <div class="dashboard-card quick-actions-card">
+                            <div class="card-header">
+                                <h3>Quick Actions</h3>
+                                <p>Frequently used features</p>
+                            </div>
+
+                            <div class="quick-actions">
+                                <a href="player-chat.html" class="quick-action medical">
+                                    <i class="fas fa-user-md"></i>
+                                    <span>Chat with Doctor</span>
+                                </a>
+                                <a href="player-schedule.html" class="quick-action">
+                                    <i class="fas fa-calendar"></i>
+                                    <span>View Schedule</span>
+                                </a>
+                                <a href="player-performance.html" class="quick-action">
+                                    <i class="fas fa-chart-line"></i>
+                                    <span>Performance</span>
+                                </a>
+                                <a href="player-drills.html" class="quick-action">
+                                    <i class="fas fa-dumbbell"></i>
+                                    <span>Training Drills</span>
+                                </a>
+                                <a href="player-feedback.html" class="quick-action">
+                                    <i class="fas fa-star"></i>
+                                    <span>Give Feedback</span>
+                                </a>
+                                <a href="player-goals.html" class="quick-action">
+                                    <i class="fas fa-target"></i>
+                                    <span>My Goals</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <script src="scripts/main.js"></script>
+        <script src="scripts/player.js"></script>
+    </body>
+
+</html>

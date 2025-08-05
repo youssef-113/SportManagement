@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Player Chat - Al Ahly SC Medical Center</title>
+        <link rel="stylesheet" href="styles/main.css">
+        <link rel="stylesheet" href="styles/medical.css">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet">
+    </head>
+
+    <body>
+        <div class="app-container">
+            <!-- Medical Sidebar -->
+            <aside class="sidebar">
+                <div class="sidebar-header">
+                    <img src="./Images/FwBoNGZ7XfGg.png" alt="Al Ahly SC" class="sidebar-logo">
+                    <div class="sidebar-title">
+                        <h3>Al Ahly SC</h3>
+                        <p>Medical Center</p>
+                    </div>
+                </div>
+
+                <nav class="sidebar-nav">
+                    <div class="nav-section">
+                        <h4>MEDICAL OVERVIEW</h4>
+                        <ul>
+                            <li><a href="medical-dashboard.html" class="nav-link"><i class="fas fa-heartbeat"></i>
+                                    Dashboard</a></li>
+                            <li><a href="medical-schedule.html" class="nav-link"><i class="fas fa-calendar-alt"></i> My
+                                    Schedule</a></li>
+                            <li><a href="medical-announcements.html" class="nav-link"><i class="fas fa-bullhorn"></i>
+                                    Announcements</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="nav-section">
+                        <h4>PLAYER MANAGEMENT</h4>
+                        <ul>
+                            <li><a href="medical-players.html" class="nav-link"><i class="fas fa-user-friends"></i>
+                                    Player Search</a></li>
+                            <li><a href="medical-injuries.html" class="nav-link"><i class="fas fa-band-aid"></i> Injury
+                                    Management</a></li>
+                            <li><a href="medical-checkups.html" class="nav-link"><i class="fas fa-clipboard-list"></i>
+                                    Checkup Logs</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="nav-section">
+                        <h4>COMMUNICATION</h4>
+                        <ul>
+                            <li><a href="medical-chat.html" class="nav-link active"><i class="fas fa-comments"></i>
+                                    Player Chat</a></li>
+                            <li><a href="medical-reports.html" class="nav-link"><i class="fas fa-file-medical"></i>
+                                    Medical Reports</a></li>
+                        </ul>
+                    </div>
+                </nav>
+
+                <div class="sidebar-footer">
+                    <div class="user-profile">
+                        <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=40&h=40&fit=crop&crop=face"
+                            alt="User" class="user-avatar">
+                        <div class="user-info">
+                            <span class="user-name">Dr. Sarah Ahmed</span>
+                            <span class="user-role">Medical Staff</span>
+                        </div>
+                        <div class="user-menu">
+                            <i class="fas fa-chevron-down"></i>
+                            <div class="dropdown-menu">
+                                <a href="profile.html"><i class="fas fa-user"></i> Profile</a>
+                                <a href="settings.html"><i class="fas fa-cog"></i> Settings</a>
+                                <a href="index.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="main-content">
+                <div class="chat-container">
+                    <!-- Chat Sidebar -->
+                    <div class="chat-sidebar">
+                        <div class="chat-header">
+                            <h3>Player Chats</h3>
+                            <button class="btn-primary new-chat-btn" onclick="openNewChatModal()">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+
+                        <div class="chat-search">
+                            <div class="search-box">
+                                <i class="fas fa-search"></i>
+                                <input type="text" placeholder="Search players..." id="chat-search">
+                            </div>
+                        </div>
+
+                        <div class="chat-list">
+                            <div class="chat-item active" data-player="mohamed-salah">
+                                <img src="https://images.unsplash.com/photo-1566753323558-f4e0952af115?w=40&h=40&fit=crop&crop=face"
+                                    alt="Youssef Bassiony" class="chat-avatar">
+                                <div class="chat-info">
+                                    <h4>Youssef Bassiony</h4>
+                                    <p class="last-message">Thanks for the recovery plan, feeling much better!</p>
+                                    <span class="chat-time">2 min ago</span>
+                                </div>
+                                <div class="chat-status">
+                                    <div class="unread-badge">2</div>
+                                    <div class="online-indicator online"></div>
+                                </div>
+                            </div>
+
+                            <div class="chat-item" data-player="ahmed-zizo">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop&crop=face"
+                                    alt="Ahmed Zizo" class="chat-avatar">
+                                <div class="chat-info">
+                                    <h4>Ahmed Zizo</h4>
+                                    <p class="last-message">When is my next checkup scheduled?</p>
+                                    <span class="chat-time">1 hour ago</span>
+                                </div>
+                                <div class="chat-status">
+                                    <div class="online-indicator online"></div>
+                                </div>
+                            </div>
+
+                            <div class="chat-item" data-player="karim-fouad">
+                                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face"
+                                    alt="Karim Fouad" class="chat-avatar">
+                                <div class="chat-info">
+                                    <h4>Karim Fouad</h4>
+                                    <p class="last-message">The knee is feeling better today</p>
+                                    <span class="chat-time">3 hours ago</span>
+                                </div>
+                                <div class="chat-status">
+                                    <div class="unread-badge">1</div>
+                                    <div class="online-indicator offline"></div>
+                                </div>
+                            </div>
+
+                            <div class="chat-item" data-player="hassan-ahmed">
+                                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=40&h=40&fit=crop&crop=face"
+                                    alt="Hassan Ahmed" class="chat-avatar">
+                                <div class="chat-info">
+                                    <h4>Hassan Ahmed</h4>
+                                    <p class="last-message">Got the test results, everything looks good</p>
+                                    <span class="chat-time">Yesterday</span>
+                                </div>
+                                <div class="chat-status">
+                                    <div class="online-indicator online"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Chat Main -->
+                    <div class="chat-main">
+                        <div class="chat-main-header">
+                            <div class="chat-player-info">
+                                <img src="https://images.unsplash.com/photo-1566753323558-f4e0952af115?w=50&h=50&fit=crop&crop=face"
+                                    alt="Youssef Bassiony" class="chat-main-avatar">
+                                <div class="chat-player-details">
+                                    <h3>Youssef Bassiony</h3>
+                                    <p>Forward • Football First Team</p>
+                                    <div class="player-status injured">
+                                        <i class="fas fa-circle"></i>
+                                        Injured - Ankle Sprain
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="chat-actions">
+                                <button class="chat-action-btn" onclick="viewPlayerMedicalInfo()" title="Medical Info">
+                                    <i class="fas fa-user-md"></i>
+                                </button>
+                                <button class="chat-action-btn" onclick="scheduleAppointment()"
+                                    title="Schedule Appointment">
+                                    <i class="fas fa-calendar-plus"></i>
+                                </button>
+                                <button class="chat-action-btn" onclick="sendMedicalForm()" title="Send Medical Form">
+                                    <i class="fas fa-file-medical"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="chat-messages" id="chat-messages">
+                            <div class="message-date">Today, January 16, 2024</div>
+
+                            <div class="message received">
+                                <div class="message-content">
+                                    <p>Good morning Dr. Sarah! How is my ankle recovery progressing?</p>
+                                    <span class="message-time">09:15 AM</span>
+                                </div>
+                            </div>
+
+                            <div class="message sent">
+                                <div class="message-content">
+                                    <p>Good morning Mohamed! Your recovery is going well. The swelling has reduced
+                                        significantly since our last checkup. How are you feeling today?</p>
+                                    <span class="message-time">09:18 AM</span>
+                                </div>
+                            </div>
+
+                            <div class="message received">
+                                <div class="message-content">
+                                    <p>Much better! The pain is almost gone and I can walk normally now. When can I
+                                        start light training?</p>
+                                    <span class="message-time">09:20 AM</span>
+                                </div>
+                            </div>
+
+                            <div class="message sent">
+                                <div class="message-content">
+                                    <p>That's great progress! Let's schedule a checkup for tomorrow to assess your range
+                                        of motion. If everything looks good, we can discuss a gradual return to training
+                                        plan.</p>
+                                    <span class="message-time">09:25 AM</span>
+                                </div>
+                            </div>
+
+                            <div class="message received">
+                                <div class="message-content">
+                                    <p>Perfect! I'm really eager to get back on the field. Should I continue with the
+                                        exercises you gave me?</p>
+                                    <span class="message-time">09:27 AM</span>
+                                </div>
+                            </div>
+
+                            <div class="message sent">
+                                <div class="message-content">
+                                    <p>Yes, continue with the rehabilitation exercises. I'm sending you an updated
+                                        recovery plan with some new exercises to strengthen your ankle.</p>
+                                    <span class="message-time">09:30 AM</span>
+                                </div>
+                                <div class="message-attachment">
+                                    <i class="fas fa-file-pdf"></i>
+                                    <span>Ankle Recovery Plan - Week 3.pdf</span>
+                                    <button class="download-btn"><i class="fas fa-download"></i></button>
+                                </div>
+                            </div>
+
+                            <div class="message received">
+                                <div class="message-content">
+                                    <p>Thanks for the recovery plan, feeling much better!</p>
+                                    <span class="message-time">10:45 AM</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="chat-input-container">
+                            <div class="chat-input-actions">
+                                <button class="input-action-btn" onclick="attachFile()" title="Attach File">
+                                    <i class="fas fa-paperclip"></i>
+                                </button>
+                                <button class="input-action-btn" onclick="sendQuickResponse()" title="Quick Responses">
+                                    <i class="fas fa-bolt"></i>
+                                </button>
+                                <button class="input-action-btn" onclick="sendMedicalTemplate()"
+                                    title="Medical Templates">
+                                    <i class="fas fa-file-medical"></i>
+                                </button>
+                            </div>
+
+                            <div class="chat-input">
+                                <input type="text" placeholder="Type your message..." id="message-input">
+                                <button class="send-btn" onclick="sendMessage()">
+                                    <i class="fas fa-paper-plane"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <!-- Quick Responses Modal -->
+        <div class="modal" id="quick-responses-modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Quick Responses</h3>
+                    <span class="close" onclick="closeQuickResponsesModal()">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <div class="quick-responses-grid">
+                        <button class="quick-response-btn" onclick="insertQuickResponse('How are you feeling today?')">
+                            How are you feeling today?
+                        </button>
+                        <button class="quick-response-btn"
+                            onclick="insertQuickResponse('Please continue with your prescribed exercises.')">
+                            Please continue with your prescribed exercises.
+                        </button>
+                        <button class="quick-response-btn"
+                            onclick="insertQuickResponse('Let\'s schedule a follow-up appointment.')">
+                            Let's schedule a follow-up appointment.
+                        </button>
+                        <button class="quick-response-btn"
+                            onclick="insertQuickResponse('Your recovery is progressing well.')">
+                            Your recovery is progressing well.
+                        </button>
+                        <button class="quick-response-btn"
+                            onclick="insertQuickResponse('Please rest and avoid strenuous activities.')">
+                            Please rest and avoid strenuous activities.
+                        </button>
+                        <button class="quick-response-btn"
+                            onclick="insertQuickResponse('I\'m sending you updated instructions.')">
+                            I'm sending you updated instructions.
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Medical Templates Modal -->
+        <div class="modal" id="medical-templates-modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Medical Templates</h3>
+                    <span class="close" onclick="closeMedicalTemplatesModal()">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <div class="templates-list">
+                        <div class="template-item" onclick="sendTemplate('injury-care')">
+                            <i class="fas fa-band-aid"></i>
+                            <div class="template-info">
+                                <h4>Injury Care Instructions</h4>
+                                <p>General injury care and recovery guidelines</p>
+                            </div>
+                        </div>
+                        <div class="template-item" onclick="sendTemplate('exercise-plan')">
+                            <i class="fas fa-dumbbell"></i>
+                            <div class="template-info">
+                                <h4>Exercise Plan</h4>
+                                <p>Rehabilitation and strengthening exercises</p>
+                            </div>
+                        </div>
+                        <div class="template-item" onclick="sendTemplate('nutrition-guide')">
+                            <i class="fas fa-apple-alt"></i>
+                            <div class="template-info">
+                                <h4>Nutrition Guidelines</h4>
+                                <p>Recovery nutrition and dietary recommendations</p>
+                            </div>
+                        </div>
+                        <div class="template-item" onclick="sendTemplate('rest-schedule')">
+                            <i class="fas fa-bed"></i>
+                            <div class="template-info">
+                                <h4>Rest Schedule</h4>
+                                <p>Optimal rest and sleep recommendations</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="scripts/main.js"></script>
+        <script src="scripts/medical.js"></script>
+    </body>
+
+</html>

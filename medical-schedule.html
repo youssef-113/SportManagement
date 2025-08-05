@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Medical Schedule - Al Ahly SC Medical Center</title>
+        <link rel="stylesheet" href="styles/main.css">
+        <link rel="stylesheet" href="styles/medical.css">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet">
+    </head>
+
+    <body>
+        <div class="app-container">
+            <!-- Medical Sidebar -->
+            <aside class="sidebar">
+                <div class="sidebar-header">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/4/41/Al_Ahly_SC_logo.png" alt="Al Ahly SC"
+                        class="sidebar-logo">
+                    <div class="sidebar-title">
+                        <h3>Al Ahly SC</h3>
+                        <p>Medical Center</p>
+                    </div>
+                </div>
+
+                <nav class="sidebar-nav">
+                    <div class="nav-section">
+                        <h4>MEDICAL OVERVIEW</h4>
+                        <ul>
+                            <li><a href="medical-dashboard.html" class="nav-link"><i class="fas fa-heartbeat"></i>
+                                    Dashboard</a></li>
+                            <li><a href="medical-schedule.html" class="nav-link active"><i
+                                        class="fas fa-calendar-alt"></i> My Schedule</a></li>
+                            <li><a href="medical-announcements.html" class="nav-link"><i class="fas fa-bullhorn"></i>
+                                    Announcements</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="nav-section">
+                        <h4>PLAYER MANAGEMENT</h4>
+                        <ul>
+                            <li><a href="medical-players.html" class="nav-link"><i class="fas fa-user-friends"></i>
+                                    Player Search</a></li>
+                            <li><a href="medical-injuries.html" class="nav-link"><i class="fas fa-band-aid"></i> Injury
+                                    Management</a></li>
+                            <li><a href="medical-checkups.html" class="nav-link"><i class="fas fa-clipboard-list"></i>
+                                    Checkup Logs</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="nav-section">
+                        <h4>COMMUNICATION</h4>
+                        <ul>
+                            <li><a href="medical-chat.html" class="nav-link"><i class="fas fa-comments"></i> Player
+                                    Chat</a></li>
+                            <li><a href="medical-reports.html" class="nav-link"><i class="fas fa-file-medical"></i>
+                                    Medical Reports</a></li>
+                        </ul>
+                    </div>
+                </nav>
+
+                <div class="sidebar-footer">
+                    <div class="user-profile">
+                        <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=40&h=40&fit=crop&crop=face"
+                            alt="User" class="user-avatar">
+                        <div class="user-info">
+                            <span class="user-name">Dr. Sarah Ahmed</span>
+                            <span class="user-role">Medical Staff</span>
+                        </div>
+                        <div class="user-menu">
+                            <i class="fas fa-chevron-down"></i>
+                            <div class="dropdown-menu">
+                                <a href="profile.html"><i class="fas fa-user"></i> Profile</a>
+                                <a href="settings.html"><i class="fas fa-cog"></i> Settings</a>
+                                <a href="index.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="main-content">
+                <header class="main-header">
+                    <div class="header-left">
+                        <button class="sidebar-toggle">
+                            <i class="fas fa-bars"></i>
+                        </button>
+                        <h1>My Schedule</h1>
+                        <p>Your medical appointments and checkup schedule</p>
+                    </div>
+
+                    <div class="header-right">
+                        <div class="view-toggle">
+                            <button class="view-btn active" data-view="week" onclick="switchView('week')">
+                                <i class="fas fa-calendar-week"></i>
+                                Week
+                            </button>
+                            <button class="view-btn" data-view="month" onclick="switchView('month')">
+                                <i class="fas fa-calendar"></i>
+                                Month
+                            </button>
+                        </div>
+                        <button class="btn-outline" onclick="exportSchedule()">
+                            <i class="fas fa-download"></i>
+                            Export
+                        </button>
+                        <button class="btn-primary" onclick="openNewCheckupModal()">
+                            <i class="fas fa-plus"></i>
+                            New Checkup
+                        </button>
+                    </div>
+                </header>
+
+                <div class="schedule-content">
+                    <!-- Schedule Navigation -->
+                    <div class="schedule-navigation">
+                        <button class="nav-btn" onclick="previousPeriod()">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <div class="current-period">
+                            <h2>January 15 - 21, 2024</h2>
+                            <p>Week 3 of January</p>
+                        </div>
+                        <button class="nav-btn" onclick="nextPeriod()">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                        <button class="today-btn" onclick="goToToday()">Today</button>
+                    </div>
+
+                    <!-- Week View -->
+                    <div class="schedule-view week-view active" id="week-view">
+                        <div class="week-header">
+                            <div class="time-column"></div>
+                            <div class="day-column">
+                                <div class="day-header">
+                                    <span class="day-name">Sunday</span>
+                                    <span class="day-date">15</span>
+                                </div>
+                            </div>
+                            <div class="day-column">
+                                <div class="day-header">
+                                    <span class="day-name">Monday</span>
+                                    <span class="day-date">16</span>
+                                </div>
+                            </div>
+                            <div class="day-column">
+                                <div class="day-header today">
+                                    <span class="day-name">Tuesday</span>
+                                    <span class="day-date">17</span>
+                                </div>
+                            </div>
+                            <div class="day-column">
+                                <div class="day-header">
+                                    <span class="day-name">Wednesday</span>
+                                    <span class="day-date">18</span>
+                                </div>
+                            </div>
+                            <div class="day-column">
+                                <div class="day-header">
+                                    <span class="day-name">Thursday</span>
+                                    <span class="day-date">19</span>
+                                </div>
+                            </div>
+                            <div class="day-column">
+                                <div class="day-header">
+                                    <span class="day-name">Friday</span>
+                                    <span class="day-date">20</span>
+                                </div>
+                            </div>
+                            <div class="day-column">
+                                <div class="day-header">
+                                    <span class="day-name">Saturday</span>
+                                    <span class="day-date">21</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="week-body">
+                            <div class="time-slots">
+                                <div class="time-slot">8:00 AM</div>
+                                <div class="time-slot">9:00 AM</div>
+                                <div class="time-slot">10:00 AM</div>
+                                <div class="time-slot">11:00 AM</div>
+                                <div class="time-slot">12:00 PM</div>
+                                <div class="time-slot">1:00 PM</div>
+                                <div class="time-slot">2:00 PM</div>
+                                <div class="time-slot">3:00 PM</div>
+                                <div class="time-slot">4:00 PM</div>
+                                <div class="time-slot">5:00 PM</div>
+                                <div class="time-slot">6:00 PM</div>
+                                <div class="time-slot">7:00 PM</div>
+                            </div>
+
+                            <div class="week-grid">
+                                <!-- Sunday -->
+                                <div class="day-column">
+                                    <div class="day-events">
+                                        <!-- No events -->
+                                    </div>
+                                </div>
+
+                                <!-- Monday -->
+                                <div class="day-column">
+                                    <div class="day-events">
+                                        <div class="event medical" style="top: 120px; height: 60px;"
+                                            onclick="viewEventDetails('checkup-1')">
+                                            <div class="event-content">
+                                                <div class="event-time">9:00 AM - 10:00 AM</div>
+                                                <div class="event-title">Pre-Training Checkup</div>
+                                                <div class="event-location">Football First Team</div>
+                                                <div class="event-coach">Medical Room A</div>
+                                            </div>
+                                        </div>
+                                        <div class="event medical" style="top: 360px; height: 90px;"
+                                            onclick="viewEventDetails('injury-1')">
+                                            <div class="event-content">
+                                                <div class="event-time">2:00 PM - 3:30 PM</div>
+                                                <div class="event-title">Injury Assessment</div>
+                                                <div class="event-location">Youssef Bassiony</div>
+                                                <div class="event-coach">Medical Room B</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Tuesday (Today) -->
+                                <div class="day-column today">
+                                    <div class="day-events">
+                                        <div class="event medical current" style="top: 180px; height: 90px;"
+                                            onclick="viewEventDetails('checkup-2')">
+                                            <div class="event-content">
+                                                <div class="event-time">11:30 AM - 1:00 PM</div>
+                                                <div class="event-title">Follow-up Assessment</div>
+                                                <div class="event-location">Youssef Bassiony</div>
+                                                <div class="event-coach">Medical Room B</div>
+                                                <div class="event-status">In Progress</div>
+                                            </div>
+                                        </div>
+                                        <div class="event recovery" style="top: 300px; height: 60px;"
+                                            onclick="viewEventDetails('recovery-1')">
+                                            <div class="event-content">
+                                                <div class="event-time">2:00 PM - 3:00 PM</div>
+                                                <div class="event-title">Recovery Session</div>
+                                                <div class="event-location">Basketball Team</div>
+                                                <div class="event-coach">Recovery Center</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Wednesday -->
+                                <div class="day-column">
+                                    <div class="day-events">
+                                        <div class="event medical" style="top: 120px; height: 60px;"
+                                            onclick="viewEventDetails('checkup-3')">
+                                            <div class="event-content">
+                                                <div class="event-time">9:00 AM - 10:00 AM</div>
+                                                <div class="event-title">Routine Checkup</div>
+                                                <div class="event-location">Ahmed Zizo</div>
+                                                <div class="event-coach">Medical Room A</div>
+                                            </div>
+                                        </div>
+                                        <div class="event medical" style="top: 240px; height: 60px;"
+                                            onclick="viewEventDetails('fitness-1')">
+                                            <div class="event-content">
+                                                <div class="event-time">12:00 PM - 1:00 PM</div>
+                                                <div class="event-title">Fitness Assessment</div>
+                                                <div class="event-location">Hassan Ahmed</div>
+                                                <div class="event-coach">Fitness Center</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Thursday -->
+                                <div class="day-column">
+                                    <div class="day-events">
+                                        <div class="event recovery" style="top: 180px; height: 60px;"
+                                            onclick="viewEventDetails('recovery-2')">
+                                            <div class="event-content">
+                                                <div class="event-time">11:00 AM - 12:00 PM</div>
+                                                <div class="event-title">Recovery Check</div>
+                                                <div class="event-location">Karim Fouad</div>
+                                                <div class="event-coach">Recovery Center</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Friday -->
+                                <div class="day-column">
+                                    <div class="day-events">
+                                        <div class="event medical" style="top: 120px; height: 120px;"
+                                            onclick="viewEventDetails('team-checkup-1')">
+                                            <div class="event-content">
+                                                <div class="event-time">9:00 AM - 11:00 AM</div>
+                                                <div class="event-title">Team Medical Check</div>
+                                                <div class="event-location">Football First Team</div>
+                                                <div class="event-coach">Medical Room A & B</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Saturday -->
+                                <div class="day-column">
+                                    <div class="day-events">
+                                        <!-- No events -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <script src="scripts/main.js"></script>
+        <script src="scripts/medical.js"></script>
+    </body>
+
+</html>

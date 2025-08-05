@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Attendance - Al Ahly SC Coach Portal</title>
+        <link rel="stylesheet" href="styles/main.css">
+        <link rel="stylesheet" href="styles/coach.css">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet">
+    </head>
+
+    <body>
+        <div class="app-container">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="sidebar-header">
+                    <img src="./Images/Al Ahly Creative Logo Option 3 (1).png" alt="Al Ahly SC" class="sidebar-logo">
+                    <div class="sidebar-title">
+                        <h3>Al Ahly SC</h3>
+                        <p>Coach Portal</p>
+                    </div>
+                </div>
+
+                <nav class="sidebar-nav">
+                    <div class="nav-section">
+                        <h4>OVERVIEW</h4>
+                        <ul>
+                            <li><a href="coach-dashboard.html" class="nav-link"><i class="fas fa-home"></i>
+                                    Dashboard</a></li>
+                            <li><a href="coach-analytics.html" class="nav-link"><i class="fas fa-chart-bar"></i> My
+                                    Analytics</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="nav-section">
+                        <h4>TEAM MANAGEMENT</h4>
+                        <ul>
+                            <li><a href="coach-team.html" class="nav-link"><i class="fas fa-users"></i> My Team</a></li>
+                            <li><a href="schedule.html" class="nav-link"><i class="fas fa-calendar-alt"></i>
+                                    Schedule</a></li>
+                            <li><a href="drills.html" class="nav-link"><i class="fas fa-dumbbell"></i> Drill Library</a>
+                            </li>
+                            <li><a href="players.html" class="nav-link"><i class="fas fa-user-friends"></i> My
+                                    Players</a></li>
+                            <li><a href="coach-attendance.html" class="nav-link active"><i
+                                        class="fas fa-clipboard-check"></i> Attendance</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="nav-section">
+                        <h4>TRAINING</h4>
+                        <ul>
+                            <li><a href="coach-sessions.html" class="nav-link"><i class="fas fa-play-circle"></i>
+                                    Training Sessions</a></li>
+                            <li><a href="coach-performance.html" class="nav-link"><i class="fas fa-chart-line"></i>
+                                    Performance</a></li>
+                            <li><a href="coach-reports.html" class="nav-link"><i class="fas fa-file-alt"></i>
+                                    Reports</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="nav-section">
+                        <h4>COMMUNICATION</h4>
+                        <ul>
+                            <li><a href="coach-announcements.html" class="nav-link"><i class="fas fa-bullhorn"></i>
+                                    Announcements</a></li>
+                            <li><a href="coach-chat.html" class="nav-link"><i class="fas fa-comments"></i> Team Chat</a>
+                            </li>
+                            <li><a href="coach-feedback.html" class="nav-link"><i class="fas fa-star"></i> Player
+                                    Feedback</a></li>
+                        </ul>
+                    </div>
+                </nav>
+
+                <div class="sidebar-footer">
+                    <div class="user-profile">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop&crop=face"
+                            alt="User" class="user-avatar">
+                        <div class="user-info">
+                            <span class="user-name">Ahmed Hassan</span>
+                            <span class="user-role">Football Coach</span>
+                        </div>
+                        <div class="user-menu">
+                            <i class="fas fa-chevron-down"></i>
+                            <div class="dropdown-menu">
+                                <a href="coach-profile.html"><i class="fas fa-user"></i> Profile</a>
+                                <a href="coach-settings.html"><i class="fas fa-cog"></i> Settings</a>
+                                <a href="index.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="main-content">
+                <header class="main-header">
+                    <div class="header-left">
+                        <button class="sidebar-toggle">
+                            <i class="fas fa-bars"></i>
+                        </button>
+                        <h1>Team Attendance</h1>
+                        <p>Track and manage your team's training session attendance</p>
+                    </div>
+
+                    <div class="header-right">
+                        <button class="btn-outline" onclick="exportAttendance()">
+                            <i class="fas fa-download"></i>
+                            Export
+                        </button>
+                        <button class="btn-primary" onclick="takeAttendance()">
+                            <i class="fas fa-clipboard-check"></i>
+                            Take Attendance
+                        </button>
+                    </div>
+                </header>
+
+                <div class="attendance-content">
+                    <!-- Attendance Overview -->
+                    <div class="attendance-overview">
+                        <div class="overview-card">
+                            <div class="overview-icon present">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="overview-info">
+                                <h3>92%</h3>
+                                <p>Average Attendance</p>
+                                <span class="trend positive">+3% this week</span>
+                            </div>
+                        </div>
+
+                        <div class="overview-card">
+                            <div class="overview-icon sessions">
+                                <i class="fas fa-calendar-check"></i>
+                            </div>
+                            <div class="overview-info">
+                                <h3>12</h3>
+                                <p>Sessions This Week</p>
+                                <span class="trend neutral">Same as last week</span>
+                            </div>
+                        </div>
+
+                        <div class="overview-card">
+                            <div class="overview-icon absent">
+                                <i class="fas fa-exclamation-triangle"></i>
+                            </div>
+                            <div class="overview-info">
+                                <h3>3</h3>
+                                <p>Frequent Absentees</p>
+                                <span class="trend negative">Need attention</span>
+                            </div>
+                        </div>
+
+                        <div class="overview-card">
+                            <div class="overview-icon perfect">
+                                <i class="fas fa-trophy"></i>
+                            </div>
+                            <div class="overview-info">
+                                <h3>8</h3>
+                                <p>Perfect Attendance</p>
+                                <span class="trend positive">100% this week</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Current Session Attendance -->
+                    <div class="current-session">
+                        <div class="session-header">
+                            <div class="session-info">
+                                <h3>Today's Training Session</h3>
+                                <p>Morning Training - January 28, 2024 at 9:00 AM</p>
+                            </div>
+                            <div class="session-actions">
+                                <button class="btn-outline" onclick="editSession()">
+                                    <i class="fas fa-edit"></i>
+                                    Edit Session
+                                </button>
+                                <button class="btn-primary" onclick="saveAttendance()">
+                                    <i class="fas fa-save"></i>
+                                    Save Attendance
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="attendance-grid">
+                            <div class="attendance-player">
+                                <img src="https://images.unsplash.com/photo-1566753323558-f4e0952af115?w=50&h=50&fit=crop&crop=face"
+                                    alt="Youssef Bassiony" class="player-avatar">
+                                <div class="player-info">
+                                    <h4>Youssef Bassiony</h4>
+                                    <span class="position">Forward #11</span>
+                                </div>
+                                <div class="attendance-status">
+                                    <button class="status-btn present active" onclick="markAttendance(1, 'present')">
+                                        <i class="fas fa-check"></i>
+                                        Present
+                                    </button>
+                                    <button class="status-btn absent" onclick="markAttendance(1, 'absent')">
+                                        <i class="fas fa-times"></i>
+                                        Absent
+                                    </button>
+                                    <button class="status-btn excused" onclick="markAttendance(1, 'excused')">
+                                        <i class="fas fa-exclamation"></i>
+                                        Excused
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="attendance-player">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=50&h=50&fit=crop&crop=face"
+                                    alt="Ahmed Zizo" class="player-avatar">
+                                <div class="player-info">
+                                    <h4>Ahmed Zizo</h4>
+                                    <span class="position">Midfielder #8</span>
+                                </div>
+                                <div class="attendance-status">
+                                    <button class="status-btn present active" onclick="markAttendance(2, 'present')">
+                                        <i class="fas fa-check"></i>
+                                        Present
+                                    </button>
+                                    <button class="status-btn absent" onclick="markAttendance(2, 'absent')">
+                                        <i class="fas fa-times"></i>
+                                        Absent
+                                    </button>
+                                    <button class="status-btn excused" onclick="markAttendance(2, 'excused')">
+                                        <i class="fas fa-exclamation"></i>
+                                        Excused
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="attendance-player">
+                                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=50&h=50&fit=crop&crop=face"
+                                    alt="Karim Fouad" class="player-avatar">
+                                <div class="player-info">
+                                    <h4>Karim Fouad</h4>
+                                    <span class="position">Defender #4</span>
+                                </div>
+                                <div class="attendance-status">
+                                    <button class="status-btn present" onclick="markAttendance(3, 'present')">
+                                        <i class="fas fa-check"></i>
+                                        Present
+                                    </button>
+                                    <button class="status-btn absent" onclick="markAttendance(3, 'absent')">
+                                        <i class="fas fa-times"></i>
+                                        Absent
+                                    </button>
+                                    <button class="status-btn excused active" onclick="markAttendance(3, 'excused')">
+                                        <i class="fas fa-exclamation"></i>
+                                        Excused
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="attendance-player">
+                                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=50&h=50&fit=crop&crop=face"
+                                    alt="Hassan Ahmed" class="player-avatar">
+                                <div class="player-info">
+                                    <h4>Hassan Ahmed</h4>
+                                    <span class="position">Goalkeeper #1</span>
+                                </div>
+                                <div class="attendance-status">
+                                    <button class="status-btn present active" onclick="markAttendance(4, 'present')">
+                                        <i class="fas fa-check"></i>
+                                        Present
+                                    </button>
+                                    <button class="status-btn absent" onclick="markAttendance(4, 'absent')">
+                                        <i class="fas fa-times"></i>
+                                        Absent
+                                    </button>
+                                    <button class="status-btn excused" onclick="markAttendance(4, 'excused')">
+                                        <i class="fas fa-exclamation"></i>
+                                        Excused
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Attendance History -->
+                    <div class="attendance-history">
+                        <div class="history-header">
+                            <h3>Attendance History</h3>
+                            <div class="history-filters">
+                                <select id="period-filter">
+                                    <option value="week">This Week</option>
+                                    <option value="month">This Month</option>
+                                    <option value="quarter">This Quarter</option>
+                                </select>
+                                <select id="player-filter">
+                                    <option value="">All Players</option>
+                                    <option value="1">Youssef Bassiony</option>
+                                    <option value="2">Ahmed Zizo</option>
+                                    <option value="3">Karim Fouad</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="history-table">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Session</th>
+                                        <th>Present</th>
+                                        <th>Absent</th>
+                                        <th>Excused</th>
+                                        <th>Attendance Rate</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Jan 27, 2024</td>
+                                        <td>Evening Training</td>
+                                        <td><span class="count present">23</span></td>
+                                        <td><span class="count absent">1</span></td>
+                                        <td><span class="count excused">1</span></td>
+                                        <td><span class="rate good">92%</span></td>
+                                        <td>
+                                            <button class="action-btn" onclick="viewSessionDetails(1)">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <button class="action-btn" onclick="editSessionAttendance(1)">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Jan 26, 2024</td>
+                                        <td>Morning Training</td>
+                                        <td><span class="count present">24</span></td>
+                                        <td><span class="count absent">0</span></td>
+                                        <td><span class="count excused">1</span></td>
+                                        <td><span class="rate excellent">96%</span></td>
+                                        <td>
+                                            <button class="action-btn" onclick="viewSessionDetails(2)">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <button class="action-btn" onclick="editSessionAttendance(2)">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Jan 25, 2024</td>
+                                        <td>Tactical Session</td>
+                                        <td><span class="count present">22</span></td>
+                                        <td><span class="count absent">2</span></td>
+                                        <td><span class="count excused">1</span></td>
+                                        <td><span class="rate average">88%</span></td>
+                                        <td>
+                                            <button class="action-btn" onclick="viewSessionDetails(3)">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            <button class="action-btn" onclick="editSessionAttendance(3)">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <script src="scripts/main.js"></script>
+        <script src="scripts/coach-attendance.js"></script>
+    </body>
+
+</html>

@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>View Players - Al Ahly SC Training Management</title>
+        <link rel="stylesheet" href="styles/main.css">
+        <link rel="stylesheet" href="styles/players.css">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet">
+    </head>
+
+    <body>
+        <div class="app-container">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="sidebar-header">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/4/41/Al_Ahly_SC_logo.png" alt="Al Ahly SC"
+                        class="sidebar-logo">
+                    <div class="sidebar-title">
+                        <h3>Al Ahly SC</h3>
+                        <p>Training Management</p>
+                    </div>
+                </div>
+
+                <nav class="sidebar-nav">
+                    <div class="nav-section">
+                        <h4>OVERVIEW</h4>
+                        <ul>
+                            <li><a href="dashboard.html" class="nav-link"><i class="fas fa-home"></i> Dashboard</a></li>
+                            <li><a href="analytics.html" class="nav-link"><i class="fas fa-chart-bar"></i> Analytics</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="nav-section">
+                        <h4>SPORTS MANAGEMENT</h4>
+                        <ul>
+                            <li><a href="teams.html" class="nav-link"><i class="fas fa-users"></i> Teams</a></li>
+                            <li><a href="schedule.html" class="nav-link"><i class="fas fa-calendar-alt"></i>
+                                    Schedule</a></li>
+                            <li><a href="drills.html" class="nav-link"><i class="fas fa-dumbbell"></i> Drill Library</a>
+                            </li>
+                            <li><a href="players.html" class="nav-link active"><i class="fas fa-user-friends"></i> View
+                                    Players</a></li>
+                            <li><a href="attendance.html" class="nav-link"><i class="fas fa-clipboard-check"></i>
+                                    Attendance</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="nav-section">
+                        <h4>COMMUNICATION</h4>
+                        <ul>
+                            <li><a href="announcements.html" class="nav-link"><i class="fas fa-bullhorn"></i>
+                                    Announcements</a></li>
+                            <li><a href="chat.html" class="nav-link"><i class="fas fa-comments"></i> Chat</a></li>
+                            <li><a href="feedback.html" class="nav-link"><i class="fas fa-star"></i> Feedback</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="nav-section">
+                        <h4>MEDICAL CENTER</h4>
+                        <ul>
+                            <li><a href="medical.html" class="nav-link"><i class="fas fa-heartbeat"></i> Medical
+                                    Overview</a></li>
+                            <li><a href="injuries.html" class="nav-link"><i class="fas fa-band-aid"></i> Injury
+                                    Management</a></li>
+                        </ul>
+                    </div>
+                </nav>
+
+                <div class="sidebar-footer">
+                    <div class="user-profile">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop&crop=face"
+                            alt="User" class="user-avatar">
+                        <div class="user-info">
+                            <span class="user-name">Ahmed Hassan</span>
+                            <span class="user-role">Football Coach</span>
+                        </div>
+                        <div class="user-menu">
+                            <i class="fas fa-chevron-down"></i>
+                            <div class="dropdown-menu">
+                                <a href="profile.html"><i class="fas fa-user"></i> Profile</a>
+                                <a href="settings.html"><i class="fas fa-cog"></i> Settings</a>
+                                <a href="index.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="main-content">
+                <header class="main-header">
+                    <div class="header-left">
+                        <button class="sidebar-toggle">
+                            <i class="fas fa-bars"></i>
+                        </button>
+                        <h1>Team Players</h1>
+                        <p>Manage player details, performance, and attendance for your team</p>
+                    </div>
+
+                    <div class="header-right">
+                        <div class="search-box">
+                            <i class="fas fa-search"></i>
+                            <input type="text" placeholder="Search players..." id="player-search">
+                        </div>
+                        <button class="btn-outline" onclick="exportPlayers()">
+                            <i class="fas fa-download"></i>
+                            Export
+                        </button>
+                        <button class="btn-primary" onclick="openAddPlayerModal()">
+                            <i class="fas fa-user-plus"></i>
+                            Add Player
+                        </button>
+                    </div>
+                </header>
+
+                <div class="players-content">
+                    <!-- Team Selection -->
+                    <div class="team-selector">
+                        <div class="team-info">
+                            <img src="https://upload.wikimedia.org/wikipedia/en/4/41/Al_Ahly_SC_logo.png" alt="Team"
+                                class="team-logo">
+                            <div class="team-details">
+                                <h3>Football First Team</h3>
+                                <p>25 Active Players • Coach: Ahmed Hassan</p>
+                            </div>
+                        </div>
+
+                        <div class="team-actions">
+                            <select id="team-select" onchange="changeTeam()">
+                                <option value="football-first">Football First Team</option>
+                                <option value="football-youth">Football Youth Team</option>
+                                <option value="basketball-senior">Basketball Senior Team</option>
+                                <option value="handball-senior">Handball Senior Team</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Player Filters -->
+                    <div class="player-filters">
+                        <div class="filter-group">
+                            <label>Position:</label>
+                            <select id="position-filter">
+                                <option value="">All Positions</option>
+                                <option value="goalkeeper">Goalkeeper</option>
+                                <option value="defender">Defender</option>
+                                <option value="midfielder">Midfielder</option>
+                                <option value="forward">Forward</option>
+                            </select>
+                        </div>
+
+                        <div class="filter-group">
+                            <label>Status:</label>
+                            <select id="status-filter">
+                                <option value="">All Status</option>
+                                <option value="active">Active</option>
+                                <option value="injured">Injured</option>
+                                <option value="suspended">Suspended</option>
+                            </select>
+                        </div>
+
+                        <div class="filter-group">
+                            <label>Age Group:</label>
+                            <select id="age-filter">
+                                <option value="">All Ages</option>
+                                <option value="u18">Under 18</option>
+                                <option value="u21">Under 21</option>
+                                <option value="senior">Senior</option>
+                            </select>
+                        </div>
+
+                        <button class="btn-outline" onclick="clearPlayerFilters()">
+                            <i class="fas fa-times"></i>
+                            Clear
+                        </button>
+                    </div>
+
+                    <!-- Players Grid -->
+                    <div class="players-grid">
+                        <div class="player-card">
+                            <div class="player-header">
+                                <img src="https://images.unsplash.com/photo-1566753323558-f4e0952af115?w=80&h=80&fit=crop&crop=face"
+                                    alt="Youssef Bassiony" class="player-avatar">
+                                <div class="player-status active">
+                                    <i class="fas fa-circle"></i>
+                                    Active
+                                </div>
+                            </div>
+
+                            <div class="player-info">
+                                <h3>Youssef Bassiony</h3>
+                                <div class="player-meta">
+                                    <span class="position">Forward</span>
+                                    <span class="jersey-number">#11</span>
+                                </div>
+                                <div class="player-stats">
+                                    <div class="stat">
+                                        <span class="label">Age</span>
+                                        <span class="value">31</span>
+                                    </div>
+                                    <div class="stat">
+                                        <span class="label">Rating</span>
+                                        <span class="value">9.2</span>
+                                    </div>
+                                    <div class="stat">
+                                        <span class="label">Attendance</span>
+                                        <span class="value">95%</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="player-actions">
+                                <button class="action-btn" onclick="viewPlayerDetails(1)" title="View Details">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="action-btn" onclick="editPlayerPerformance(1)" title="Edit Performance">
+                                    <i class="fas fa-chart-line"></i>
+                                </button>
+                                <button class="action-btn" onclick="editPlayerAttendance(1)" title="Edit Attendance">
+                                    <i class="fas fa-calendar-check"></i>
+                                </button>
+                                <button class="action-btn" onclick="leaveFeedback(1)" title="Leave Feedback">
+                                    <i class="fas fa-comment"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="player-card">
+                            <div class="player-header">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face"
+                                    alt="Ahmed Zizo" class="player-avatar">
+                                <div class="player-status active">
+                                    <i class="fas fa-circle"></i>
+                                    Active
+                                </div>
+                            </div>
+
+                            <div class="player-info">
+                                <h3>Ahmed Zizo</h3>
+                                <div class="player-meta">
+                                    <span class="position">Midfielder</span>
+                                    <span class="jersey-number">#8</span>
+                                </div>
+                                <div class="player-stats">
+                                    <div class="stat">
+                                        <span class="label">Age</span>
+                                        <span class="value">28</span>
+                                    </div>
+                                    <div class="stat">
+                                        <span class="label">Rating</span>
+                                        <span class="value">8.8</span>
+                                    </div>
+                                    <div class="stat">
+                                        <span class="label">Attendance</span>
+                                        <span class="value">92%</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="player-actions">
+                                <button class="action-btn" onclick="viewPlayerDetails(2)" title="View Details">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="action-btn" onclick="editPlayerPerformance(2)" title="Edit Performance">
+                                    <i class="fas fa-chart-line"></i>
+                                </button>
+                                <button class="action-btn" onclick="editPlayerAttendance(2)" title="Edit Attendance">
+                                    <i class="fas fa-calendar-check"></i>
+                                </button>
+                                <button class="action-btn" onclick="leaveFeedback(2)" title="Leave Feedback">
+                                    <i class="fas fa-comment"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="player-card">
+                            <div class="player-header">
+                                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face"
+                                    alt="Karim Fouad" class="player-avatar">
+                                <div class="player-status injured">
+                                    <i class="fas fa-circle"></i>
+                                    Injured
+                                </div>
+                            </div>
+
+                            <div class="player-info">
+                                <h3>Karim Fouad</h3>
+                                <div class="player-meta">
+                                    <span class="position">Defender</span>
+                                    <span class="jersey-number">#4</span>
+                                </div>
+                                <div class="player-stats">
+                                    <div class="stat">
+                                        <span class="label">Age</span>
+                                        <span class="value">26</span>
+                                    </div>
+                                    <div class="stat">
+                                        <span class="label">Rating</span>
+                                        <span class="value">8.6</span>
+                                    </div>
+                                    <div class="stat">
+                                        <span class="label">Attendance</span>
+                                        <span class="value">88%</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="player-actions">
+                                <button class="action-btn" onclick="viewPlayerDetails(3)" title="View Details">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="action-btn" onclick="editPlayerPerformance(3)" title="Edit Performance">
+                                    <i class="fas fa-chart-line"></i>
+                                </button>
+                                <button class="action-btn" onclick="editPlayerAttendance(3)" title="Edit Attendance">
+                                    <i class="fas fa-calendar-check"></i>
+                                </button>
+                                <button class="action-btn" onclick="leaveFeedback(3)" title="Leave Feedback">
+                                    <i class="fas fa-comment"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="player-card">
+                            <div class="player-header">
+                                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&h=80&fit=crop&crop=face"
+                                    alt="Hassan Ahmed" class="player-avatar">
+                                <div class="player-status active">
+                                    <i class="fas fa-circle"></i>
+                                    Active
+                                </div>
+                            </div>
+
+                            <div class="player-info">
+                                <h3>Hassan Ahmed</h3>
+                                <div class="player-meta">
+                                    <span class="position">Goalkeeper</span>
+                                    <span class="jersey-number">#1</span>
+                                </div>
+                                <div class="player-stats">
+                                    <div class="stat">
+                                        <span class="label">Age</span>
+                                        <span class="value">29</span>
+                                    </div>
+                                    <div class="stat">
+                                        <span class="label">Rating</span>
+                                        <span class="value">8.4</span>
+                                    </div>
+                                    <div class="stat">
+                                        <span class="label">Attendance</span>
+                                        <span class="value">98%</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="player-actions">
+                                <button class="action-btn" onclick="viewPlayerDetails(4)" title="View Details">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="action-btn" onclick="editPlayerPerformance(4)" title="Edit Performance">
+                                    <i class="fas fa-chart-line"></i>
+                                </button>
+                                <button class="action-btn" onclick="editPlayerAttendance(4)" title="Edit Attendance">
+                                    <i class="fas fa-calendar-check"></i>
+                                </button>
+                                <button class="action-btn" onclick="leaveFeedback(4)" title="Leave Feedback">
+                                    <i class="fas fa-comment"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="player-card">
+                            <div class="player-header">
+                                <img src="https://images.unsplash.com/photo-1552058544-f2b08422138a?w=80&h=80&fit=crop&crop=face"
+                                    alt="Omar Tarek" class="player-avatar">
+                                <div class="player-status active">
+                                    <i class="fas fa-circle"></i>
+                                    Active
+                                </div>
+                            </div>
+
+                            <div class="player-info">
+                                <h3>Omar Tarek</h3>
+                                <div class="player-meta">
+                                    <span class="position">Forward</span>
+                                    <span class="jersey-number">#9</span>
+                                </div>
+                                <div class="player-stats">
+                                    <div class="stat">
+                                        <span class="label">Age</span>
+                                        <span class="value">24</span>
+                                    </div>
+                                    <div class="stat">
+                                        <span class="label">Rating</span>
+                                        <span class="value">8.1</span>
+                                    </div>
+                                    <div class="stat">
+                                        <span class="label">Attendance</span>
+                                        <span class="value">90%</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="player-actions">
+                                <button class="action-btn" onclick="viewPlayerDetails(5)" title="View Details">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="action-btn" onclick="editPlayerPerformance(5)" title="Edit Performance">
+                                    <i class="fas fa-chart-line"></i>
+                                </button>
+                                <button class="action-btn" onclick="editPlayerAttendance(5)" title="Edit Attendance">
+                                    <i class="fas fa-calendar-check"></i>
+                                </button>
+                                <button class="action-btn" onclick="leaveFeedback(5)" title="Leave Feedback">
+                                    <i class="fas fa-comment"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="player-card">
+                            <div class="player-header">
+                                <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=80&h=80&fit=crop&crop=face"
+                                    alt="Mahmoud Ali" class="player-avatar">
+                                <div class="player-status suspended">
+                                    <i class="fas fa-circle"></i>
+                                    Suspended
+                                </div>
+                            </div>
+
+                            <div class="player-info">
+                                <h3>Mahmoud Ali</h3>
+                                <div class="player-meta">
+                                    <span class="position">Midfielder</span>
+                                    <span class="jersey-number">#6</span>
+                                </div>
+                                <div class="player-stats">
+                                    <div class="stat">
+                                        <span class="label">Age</span>
+                                        <span class="value">27</span>
+                                    </div>
+                                    <div class="stat">
+                                        <span class="label">Rating</span>
+                                        <span class="value">7.9</span>
+                                    </div>
+                                    <div class="stat">
+                                        <span class="label">Attendance</span>
+                                        <span class="value">85%</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="player-actions">
+                                <button class="action-btn" onclick="viewPlayerDetails(6)" title="View Details">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="action-btn" onclick="editPlayerPerformance(6)" title="Edit Performance">
+                                    <i class="fas fa-chart-line"></i>
+                                </button>
+                                <button class="action-btn" onclick="editPlayerAttendance(6)" title="Edit Attendance">
+                                    <i class="fas fa-calendar-check"></i>
+                                </button>
+                                <button class="action-btn" onclick="leaveFeedback(6)" title="Leave Feedback">
+                                    <i class="fas fa-comment"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <!-- Player Details Modal -->
+        <div class="modal" id="player-details-modal">
+            <div class="modal-content large">
+                <div class="modal-header">
+                    <h3 id="player-details-title">Player Details</h3>
+                    <span class="close" onclick="closePlayerDetailsModal()">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <div class="player-details-content">
+                        <div class="player-profile">
+                            <img id="player-details-avatar" src="/placeholder.svg" alt="Player"
+                                class="player-profile-avatar">
+                            <div class="player-profile-info">
+                                <h2 id="player-details-name">Player Name</h2>
+                                <div class="player-profile-meta">
+                                    <span id="player-details-position">Position</span>
+                                    <span id="player-details-jersey">#00</span>
+                                    <span id="player-details-age">Age: 00</span>
+                                </div>
+                                <div class="player-profile-status" id="player-details-status">
+                                    <i class="fas fa-circle"></i>
+                                    Active
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="player-details-tabs">
+                            <button class="tab-btn active" data-tab="overview">Overview</button>
+                            <button class="tab-btn" data-tab="performance">Performance</button>
+                            <button class="tab-btn" data-tab="attendance">Attendance</button>
+                            <button class="tab-btn" data-tab="feedback">Feedback</button>
+                        </div>
+
+                        <div class="tab-content active" id="overview-tab">
+                            <div class="overview-grid">
+                                <div class="overview-section">
+                                    <h4>Personal Information</h4>
+                                    <div class="info-grid">
+                                        <div class="info-item">
+                                            <label>Full Name:</label>
+                                            <span>Youssef Bassiony Hamed Mahrous Ghaly</span>
+                                        </div>
+                                        <div class="info-item">
+                                            <label>Date of Birth:</label>
+                                            <span>June 15, 1992</span>
+                                        </div>
+                                        <div class="info-item">
+                                            <label>Nationality:</label>
+                                            <span>Egyptian</span>
+                                        </div>
+                                        <div class="info-item">
+                                            <label>Height:</label>
+                                            <span>175 cm</span>
+                                        </div>
+                                        <div class="info-item">
+                                            <label>Weight:</label>
+                                            <span>71 kg</span>
+                                        </div>
+                                        <div class="info-item">
+                                            <label>Preferred Foot:</label>
+                                            <span>Left</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="overview-section">
+                                    <h4>Career Statistics</h4>
+                                    <div class="stats-grid">
+                                        <div class="stat-item">
+                                            <span class="stat-value">156</span>
+                                            <span class="stat-label">Matches Played</span>
+                                        </div>
+                                        <div class="stat-item">
+                                            <span class="stat-value">89</span>
+                                            <span class="stat-label">Goals Scored</span>
+                                        </div>
+                                        <div class="stat-item">
+                                            <span class="stat-value">34</span>
+                                            <span class="stat-label">Assists</span>
+                                        </div>
+                                        <div class="stat-item">
+                                            <span class="stat-value">12</span>
+                                            <span class="stat-label">Yellow Cards</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-content" id="performance-tab">
+                            <div class="performance-section">
+                                <h4>Performance Metrics</h4>
+                                <div class="metrics-grid">
+                                    <div class="metric-card">
+                                        <div class="metric-header">
+                                            <h5>Overall Rating</h5>
+                                            <span class="metric-value">9.2</span>
+                                        </div>
+                                        <div class="metric-bar">
+                                            <div class="metric-fill" style="width: 92%"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="metric-card">
+                                        <div class="metric-header">
+                                            <h5>Speed</h5>
+                                            <span class="metric-value">9.5</span>
+                                        </div>
+                                        <div class="metric-bar">
+                                            <div class="metric-fill" style="width: 95%"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="metric-card">
+                                        <div class="metric-header">
+                                            <h5>Shooting</h5>
+                                            <span class="metric-value">9.0</span>
+                                        </div>
+                                        <div class="metric-bar">
+                                            <div class="metric-fill" style="width: 90%"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="metric-card">
+                                        <div class="metric-header">
+                                            <h5>Passing</h5>
+                                            <span class="metric-value">8.7</span>
+                                        </div>
+                                        <div class="metric-bar">
+                                            <div class="metric-fill" style="width: 87%"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="metric-card">
+                                        <div class="metric-header">
+                                            <h5>Defending</h5>
+                                            <span class="metric-value">7.2</span>
+                                        </div>
+                                        <div class="metric-bar">
+                                            <div class="metric-fill" style="width: 72%"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="metric-card">
+                                        <div class="metric-header">
+                                            <h5>Physical</h5>
+                                            <span class="metric-value">8.8</span>
+                                        </div>
+                                        <div class="metric-bar">
+                                            <div class="metric-fill" style="width: 88%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="performance-actions">
+                                    <button class="btn-primary" onclick="editPerformanceMetrics()">
+                                        <i class="fas fa-edit"></i>
+                                        Edit Metrics
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-content" id="attendance-tab">
+                            <div class="attendance-section">
+                                <h4>Attendance Record</h4>
+                                <div class="attendance-summary">
+                                    <div class="attendance-stat">
+                                        <span class="stat-value">95%</span>
+                                        <span class="stat-label">Overall Attendance</span>
+                                    </div>
+                                    <div class="attendance-stat">
+                                        <span class="stat-value">38</span>
+                                        <span class="stat-label">Sessions Attended</span>
+                                    </div>
+                                    <div class="attendance-stat">
+                                        <span class="stat-value">2</span>
+                                        <span class="stat-label">Sessions Missed</span>
+                                    </div>
+                                </div>
+
+                                <div class="attendance-calendar">
+                                    <h5>Recent Attendance</h5>
+                                    <div class="calendar-grid">
+                                        <div class="calendar-day present" title="Present">
+                                            <span class="day">15</span>
+                                            <i class="fas fa-check"></i>
+                                        </div>
+                                        <div class="calendar-day present" title="Present">
+                                            <span class="day">16</span>
+                                            <i class="fas fa-check"></i>
+                                        </div>
+                                        <div class="calendar-day absent" title="Absent">
+                                            <span class="day">17</span>
+                                            <i class="fas fa-times"></i>
+                                        </div>
+                                        <div class="calendar-day present" title="Present">
+                                            <span class="day">18</span>
+                                            <i class="fas fa-check"></i>
+                                        </div>
+                                        <div class="calendar-day excused" title="Excused">
+                                            <span class="day">19</span>
+                                            <i class="fas fa-exclamation"></i>
+                                        </div>
+                                        <div class="calendar-day present" title="Present">
+                                            <span class="day">20</span>
+                                            <i class="fas fa-check"></i>
+                                        </div>
+                                        <div class="calendar-day present" title="Present">
+                                            <span class="day">21</span>
+                                            <i class="fas fa-check"></i>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="attendance-actions">
+                                    <button class="btn-primary" onclick="editAttendanceRecord()">
+                                        <i class="fas fa-edit"></i>
+                                        Edit Attendance
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-content" id="feedback-tab">
+                            <div class="feedback-section">
+                                <h4>Coach Feedback</h4>
+                                <div class="feedback-list">
+                                    <div class="feedback-item">
+                                        <div class="feedback-header">
+                                            <div class="feedback-rating">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                            </div>
+                                            <span class="feedback-date">January 15, 2024</span>
+                                        </div>
+                                        <p class="feedback-comment">Excellent performance in today's training. Great
+                                            finishing and movement in the box. Keep up the good work!</p>
+                                        <div class="feedback-coach">- Ahmed Hassan</div>
+                                    </div>
+
+                                    <div class="feedback-item">
+                                        <div class="feedback-header">
+                                            <div class="feedback-rating">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                            </div>
+                                            <span class="feedback-date">January 10, 2024</span>
+                                        </div>
+                                        <p class="feedback-comment">Good effort in training but needs to work on
+                                            defensive tracking. Focus on helping the team when we don't have the ball.
+                                        </p>
+                                        <div class="feedback-coach">- Ahmed Hassan</div>
+                                    </div>
+                                </div>
+
+                                <div class="feedback-actions">
+                                    <button class="btn-primary" onclick="addNewFeedback()">
+                                        <i class="fas fa-plus"></i>
+                                        Add Feedback
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add Player Modal -->
+        <div class="modal" id="add-player-modal">
+            <div class="modal-content large">
+                <div class="modal-header">
+                    <h3>Add New Player</h3>
+                    <span class="close" onclick="closeAddPlayerModal()">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <form id="add-player-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="player-name">Full Name</label>
+                                <input type="text" id="player-name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="player-jersey">Jersey Number</label>
+                                <input type="number" id="player-jersey" name="jersey" min="1" max="99" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="player-position">Position</label>
+                                <select id="player-position" name="position" required>
+                                    <option value="">Select Position</option>
+                                    <option value="goalkeeper">Goalkeeper</option>
+                                    <option value="defender">Defender</option>
+                                    <option value="midfielder">Midfielder</option>
+                                    <option value="forward">Forward</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="player-dob">Date of Birth</label>
+                                <input type="date" id="player-dob" name="dob" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="player-height">Height (cm)</label>
+                                <input type="number" id="player-height" name="height" min="150" max="220">
+                            </div>
+                            <div class="form-group">
+                                <label for="player-weight">Weight (kg)</label>
+                                <input type="number" id="player-weight" name="weight" min="50" max="120">
+                            </div>
+                            <div class="form-group">
+                                <label for="player-foot">Preferred Foot</label>
+                                <select id="player-foot" name="foot">
+                                    <option value="right">Right</option>
+                                    <option value="left">Left</option>
+                                    <option value="both">Both</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="player-nationality">Nationality</label>
+                            <input type="text" id="player-nationality" name="nationality" value="Egyptian">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="player-photo">Player Photo</label>
+                            <input type="file" id="player-photo" name="photo" accept="image/*">
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="btn-outline" onclick="closeAddPlayerModal()">Cancel</button>
+                            <button type="submit" class="btn-primary">Add Player</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Feedback Modal -->
+        <div class="modal" id="feedback-modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Leave Feedback</h3>
+                    <span class="close" onclick="closeFeedbackModal()">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <form id="feedback-form">
+                        <div class="form-group">
+                            <label>Rating</label>
+                            <div class="rating-input">
+                                <i class="fas fa-star" data-rating="1"></i>
+                                <i class="fas fa-star" data-rating="2"></i>
+                                <i class="fas fa-star" data-rating="3"></i>
+                                <i class="fas fa-star" data-rating="4"></i>
+                                <i class="fas fa-star" data-rating="5"></i>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="feedback-comment">Comments</label>
+                            <textarea id="feedback-comment" name="comment" rows="4" required></textarea>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="btn-outline" onclick="closeFeedbackModal()">Cancel</button>
+                            <button type="submit" class="btn-primary">Submit Feedback</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <script src="scripts/main.js"></script>
+        <script src="scripts/players.js"></script>
+    </body>
+
+</html>

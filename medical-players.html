@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Player Search - Al Ahly SC Medical Center</title>
+        <link rel="stylesheet" href="styles/main.css">
+        <link rel="stylesheet" href="styles/medical.css">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet">
+    </head>
+
+    <body>
+        <div class="app-container">
+            <!-- Medical Sidebar -->
+            <aside class="sidebar">
+                <div class="sidebar-header">
+                    <img src="./Images/FwBoNGZ7XfGg.png" alt="Al Ahly SC" class="sidebar-logo">
+                    <div class="sidebar-title">
+                        <h3>Al Ahly SC</h3>
+                        <p>Medical Center</p>
+                    </div>
+                </div>
+
+                <nav class="sidebar-nav">
+                    <div class="nav-section">
+                        <h4>MEDICAL OVERVIEW</h4>
+                        <ul>
+                            <li><a href="medical-dashboard.html" class="nav-link"><i class="fas fa-heartbeat"></i>
+                                    Dashboard</a></li>
+                            <li><a href="medical-schedule.html" class="nav-link"><i class="fas fa-calendar-alt"></i> My
+                                    Schedule</a></li>
+                            <li><a href="medical-announcements.html" class="nav-link"><i class="fas fa-bullhorn"></i>
+                                    Announcements</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="nav-section">
+                        <h4>PLAYER MANAGEMENT</h4>
+                        <ul>
+                            <li><a href="medical-players.html" class="nav-link active"><i
+                                        class="fas fa-user-friends"></i> Player Search</a></li>
+                            <li><a href="medical-injuries.html" class="nav-link"><i class="fas fa-band-aid"></i> Injury
+                                    Management</a></li>
+                            <li><a href="medical-checkups.html" class="nav-link"><i class="fas fa-clipboard-list"></i>
+                                    Checkup Logs</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="nav-section">
+                        <h4>COMMUNICATION</h4>
+                        <ul>
+                            <li><a href="medical-chat.html" class="nav-link"><i class="fas fa-comments"></i> Player
+                                    Chat</a></li>
+                            <li><a href="medical-reports.html" class="nav-link"><i class="fas fa-file-medical"></i>
+                                    Medical Reports</a></li>
+                        </ul>
+                    </div>
+                </nav>
+
+                <div class="sidebar-footer">
+                    <div class="user-profile">
+                        <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=40&h=40&fit=crop&crop=face"
+                            alt="User" class="user-avatar">
+                        <div class="user-info">
+                            <span class="user-name">Dr. Sarah Ahmed</span>
+                            <span class="user-role">Medical Staff</span>
+                        </div>
+                        <div class="user-menu">
+                            <i class="fas fa-chevron-down"></i>
+                            <div class="dropdown-menu">
+                                <a href="profile.html"><i class="fas fa-user"></i> Profile</a>
+                                <a href="settings.html"><i class="fas fa-cog"></i> Settings</a>
+                                <a href="index.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="main-content">
+                <header class="main-header">
+                    <div class="header-left">
+                        <button class="sidebar-toggle">
+                            <i class="fas fa-bars"></i>
+                        </button>
+                        <h1>Player Search</h1>
+                        <p>Search and manage player medical information</p>
+                    </div>
+
+                    <div class="header-right">
+                        <div class="search-box">
+                            <i class="fas fa-search"></i>
+                            <input type="text" placeholder="Search players by name..." id="player-search">
+                        </div>
+                        <button class="btn-primary" onclick="openBulkUpdateModal()">
+                            <i class="fas fa-users-cog"></i>
+                            Bulk Update
+                        </button>
+                    </div>
+                </header>
+
+                <div class="medical-players-content">
+                    <!-- Search Filters -->
+                    <div class="medical-search-filters">
+                        <div class="filter-group">
+                            <label>Team:</label>
+                            <select id="team-filter">
+                                <option value="">All Teams</option>
+                                <option value="football-first">Football First Team</option>
+                                <option value="football-youth">Football Youth Team</option>
+                                <option value="basketball">Basketball Team</option>
+                                <option value="handball">Handball Team</option>
+                            </select>
+                        </div>
+
+                        <div class="filter-group">
+                            <label>Medical Status:</label>
+                            <select id="status-filter">
+                                <option value="">All Status</option>
+                                <option value="active">Active</option>
+                                <option value="injured">Injured</option>
+                                <option value="recovering">Recovering</option>
+                                <option value="under-observation">Under Observation</option>
+                            </select>
+                        </div>
+
+                        <div class="filter-group">
+                            <label>Position:</label>
+                            <select id="position-filter">
+                                <option value="">All Positions</option>
+                                <option value="goalkeeper">Goalkeeper</option>
+                                <option value="defender">Defender</option>
+                                <option value="midfielder">Midfielder</option>
+                                <option value="forward">Forward</option>
+                            </select>
+                        </div>
+
+                        <button class="btn-outline" onclick="clearMedicalFilters()">
+                            <i class="fas fa-times"></i>
+                            Clear Filters
+                        </button>
+                    </div>
+
+                    <!-- Players Grid -->
+                    <div class="medical-players-grid">
+                        <div class="medical-player-card">
+                            <div class="player-header">
+                                <img src="https://images.unsplash.com/photo-1566753323558-f4e0952af115?w=80&h=80&fit=crop&crop=face"
+                                    alt="Youssef Bassiony" class="player-avatar">
+                                <div class="medical-status injured">
+                                    <i class="fas fa-user-injured"></i>
+                                    Injured
+                                </div>
+                            </div>
+
+                            <div class="player-info">
+                                <h3>Youssef Bassiony</h3>
+                                <div class="player-meta">
+                                    <span class="position">Forward</span>
+                                    <span class="jersey-number">#11</span>
+                                    <span class="team">Football First Team</span>
+                                </div>
+
+                                <div class="medical-info">
+                                    <div class="medical-item">
+                                        <span class="label">Current Issue:</span>
+                                        <span class="value injury">Ankle Sprain - Grade 2</span>
+                                    </div>
+                                    <div class="medical-item">
+                                        <span class="label">Last Checkup:</span>
+                                        <span class="value">Jan 15, 2024</span>
+                                    </div>
+                                    <div class="medical-item">
+                                        <span class="label">Recovery Time:</span>
+                                        <span class="value">2-3 weeks</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="player-actions">
+                                <button class="action-btn" onclick="viewMedicalHistory(1)" title="Medical History">
+                                    <i class="fas fa-history"></i>
+                                </button>
+                                <button class="action-btn" onclick="updatePlayerStatus(1)" title="Update Status">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="action-btn" onclick="scheduleCheckup(1)" title="Schedule Checkup">
+                                    <i class="fas fa-calendar-plus"></i>
+                                </button>
+                                <button class="action-btn" onclick="chatWithPlayer(1)" title="Chat">
+                                    <i class="fas fa-comments"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="medical-player-card">
+                            <div class="player-header">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face"
+                                    alt="Ahmed Zizo" class="player-avatar">
+                                <div class="medical-status active">
+                                    <i class="fas fa-user-check"></i>
+                                    Active
+                                </div>
+                            </div>
+
+                            <div class="player-info">
+                                <h3>Ahmed Zizo</h3>
+                                <div class="player-meta">
+                                    <span class="position">Midfielder</span>
+                                    <span class="jersey-number">#8</span>
+                                    <span class="team">Football First Team</span>
+                                </div>
+
+                                <div class="medical-info">
+                                    <div class="medical-item">
+                                        <span class="label">Current Issue:</span>
+                                        <span class="value healthy">No Issues</span>
+                                    </div>
+                                    <div class="medical-item">
+                                        <span class="label">Last Checkup:</span>
+                                        <span class="value">Jan 10, 2024</span>
+                                    </div>
+                                    <div class="medical-item">
+                                        <span class="label">Next Checkup:</span>
+                                        <span class="value">Jan 25, 2024</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="player-actions">
+                                <button class="action-btn" onclick="viewMedicalHistory(2)" title="Medical History">
+                                    <i class="fas fa-history"></i>
+                                </button>
+                                <button class="action-btn" onclick="updatePlayerStatus(2)" title="Update Status">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="action-btn" onclick="scheduleCheckup(2)" title="Schedule Checkup">
+                                    <i class="fas fa-calendar-plus"></i>
+                                </button>
+                                <button class="action-btn" onclick="chatWithPlayer(2)" title="Chat">
+                                    <i class="fas fa-comments"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="medical-player-card">
+                            <div class="player-header">
+                                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face"
+                                    alt="Karim Fouad" class="player-avatar">
+                                <div class="medical-status recovering">
+                                    <i class="fas fa-heart"></i>
+                                    Recovering
+                                </div>
+                            </div>
+
+                            <div class="player-info">
+                                <h3>Karim Fouad</h3>
+                                <div class="player-meta">
+                                    <span class="position">Defender</span>
+                                    <span class="jersey-number">#4</span>
+                                    <span class="team">Football First Team</span>
+                                </div>
+
+                                <div class="medical-info">
+                                    <div class="medical-item">
+                                        <span class="label">Current Issue:</span>
+                                        <span class="value recovery">Knee Contusion - Recovering</span>
+                                    </div>
+                                    <div class="medical-item">
+                                        <span class="label">Last Checkup:</span>
+                                        <span class="value">Jan 12, 2024</span>
+                                    </div>
+                                    <div class="medical-item">
+                                        <span class="label">Expected Return:</span>
+                                        <span class="value">Jan 20, 2024</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="player-actions">
+                                <button class="action-btn" onclick="viewMedicalHistory(3)" title="Medical History">
+                                    <i class="fas fa-history"></i>
+                                </button>
+                                <button class="action-btn" onclick="updatePlayerStatus(3)" title="Update Status">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="action-btn" onclick="scheduleCheckup(3)" title="Schedule Checkup">
+                                    <i class="fas fa-calendar-plus"></i>
+                                </button>
+                                <button class="action-btn" onclick="chatWithPlayer(3)" title="Chat">
+                                    <i class="fas fa-comments"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="medical-player-card">
+                            <div class="player-header">
+                                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&h=80&fit=crop&crop=face"
+                                    alt="Hassan Ahmed" class="player-avatar">
+                                <div class="medical-status under-observation">
+                                    <i class="fas fa-eye"></i>
+                                    Under Observation
+                                </div>
+                            </div>
+
+                            <div class="player-info">
+                                <h3>Hassan Ahmed</h3>
+                                <div class="player-meta">
+                                    <span class="position">Goalkeeper</span>
+                                    <span class="jersey-number">#1</span>
+                                    <span class="team">Football First Team</span>
+                                </div>
+
+                                <div class="medical-info">
+                                    <div class="medical-item">
+                                        <span class="label">Current Issue:</span>
+                                        <span class="value observation">Minor Fatigue - Monitoring</span>
+                                    </div>
+                                    <div class="medical-item">
+                                        <span class="label">Last Checkup:</span>
+                                        <span class="value">Jan 14, 2024</span>
+                                    </div>
+                                    <div class="medical-item">
+                                        <span class="label">Next Review:</span>
+                                        <span class="value">Jan 18, 2024</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="player-actions">
+                                <button class="action-btn" onclick="viewMedicalHistory(4)" title="Medical History">
+                                    <i class="fas fa-history"></i>
+                                </button>
+                                <button class="action-btn" onclick="updatePlayerStatus(4)" title="Update Status">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="action-btn" onclick="scheduleCheckup(4)" title="Schedule Checkup">
+                                    <i class="fas fa-calendar-plus"></i>
+                                </button>
+                                <button class="action-btn" onclick="chatWithPlayer(4)" title="Chat">
+                                    <i class="fas fa-comments"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <!-- Update Player Status Modal -->
+        <div class="modal" id="update-status-modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Update Player Status</h3>
+                    <span class="close" onclick="closeUpdateStatusModal()">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <form id="update-status-form">
+                        <div class="form-group">
+                            <label>Player</label>
+                            <input type="text" id="status-player-name" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="player-status">Medical Status</label>
+                            <select id="player-status" name="status" required>
+                                <option value="active">Active</option>
+                                <option value="injured">Injured</option>
+                                <option value="recovering">Recovering</option>
+                                <option value="under-observation">Under Observation</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group" id="injury-details" style="display: none;">
+                            <label for="injury-type">Injury Type</label>
+                            <input type="text" id="injury-type" name="injury-type"
+                                placeholder="e.g., Ankle Sprain - Grade 2">
+                        </div>
+
+                        <div class="form-group" id="recovery-time" style="display: none;">
+                            <label for="expected-recovery">Expected Recovery Time</label>
+                            <input type="text" id="expected-recovery" name="recovery-time"
+                                placeholder="e.g., 2-3 weeks">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="status-notes">Notes</label>
+                            <textarea id="status-notes" name="notes" rows="3"
+                                placeholder="Additional medical notes..."></textarea>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="btn-outline" onclick="closeUpdateStatusModal()">Cancel</button>
+                            <button type="submit" class="btn-primary">Update Status</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Medical History Modal -->
+        <div class="modal" id="medical-history-modal">
+            <div class="modal-content large">
+                <div class="modal-header">
+                    <h3>Medical History</h3>
+                    <span class="close" onclick="closeMedicalHistoryModal()">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <div class="medical-history-content">
+                        <div class="history-header">
+                            <div class="player-summary">
+                                <img id="history-player-avatar" src="/placeholder.svg" alt="Player"
+                                    class="history-avatar">
+                                <div class="history-info">
+                                    <h4 id="history-player-name">Player Name</h4>
+                                    <p id="history-player-details">Position • Team</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="history-timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-date">Jan 15, 2024</div>
+                                <div class="timeline-content">
+                                    <div class="timeline-type injury">Injury Report</div>
+                                    <h5>Ankle Sprain - Grade 2</h5>
+                                    <p>Player sustained ankle injury during training. Immediate treatment provided.
+                                        Recommended rest for 2-3 weeks.</p>
+                                    <div class="timeline-meta">
+                                        <span>Dr. Sarah Ahmed</span>
+                                        <span>Medical Room A</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="timeline-item">
+                                <div class="timeline-date">Jan 10, 2024</div>
+                                <div class="timeline-content">
+                                    <div class="timeline-type checkup">Routine Checkup</div>
+                                    <h5>Pre-Training Medical Check</h5>
+                                    <p>Regular health assessment. All vitals normal. Player cleared for training
+                                        activities.</p>
+                                    <div class="timeline-meta">
+                                        <span>Dr. Sarah Ahmed</span>
+                                        <span>Medical Room B</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="timeline-item">
+                                <div class="timeline-date">Jan 5, 2024</div>
+                                <div class="timeline-content">
+                                    <div class="timeline-type recovery">Recovery Session</div>
+                                    <h5>Post-Match Recovery</h5>
+                                    <p>Recovery session after intense match. Muscle fatigue noted but within normal
+                                        range. Recommended additional rest.</p>
+                                    <div class="timeline-meta">
+                                        <span>Dr. Sarah Ahmed</span>
+                                        <span>Recovery Center</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="scripts/main.js"></script>
+        <script src="scripts/medical.js"></script>
+    </body>
+
+</html>

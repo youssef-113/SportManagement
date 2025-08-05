@@ -1,0 +1,313 @@
+/* Coach Team Management Styles */
+.team-selector {
+  background-color: var(--primary-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--gray-200);
+  padding: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.team-info {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing);
+}
+
+.team-logo {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+}
+
+.team-details h3 {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--gray-900);
+  margin-bottom: 4px;
+}
+
+.team-details p {
+  font-size: var(--font-size-sm);
+  color: var(--gray-600);
+}
+
+.team-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-lg);
+}
+
+.team-stats {
+  display: flex;
+  gap: var(--spacing-lg);
+}
+
+.team-stats .stat-item {
+  text-align: center;
+}
+
+.team-stats .stat-value {
+  display: block;
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  color: var(--primary-red);
+  margin-bottom: 2px;
+}
+
+.team-stats .stat-label {
+  font-size: var(--font-size-xs);
+  color: var(--gray-600);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Formation View */
+.formation-view {
+  background-color: var(--primary-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--gray-200);
+  margin-bottom: var(--spacing-xl);
+  overflow: hidden;
+}
+
+.formation-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-lg);
+  border-bottom: 1px solid var(--gray-200);
+  background-color: var(--gray-50);
+}
+
+.formation-header h3 {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--gray-900);
+}
+
+.football-pitch {
+  background: linear-gradient(to bottom, #2d5a27 0%, #4a7c59 50%, #2d5a27 100%);
+  position: relative;
+  padding: var(--spacing-xl);
+  min-height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.football-pitch::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: rgba(255, 255, 255, 0.8);
+  transform: translateY(-50%);
+}
+
+.football-pitch::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100px;
+  height: 100px;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.pitch-section {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.pitch-section.goalkeeper {
+  justify-content: center;
+}
+
+.player-position {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-sm);
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: var(--spacing);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  transition: var(--transition);
+  min-width: 80px;
+}
+
+.player-position:hover {
+  background-color: var(--primary-white);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.position-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--primary-red);
+}
+
+.player-name {
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  color: var(--gray-900);
+  text-align: center;
+  line-height: 1.2;
+}
+
+.player-number {
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  color: var(--primary-red);
+  background-color: var(--light-red);
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+}
+
+/* Squad Section */
+.squad-section {
+  background-color: var(--primary-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--gray-200);
+  overflow: hidden;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-lg);
+  border-bottom: 1px solid var(--gray-200);
+  background-color: var(--gray-50);
+}
+
+.section-header h3 {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--gray-900);
+}
+
+.squad-filters {
+  display: flex;
+  gap: var(--spacing);
+}
+
+.squad-filters select {
+  padding: var(--spacing-sm) var(--spacing);
+  border: 1px solid var(--gray-300);
+  border-radius: var(--radius);
+  font-size: var(--font-size-sm);
+  background-color: var(--primary-white);
+}
+
+.squad-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--spacing);
+  padding: var(--spacing-lg);
+}
+
+.squad-player {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing);
+  padding: var(--spacing);
+  border-radius: var(--radius);
+  border: 1px solid var(--gray-200);
+  transition: var(--transition);
+  position: relative;
+}
+
+.squad-player:hover {
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-1px);
+}
+
+.squad-player.available {
+  border-left: 4px solid var(--success);
+}
+
+.squad-player.injured {
+  border-left: 4px solid var(--error);
+  opacity: 0.7;
+}
+
+.squad-player.suspended {
+  border-left: 4px solid var(--warning);
+  opacity: 0.8;
+}
+
+.squad-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--gray-200);
+}
+
+.squad-info {
+  flex: 1;
+}
+
+.squad-info h4 {
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  color: var(--gray-900);
+  margin-bottom: 4px;
+}
+
+.squad-info .position {
+  font-size: var(--font-size-sm);
+  color: var(--gray-600);
+  margin-right: var(--spacing-sm);
+}
+
+.squad-info .jersey {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--primary-red);
+  background-color: var(--light-red);
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+}
+
+.squad-stats {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  margin-right: var(--spacing);
+}
+
+.squad-stats .rating {
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  color: var(--primary-red);
+}
+
+.squad-stats .attendance {
+  font-size: var(--font-size-xs);
+  color: var(--gray-500);
+}
+
+.squad-actions {
+  display: flex;
+  gap: var(--spacing-sm);
+}
