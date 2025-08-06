@@ -11,7 +11,7 @@ CREATE TABLE users(
     DOB DATE DEFAULT NULL,
     nationality VARCHAR(50) DEFAULT NULL,
     nationalID VARCHAR(50) DEFAULT NULL,
-    role ENUM('player', 'trainingManagement', 'medicalStaff', 'coach', 'manager', 'admin') NOT NULL,
+    role ENUM('player', 'trainingManagement', 'medicalStaff',  'admin') NOT NULL,
     createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
     last_login DATETIME DEFAULT NULL,
     status ENUM('Active', 'notActive') DEFAULT 'Active'
@@ -136,8 +136,8 @@ CREATE TABLE trainingSessionDrills (
 CREATE TABLE userActivityLogs (
     logID INT PRIMARY KEY AUTO_INCREMENT,
     userID INT NOT NULL,
-    userRole ENUM('player', 'medicalStaff', 'manager', 'coach', 'trainingManagement', 'admin') NOT NULL,
-    actionType ENUM('PROFILE_VIEW', 'PROFILE_UPDATE', 'PASSWORD_CHANGE', 'LOGIN', 'LOGOUT') NOT NULL,
+    userRole ENUM('player', 'medicalStaff', 'manager', 'trainingManagement', 'admin') NOT NULL,
+    actionType ENUM('profileView', 'profileUpdate', 'passwordChange', 'login', 'logout') NOT NULL,
     actionDetails JSON,
     ipAddress VARCHAR(45) NOT NULL,
     userAgent VARCHAR(255),
@@ -169,7 +169,7 @@ CREATE TABLE announcements (
     announcementID INT PRIMARY KEY AUTO_INCREMENT,
     createdBy INT,
     title VARCHAR(100) NOT NULL,
-    targetAudience ENUM('Player','MedicalStaff','TrainingManager','BoardMember','All') NOT NULL,
+    targetAudience ENUM('Player','MedicalStaff','TrainingManager','admin','All') NOT NULL,
     message TEXT,
     sport ENUM('Football', 'Basketball', 'Tennis', 'Other') NOT NULL,
     isImportant BOOLEAN DEFAULT FALSE,

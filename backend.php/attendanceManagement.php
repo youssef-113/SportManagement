@@ -322,7 +322,7 @@
                     $accessReason = "Admin access";
                     break;
                     
-                case 'coach':
+
                 case 'trainingmanagement':
                     // Coach can only update players
                     if ($targetRole === 'player') {
@@ -378,7 +378,7 @@
             $currentRole = getRole($conn, $uid);
             
             // Only admin, coach, and medical staff can view user lists
-            if (!in_array(strtolower($currentRole), ['admin', 'coach', 'trainingmanagement', 'medicalstaff'])) {
+            if (!in_array(strtolower($currentRole), ['admin', 'trainingmanagement', 'medicalstaff'])) {
                 respond("error", "Access denied: Insufficient permissions", 403);
             }
 
@@ -387,7 +387,7 @@
             $types = "";
 
             if ($targetRole) {
-                $validRoles = ['player', 'coach', 'trainingManagement', 'medicalStaff', 'admin'];
+                $validRoles = ['player','trainingManagement', 'medicalStaff', 'admin'];
                 if (!in_array($targetRole, $validRoles)) {
                     respond("error", "Invalid role specified", 400);
                 }
@@ -533,7 +533,7 @@
         DOB DATE DEFAULT NULL,
         nationality VARCHAR(50) DEFAULT NULL,
         nationalID VARCHAR(50) DEFAULT NULL,
-        role ENUM('player', 'trainingManagement', 'medicalStaff', 'coach', 'manager', 'admin') NOT NULL,
+        role ENUM('player', 'trainingManagement', 'medicalStaff', 'manager', 'admin') NOT NULL,
         createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
         last_login DATETIME DEFAULT NULL,
         status ENUM('Active', 'notActive') DEFAULT 'Active'

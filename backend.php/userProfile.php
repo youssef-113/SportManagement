@@ -25,7 +25,7 @@
     }
 
     function getTrainingManagementProfile($conn, $uid) {
-        $stmt = $conn->prepare("SELECT * FROM trainingmanagement t INNER JOIN users u ON u.uid = t.uid WHERE u.uid = ?");
+        $stmt = $conn->prepare("SELECT * FROM trainingManagement t INNER JOIN users u ON u.uid = t.uid WHERE u.uid = ?");
         $stmt->bind_param("i", $uid);
         $stmt->execute();
         $res = $stmt->get_result();
@@ -34,7 +34,7 @@
     }
 
     function getMedicalStaffProfile($conn, $uid) {
-        $stmt = $conn->prepare("SELECT * FROM medicalstaff m INNER JOIN users u ON u.uid = m.uid WHERE u.uid = ?");
+        $stmt = $conn->prepare("SELECT * FROM medicalStaff m INNER JOIN users u ON u.uid = m.uid WHERE u.uid = ?");
         $stmt->bind_param("i", $uid);
         $stmt->execute();
         $res = $stmt->get_result();
@@ -194,7 +194,7 @@
             }
 
             if (!empty($staffUpdates)) {
-                $sql = "UPDATE medicalstaff SET " . implode(', ', $staffUpdates) . " WHERE uid = ?";
+                $sql = "UPDATE medicalStaff SET " . implode(', ', $staffUpdates) . " WHERE uid = ?";
                 $stmt = $conn->prepare($sql);
                 if (!$stmt) {
                     $conn->rollback();
@@ -275,7 +275,7 @@
             }
 
             if (!empty($trainingUpdates)) {
-                $sql = "UPDATE trainingmanagement SET " . implode(', ', $trainingUpdates) . " WHERE uid = ?";
+                $sql = "UPDATE trainingManagement SET " . implode(', ', $trainingUpdates) . " WHERE uid = ?";
                 $stmt = $conn->prepare($sql);
                 if (!$stmt) {
                     $conn->rollback();
